@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">StationGX</string>
+    
+    <string name="health_data">Health Data</string>
+    <string name="phone">Phone</string>
+    <string name="date">Date</string>
+    <string name="profile">Profile</string>
+    <string name="tele_health">Tele Health</string>
+    <string name="manual_input">Manual Input</string>
+    <string name="medication">Medication</string>
+    <string name="measurement">Measurement</string>
+
+</resources>
