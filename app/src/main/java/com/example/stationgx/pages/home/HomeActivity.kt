@@ -1,7 +1,9 @@
 package com.example.stationgx.pages.home
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.stationgx.R
 import com.example.stationgx.pages.BaseActivity
@@ -19,7 +21,11 @@ import javax.inject.Inject
 
 
 class HomeActivity:BaseActivity(), View.OnClickListener{
+
+    @Inject
+    lateinit var shared:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_home)
 
@@ -34,13 +40,17 @@ class HomeActivity:BaseActivity(), View.OnClickListener{
         img_medication.  setOnClickListener(this)
         img_measurement. setOnClickListener(this)
 
-
+        if (shared!=null){
+            shared.edit().putString("numbers","12333").commit()
+        }
     }
 
     override fun onClick(v: View?) {
 
         when(v?.id){
             R.id.img_profile->{
+                val testString=shared.getString("numbers","no numbers")
+                Log.d("HomeActivity", " result is : $testString")
             }
             R.id.img_health_data->{
                 val  intent=Intent(this,HealthDataActivity::class.java)

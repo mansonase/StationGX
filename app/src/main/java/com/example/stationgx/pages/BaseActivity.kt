@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dagger.android.support.DaggerAppCompatActivity
 
-open class BaseActivity:DaggerAppCompatActivity() {
+open class BaseActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
