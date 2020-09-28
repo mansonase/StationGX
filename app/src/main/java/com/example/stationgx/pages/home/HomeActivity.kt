@@ -11,12 +11,10 @@ import com.example.stationgx.pages.healthdata.HealthDataActivity
 import com.example.stationgx.pages.manuelinput.ManualInputActivity
 import com.example.stationgx.pages.measurement.MeasurementActivity
 import com.example.stationgx.pages.medication.MedicationActivity
-import com.example.stationgx.pages.myprofile.MyProfileActivity
 import com.example.stationgx.pages.phone.PhoneActivity
 import com.example.stationgx.pages.telehealth.TeleHealthActivity
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import kotlinx.android.synthetic.main.main_home.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 
@@ -25,9 +23,9 @@ class HomeActivity:BaseActivity(), View.OnClickListener{
     @Inject
     lateinit var shared:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        //AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_home)
+        setContentView(R.layout.fragment_home)
 
 
 

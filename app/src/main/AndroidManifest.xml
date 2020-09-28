@@ -10,7 +10,7 @@
         android:theme="@style/FullscreenTheme"
         android:name=".pages.StationApp">
 
-        <activity android:name=".pages.home.HomeActivity">
+        <activity android:name=".pages.mainbaseactivity.MainBaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
