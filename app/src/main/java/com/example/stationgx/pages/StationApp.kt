@@ -1,20 +1,15 @@
 package com.example.stationgx.pages
 
-import android.app.Activity
-import android.app.Application
 import com.example.stationgx.di.DaggerStationAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import javax.inject.Inject
+import dagger.android.DaggerApplication
 
 
-class StationApp:Application(),HasActivityInjector{
+class StationApp:DaggerApplication(){
 
-
+    /*
     @Inject
     lateinit var activityDispatchingAndroidInjector:DispatchingAndroidInjector<Activity>
-
     override fun onCreate() {
         super.onCreate()
         DaggerStationAppComponent
@@ -22,11 +17,15 @@ class StationApp:Application(),HasActivityInjector{
                 .application(this)
                 .build()
                 .inject(this)
+    }
+    override fun activityInjector(): AndroidInjector<Activity> {
 
+        return activityDispatchingAndroidInjector
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> {
-        //TODO("Not yet implemented")
-        return activityDispatchingAndroidInjector
+ */
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+
+        return DaggerStationAppComponent.builder().create(this)
     }
 }
