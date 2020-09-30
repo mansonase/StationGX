@@ -10,4 +10,8 @@
     <string name="medication">Medication</string>
     <string name="measurement">Measurement</string>
 
+
+
+    <string name="welcome_text">Hi Mary,\nHere is your health flower!</string>
+
 </resources>

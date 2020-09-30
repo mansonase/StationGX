@@ -9,5 +9,10 @@
     <color name="main_white">#FFFFFF</color>
     <color name="main_blue">#63B8E3</color>
 
+    <color name="word_black">#050505</color>
+    <color name="word_blue">#0288D1</color>
+
+    <color name="icon_grey">#AAABAD</color>
+
 
 </resources>

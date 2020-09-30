@@ -25,6 +25,10 @@
         <activity android:name=".pages.myprofile.MyProfileActivity"/>
         <activity android:name=".pages.telehealth.TeleHealthActivity"/>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>
