@@ -1,239 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".pages.home.HomeActivity">
+    android:background="@android:color/transparent">
 
 
     <Button
         android:id="@+id/img_profile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="576px"
+        android:layout_height="281px"
         android:background="@drawable/background_blue_main_block"
         android:text="@string/profile"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_281"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_576"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_17" />
+        android:layout_marginTop="32px"
+        android:layout_marginStart="32px"/>
 
     <Button
         android:id="@+id/img_health_data"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="264px"
+        android:layout_height="264px"
         android:background="@drawable/background_blue_main_block"
         android:text="@string/health_data"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_281"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_885"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_621"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_17" />
+        android:layout_marginTop="49px"
+        android:layout_marginStart="653px"/>
 
     <Button
         android:id="@+id/img_phone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="120px"
+        android:layout_height="264px"
         android:background="@drawable/background_blue_main_block"
         android:text="@string/phone"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_281"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_1051"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_931"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_17" />
+        android:layout_marginTop="49px"
+        android:layout_marginStart="963px"/>
 
     <Button
         android:id="@+id/img_date"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="120px"
+        android:layout_height="264px"
         android:background="@drawable/background_blue_main_block"
         android:text="@string/date"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_281"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_1096"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_17" />
-
-    <Button
-        android:id="@+id/img_telehealth"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_24"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_288"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_377"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_641"
-        android:text="@string/tele_health"
-        android:background="@drawable/background_blue_main_block"/>
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/img_manualinput"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_326"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_590"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_377"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_641"
-        android:text="@string/manual_input"
-        android:background="@drawable/background_blue_main_block"/>
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/img_medication"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_627"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_891"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_377"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_641"
-        android:text="@string/medication"
-        android:background="@drawable/background_blue_main_block"/>
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/img_measurement"
-        app:layout_constraintStart_toStartOf="@id/guideline_start_929"
-        app:layout_constraintEnd_toEndOf="@id/guideline_start_1193"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_377"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_top_641"
-        android:text="@string/measurement"
-        android:background="@drawable/background_blue_main_block"/>
+        android:layout_marginTop="49px"
+        android:layout_marginStart="1128px"/>
 
 
+    <HorizontalScrollView
+        android:layout_width="1216px"
+        android:layout_height="400px"
+        android:layout_marginTop="367px"
+        android:layout_marginStart="32px"
+        android:background="@drawable/scroll_block_background">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24px" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_288"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="288px" />
+            <Button
+                android:id="@+id/img_telehealth"
+                android:layout_width="264px"
+                android:layout_height="264px"
+                android:text="@string/tele_health"
+                android:background="@drawable/background_blue_main_block"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="24px"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_326"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="326px" />
+            <Button
+                android:layout_width="264px"
+                android:layout_height="264px"
+                android:id="@+id/img_manualinput"
+                android:text="@string/manual_input"
+                android:background="@drawable/background_blue_main_block"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="326px"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_576"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="576px" />
+            <Button
+                android:layout_width="264px"
+                android:layout_height="264px"
+                android:id="@+id/img_medication"
+                android:text="@string/medication"
+                android:background="@drawable/background_blue_main_block"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="627px"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_590"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="590px" />
+            <Button
+                android:layout_width="264px"
+                android:layout_height="264px"
+                android:id="@+id/img_measurement"
+                android:text="@string/measurement"
+                android:background="@drawable/background_blue_main_block"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="929px"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_621"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="621px" />
+            <Button
+                android:layout_width="264px"
+                android:layout_height="264px"
+                android:id="@+id/img_music"
+                android:text="@string/music"
+                android:background="@drawable/background_blue_main_block"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="1230px"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_627"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="627px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_885"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="885px" />
+        </RelativeLayout>
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_891"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="891px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_929"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="929px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_931"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="931px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_1051"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="1051px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_1096"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="1096px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start_1193"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="1193px" />
+    </HorizontalScrollView>
 
 
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top_17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="17px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top_281"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="281px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top_335"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="335px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top_377"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="377px" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top_641"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="641px" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

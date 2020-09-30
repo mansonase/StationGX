@@ -8,11 +8,10 @@
     android:orientation="horizontal">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="1215px"
-        android:layout_height="736px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/base_viewpager"
-        android:layout_marginStart="32px"
-        android:layout_marginTop="32px"/>
+        android:background="@android:color/transparent"/>
 
 
     <com.rd.PageIndicatorView
@@ -24,7 +23,7 @@
         app:piv_selectedColor="@color/main_white"
         app:piv_unselectedColor="@color/icon_grey"
         app:piv_viewPager="@id/base_viewpager"
-        app:piv_radius="8px"
+        app:piv_radius="4px"
         android:layout_marginTop="777px"
         android:layout_marginStart="628px"/>
 

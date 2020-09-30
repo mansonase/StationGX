@@ -14,5 +14,7 @@
 
     <color name="icon_grey">#AAABAD</color>
 
+    <color name="scroll_foreground_transparent">#B205003A</color>
+
 
 </resources>
