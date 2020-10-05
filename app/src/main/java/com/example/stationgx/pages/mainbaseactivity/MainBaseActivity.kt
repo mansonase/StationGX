@@ -4,20 +4,19 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.stationgx.R
 import com.example.stationgx.pages.BaseActivity
-import com.example.stationgx.pages.home.HomeFragment
-import com.example.stationgx.pages.welcome.WelcomeFragment
+import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeFragment
+import com.example.stationgx.pages.mainbaseactivity.welcomefragment.WelcomeFragment
 import kotlinx.android.synthetic.main.main_base.*
 import javax.inject.Inject
 
-class MainBaseActivity: BaseActivity() {
+class MainBaseActivity: BaseActivity(),MainBaseActivityContract.View {
 
     @Inject
-    lateinit var shared:SharedPreferences
+    lateinit var presenter: MainBaseActivityPresenter
 
     //private lateinit var viewPager:ViewPager2
 
@@ -25,10 +24,6 @@ class MainBaseActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_base)
 
-        val isSaved= shared.edit().putString("mainbaseact","what is that").commit()
-
-        if (isSaved)
-            Log.d("main base","got return true")
 
         val pagerAdapter=MainPagerAdapter(this)
         base_viewpager.adapter=pagerAdapter
@@ -38,6 +33,7 @@ class MainBaseActivity: BaseActivity() {
         base_viewpager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 pageindicators.selection=position
+                presenter.loadFragment(position)
             }
         })
     }
@@ -64,4 +60,8 @@ class MainBaseActivity: BaseActivity() {
         }
     }
 
+
+    override fun onFragmentLoaded() {
+        //TODO("Not yet implemented")
+    }
 }

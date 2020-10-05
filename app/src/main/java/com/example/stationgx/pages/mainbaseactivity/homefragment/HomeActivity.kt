@@ -1,4 +1,4 @@
-package com.example.stationgx.pages.home
+package com.example.stationgx.pages.mainbaseactivity.homefragment
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,7 +13,6 @@ import com.example.stationgx.pages.measurement.MeasurementActivity
 import com.example.stationgx.pages.medication.MedicationActivity
 import com.example.stationgx.pages.phone.PhoneActivity
 import com.example.stationgx.pages.telehealth.TeleHealthActivity
-import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 

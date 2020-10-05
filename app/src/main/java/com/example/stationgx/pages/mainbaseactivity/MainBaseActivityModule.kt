@@ -9,7 +9,12 @@ import dagger.Provides
 class MainBaseActivityModule {
 
     @Provides
-    fun provideSharedPreferences(context: Context):SharedPreferences{
-        return context.getSharedPreferences("MainBase",Context.MODE_PRIVATE)
+    fun provideMainBaseActivityView(mainbaseactivity:MainBaseActivity):MainBaseActivityContract.View{
+        return mainbaseactivity
+    }
+
+    @Provides
+    fun provideMainBaseActivityPresenter(view:MainBaseActivityContract.View):MainBaseActivityContract.Presenter{
+        return MainBaseActivityPresenter(view)
     }
 }

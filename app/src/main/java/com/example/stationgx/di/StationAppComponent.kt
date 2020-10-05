@@ -1,10 +1,6 @@
 package com.example.stationgx.di
 
-import android.app.Application
 import com.example.stationgx.pages.StationApp
-import com.example.stationgx.pages.home.HomeActivityModule
-import dagger.Binds
-import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector

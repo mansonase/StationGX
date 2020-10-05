@@ -2,10 +2,10 @@ package com.example.stationgx.pages
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import dagger.android.support.DaggerAppCompatActivity
 
-open class BaseActivity:DaggerAppCompatActivity() {
+open class BaseActivity:DaggerAppCompatActivity(),BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,5 +32,25 @@ open class BaseActivity:DaggerAppCompatActivity() {
                             .or(View.SYSTEM_UI_FLAG_FULLSCREEN)
                             .or(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         }
+    }
+
+    override fun showMessage(id: Int) {
+        showMessage(getText(id))
+    }
+
+    override fun showMessage(text: CharSequence) {
+        Toast.makeText(this,text,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showLoading() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun showLoading(text: CharSequence) {
+        //TODO("Not yet implemented")
+    }
+
+    override fun cancelLoading() {
+        //TODO("Not yet implemented")
     }
 }

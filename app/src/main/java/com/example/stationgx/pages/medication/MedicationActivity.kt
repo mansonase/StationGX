@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.stationgx.R
 import com.example.stationgx.pages.BaseActivity
-import com.example.stationgx.pages.home.HomeActivity
+import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeActivity
 import kotlinx.android.synthetic.main.main_medication.*
 
 class MedicationActivity:BaseActivity(), View.OnClickListener {

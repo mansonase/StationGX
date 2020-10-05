@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.stationgx.R
 import com.example.stationgx.pages.BaseActivity
-import com.example.stationgx.pages.home.HomeActivity
+import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeActivity
 import kotlinx.android.synthetic.main.main_measurement.*
 
 class MeasurementActivity:BaseActivity(),View.OnClickListener {
@@ -18,7 +18,7 @@ class MeasurementActivity:BaseActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btn_measurement->{
-                val intent= Intent(this,HomeActivity::class.java)
+                val intent= Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }
         }
