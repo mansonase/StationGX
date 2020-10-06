@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.stationgx.R
 import com.example.stationgx.pages.BaseActivity
+import com.example.stationgx.pages.mainbaseactivity.MainBaseActivity
 import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeActivity
 import kotlinx.android.synthetic.main.main_manualinput.*
 
@@ -19,7 +20,7 @@ class ManualInputActivity:BaseActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btn_manualinput-> {
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, MainBaseActivity::class.java)
                 startActivity(intent)
             }
         }
