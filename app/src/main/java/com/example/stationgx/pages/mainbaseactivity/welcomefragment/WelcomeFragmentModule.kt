@@ -3,12 +3,12 @@ package com.example.stationgx.pages.mainbaseactivity.welcomefragment
 import dagger.Module
 import dagger.Provides
 
-//@Module
+@Module
 class WelcomeFragmentModule {
 
-    //@Provides
-    fun provideWelcomeFragmentView(welcomeFragment: WelcomeFragment){
-
+    @Provides
+    fun provideWelcomeFragmentView(welcomeFragment: WelcomeFragment):WelcomeFragmentContract.View{
+        return welcomeFragment
     }
 
 }

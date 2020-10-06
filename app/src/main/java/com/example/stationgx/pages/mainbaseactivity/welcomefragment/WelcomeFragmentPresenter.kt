@@ -1,4 +1,20 @@
 package com.example.stationgx.pages.mainbaseactivity.welcomefragment
 
-class WelcomeFragmentPresenter {
+import javax.inject.Inject
+
+class WelcomeFragmentPresenter @Inject constructor(var view: WelcomeFragmentContract.View):WelcomeFragmentContract.Presenter {
+
+
+
+    override fun takeFlowerPicture() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun takeView(view: WelcomeFragmentContract.View) {
+        //TODO("Not yet implemented")
+    }
+
+    override fun dropView() {
+        //TODO("Not yet implemented")
+    }
 }

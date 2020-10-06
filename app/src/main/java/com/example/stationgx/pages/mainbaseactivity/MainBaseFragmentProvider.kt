@@ -8,11 +8,11 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-public abstract class MainBaseFragmentProvider {
+abstract class MainBaseFragmentProvider {
 
     @ContributesAndroidInjector(modules = [HomeFragmentModule::class])
     abstract fun provideHomeFragmentFactory(): HomeFragment
 
-    //@ContributesAndroidInjector(modules = [WelcomeFragmentModule::class])
-    //abstract fun provideWelcomeFragmentFactory():WelcomeFragment
+    @ContributesAndroidInjector(modules = [WelcomeFragmentModule::class])
+    abstract fun provideWelcomeFragmentFactory():WelcomeFragment
 }
