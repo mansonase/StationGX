@@ -15,4 +15,8 @@
 
     <string name="welcome_text">Hi Mary,\nHere is your health flower!</string>
 
+
+    <string name="bundle_between_activities">ActivityBundle</string>
+    <string name="fragment_indicator">FragmentIndicator</string>
+
 </resources>

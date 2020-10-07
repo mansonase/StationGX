@@ -8,39 +8,75 @@
     android:background="@android:color/transparent">
 
 
-    <Button
+    <TextView
         android:id="@+id/img_profile"
         android:layout_width="576px"
         android:layout_height="281px"
-        android:background="@drawable/background_blue_main_block"
-        android:text="@string/profile"
+        android:layout_marginStart="32px"
         android:layout_marginTop="32px"
-        android:layout_marginStart="32px"/>
+        android:background="@drawable/dummy_home_profile_and_avatar" />
 
-    <Button
-        android:id="@+id/img_health_data"
+
+    <FrameLayout
         android:layout_width="264px"
         android:layout_height="264px"
-        android:background="@drawable/background_blue_main_block"
-        android:text="@string/health_data"
+        android:id="@+id/frame_health_data"
         android:layout_marginTop="49px"
-        android:layout_marginStart="653px"/>
+        android:layout_marginStart="653px">
 
-    <Button
-        android:id="@+id/img_phone"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_blue_main_block"/>
+        <TextView
+            android:layout_width="127px"
+            android:layout_height="32px"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/main_white"
+            android:textSize="24px"
+            android:layout_marginTop="194px"
+            android:layout_marginStart="69px"
+            android:text="@string/health_data"/>
+    </FrameLayout>
+
+
+    <FrameLayout
         android:layout_width="120px"
         android:layout_height="264px"
-        android:background="@drawable/background_blue_main_block"
-        android:text="@string/phone"
+        android:id="@+id/frame_phone"
         android:layout_marginTop="49px"
-        android:layout_marginStart="963px"/>
+        android:layout_marginStart="963px">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="132px"
+            android:background="@drawable/background_white_main_upper_block"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="132px"
+            android:background="@drawable/background_blue_main_lower_block"
+            android:layout_marginTop="132px"/>
+        
+        <TextView
+            android:layout_width="69px"
+            android:layout_height="32px"
+            android:layout_marginTop="189px"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/phone"
+            android:textColor="@color/main_white"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px" />
+    </FrameLayout>
+
 
     <Button
         android:id="@+id/img_date"
         android:layout_width="120px"
         android:layout_height="264px"
-        android:background="@drawable/background_blue_main_block"
-        android:text="@string/date"
+        android:background="@drawable/dummy_date"
         android:layout_marginTop="49px"
         android:layout_marginStart="1128px"/>
 
@@ -56,50 +92,130 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/img_telehealth"
+            <FrameLayout
                 android:layout_width="264px"
-                android:layout_height="264px"
-                android:text="@string/tele_health"
-                android:background="@drawable/background_blue_main_block"
+                android:layout_height="320px"
+                android:id="@+id/frame_telehealth"
                 android:layout_marginTop="42px"
-                android:layout_marginStart="24px"/>
+                android:layout_marginStart="24px">
 
-            <Button
-                android:layout_width="264px"
-                android:layout_height="264px"
-                android:id="@+id/img_manualinput"
-                android:text="@string/manual_input"
-                android:background="@drawable/background_blue_main_block"
-                android:layout_marginTop="42px"
-                android:layout_marginStart="326px"/>
+                <ImageView
+                    android:layout_width="264px"
+                    android:layout_height="264px"
+                    android:background="@drawable/background_blue_main_block"/>
+                
+                <TextView
+                    android:layout_width="124px"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/main_white"
+                    android:text="@string/tele_health"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="289px" />
 
-            <Button
-                android:layout_width="264px"
-                android:layout_height="264px"
-                android:id="@+id/img_medication"
-                android:text="@string/medication"
-                android:background="@drawable/background_blue_main_block"
-                android:layout_marginTop="42px"
-                android:layout_marginStart="627px"/>
+            </FrameLayout>
 
-            <Button
-                android:layout_width="264px"
-                android:layout_height="264px"
-                android:id="@+id/img_measurement"
-                android:text="@string/measurement"
-                android:background="@drawable/background_blue_main_block"
-                android:layout_marginTop="42px"
-                android:layout_marginStart="929px"/>
 
-            <Button
+            <FrameLayout
                 android:layout_width="264px"
-                android:layout_height="264px"
-                android:id="@+id/img_music"
-                android:text="@string/music"
-                android:background="@drawable/background_blue_main_block"
+                android:layout_height="320px"
+                android:id="@+id/frame_manualinput"
                 android:layout_marginTop="42px"
-                android:layout_marginStart="1230px"/>
+                android:layout_marginStart="326px">
+
+                <ImageView
+                    android:layout_width="264px"
+                    android:layout_height="264px"
+                    android:background="@drawable/background_blue_main_block"/>
+
+                <TextView
+                    android:layout_width="124px"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/main_white"
+                    android:text="@string/manual_input"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="289px" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="264px"
+                android:layout_height="320px"
+                android:id="@+id/frame_medication"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="627px">
+
+                <ImageView
+                    android:layout_width="264px"
+                    android:layout_height="264px"
+                    android:background="@drawable/background_blue_main_block"/>
+
+                <TextView
+                    android:layout_width="124px"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/main_white"
+                    android:text="@string/medication"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="289px" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="264px"
+                android:layout_height="320px"
+                android:id="@+id/frame_measurement"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="929px">
+
+                <ImageView
+                    android:layout_width="264px"
+                    android:layout_height="264px"
+                    android:background="@drawable/background_blue_main_block"/>
+
+                <TextView
+                    android:layout_width="124px"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/main_white"
+                    android:text="@string/measurement"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="289px" />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="264px"
+                android:layout_height="320px"
+                android:id="@+id/frame_music"
+                android:layout_marginTop="42px"
+                android:layout_marginStart="1230px"
+                android:layout_marginEnd="24px">
+                <ImageView
+                    android:layout_width="264px"
+                    android:layout_height="264px"
+                    android:background="@drawable/background_blue_main_block"/>
+
+                <TextView
+                    android:layout_width="124px"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/main_white"
+                    android:text="@string/music"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="289px" />
+            </FrameLayout>
+
 
         </RelativeLayout>
 

@@ -24,10 +24,13 @@ class MainBaseActivity: BaseActivity(),MainBaseActivityContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_base)
 
+        val page=intent.getBundleExtra(getString(R.string.bundle_between_activities))?.getInt(getString(R.string.fragment_indicator))
 
         val pagerAdapter=MainPagerAdapter(this)
         base_viewpager.adapter=pagerAdapter
-
+        if (page!=null){
+            base_viewpager.setCurrentItem(page,false)
+        }
         pageindicators.count=2
 
         base_viewpager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

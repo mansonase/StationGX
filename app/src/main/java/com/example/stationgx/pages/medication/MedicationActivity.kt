@@ -21,6 +21,9 @@ class MedicationActivity:BaseActivity(), View.OnClickListener {
         when(v?.id){
             R.id.btn_medication-> {
                 val intent = Intent(this, MainBaseActivity::class.java)
+                val bundle=Bundle()
+                bundle.putInt(getString(R.string.fragment_indicator),1)
+                intent.putExtra(getString(R.string.bundle_between_activities),bundle)
                 startActivity(intent)
             }
         }

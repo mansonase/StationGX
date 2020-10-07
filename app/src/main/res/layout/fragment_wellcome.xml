@@ -10,7 +10,7 @@
         android:id="@+id/main_animation"
         android:layout_width="607px"
         android:layout_height="736px"
-        android:background="@drawable/background_blue_main_block"
+        android:background="@drawable/background_animation_block"
         android:layout_marginTop="32px"
         android:layout_marginStart="32px"/>
     
@@ -20,15 +20,16 @@
         android:layout_height="736px"
         android:layout_marginTop="32px"
         android:layout_toEndOf="@id/main_animation"
-        android:background="@color/main_white">
+        android:background="@drawable/background_welcome_block">
 
         <ImageView
             android:layout_width="48px"
             android:layout_height="48px"
             android:id="@+id/welcome_avatar"
-            android:background="@android:color/darker_gray"
+            android:background="@drawable/dummy_welcome_avatar"
             android:layout_marginTop="17px"
-            android:layout_marginStart="25px"/>
+            android:layout_marginStart="25px"
+            android:scaleType="fitCenter"/>
 
 
         <TextView
@@ -46,7 +47,7 @@
             android:layout_width="40px"
             android:layout_height="48px"
             android:id="@+id/welcome_ring"
-            android:background="@android:color/darker_gray"
+            android:background="@drawable/dummy_welcome_bell"
             android:layout_marginTop="17px"
             android:layout_marginEnd="22px"
             android:layout_alignParentEnd="true"
@@ -58,30 +59,7 @@
             android:background="@color/icon_grey"
             android:layout_marginTop="82px" />
 
-        <TextView
-            android:id="@+id/welcome_text"
-            android:layout_width="553px"
-            android:layout_height="428px"
-            android:text="@string/welcome_text"
-            android:textColor="@color/word_black"
-            android:layout_marginTop="113px"
-            android:layout_marginStart="25px"
-            android:background="@color/icon_grey"/>
-        
-        <TextView
-            android:layout_width="155px"
-            android:layout_height="62px"
-            android:layout_marginTop="585px"
-            android:layout_marginStart="222px"
-            android:id="@+id/welcome_input"
-            android:translationZ="10px"
-            android:text="Start Input"
-            android:textColor="@color/main_white"
-            android:textSize="23px"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:background="@drawable/background_blue_main_block"
-            />
+
 
 
 

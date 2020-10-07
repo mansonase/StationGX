@@ -28,14 +28,17 @@ class HomeActivity:BaseActivity(), View.OnClickListener{
 
 
 
+        /*
         img_profile.     setOnClickListener(this)
         img_health_data. setOnClickListener(this)
         img_phone.       setOnClickListener(this)
         img_date.        setOnClickListener(this)
-        img_telehealth.  setOnClickListener(this)
+        //img_telehealth.  setOnClickListener(this)
         img_manualinput. setOnClickListener(this)
         img_medication.  setOnClickListener(this)
         img_measurement. setOnClickListener(this)
+
+         */
 
         if (shared!=null){
             shared.edit().putString("numbers","12333").commit()
@@ -44,6 +47,7 @@ class HomeActivity:BaseActivity(), View.OnClickListener{
 
     override fun onClick(v: View?) {
 
+        /*
         when(v?.id){
             R.id.img_profile->{
                 val testString=shared.getString("numbers","no numbers")
@@ -60,7 +64,7 @@ class HomeActivity:BaseActivity(), View.OnClickListener{
             R.id.img_date->{
 
             }
-            R.id.img_telehealth->{
+            R.id.frame_telehealth->{
                 val intent=Intent(this,TeleHealthActivity::class.java)
                 startActivity(intent)
             }
@@ -77,5 +81,7 @@ class HomeActivity:BaseActivity(), View.OnClickListener{
                 startActivity(intent)
             }
         }
+
+         */
     }
 }

@@ -29,14 +29,14 @@ class HomeFragment:BaseFragment(),HomeFragmentContract.View,View.OnClickListener
 
         val view=inflater.inflate(R.layout.fragment_home,container,false)
 
-        view.img_telehealth .setOnClickListener(this)
-        view.img_manualinput.setOnClickListener(this)
-        view.img_medication .setOnClickListener(this)
-        view.img_measurement.setOnClickListener(this)
-        view.img_music      .setOnClickListener(this)
+        view.frame_telehealth .setOnClickListener(this)
+        view.frame_manualinput.setOnClickListener(this)
+        view.frame_medication .setOnClickListener(this)
+        view.frame_measurement.setOnClickListener(this)
+        view.frame_music      .setOnClickListener(this)
         view.img_profile    .setOnClickListener(this)
-        view.img_health_data.setOnClickListener(this)
-        view.img_phone      .setOnClickListener(this)
+        view.frame_health_data.setOnClickListener(this)
+        view.frame_phone      .setOnClickListener(this)
         view.img_date       .setOnClickListener(this)
 
 
@@ -45,34 +45,34 @@ class HomeFragment:BaseFragment(),HomeFragmentContract.View,View.OnClickListener
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.img_telehealth->{
+            R.id.frame_telehealth->{
                 //todo need to include a bundle factor to indicate which fragment we need to return to
                 val intent=Intent(this.context,TeleHealthActivity::class.java)
                 startActivity(intent)
             }
-            R.id.img_manualinput->{
+            R.id.frame_manualinput->{
                 val intent=Intent(this.context,ManualInputActivity::class.java)
                 startActivity(intent)
             }
-            R.id.img_medication->{
+            R.id.frame_medication->{
                 val intent=Intent(this.context,MedicationActivity::class.java)
                 startActivity(intent)
             }
-            R.id.img_measurement->{
+            R.id.frame_measurement->{
                 val intent=Intent(this.context,MeasurementActivity::class.java)
                 startActivity(intent)
             }
-            R.id.img_music->{
+            R.id.frame_music->{
                 //todo implement music app?
             }
             R.id.img_profile->{
                 //todo implement MyProfile?
             }
-            R.id.img_health_data->{
+            R.id.frame_health_data->{
                 val intent=Intent(this.context,HealthDataActivity::class.java)
                 startActivity(intent)
             }
-            R.id.img_phone->{
+            R.id.frame_phone->{
                 val intent=Intent(this.context,PhoneActivity::class.java)
                 startActivity(intent)
             }
