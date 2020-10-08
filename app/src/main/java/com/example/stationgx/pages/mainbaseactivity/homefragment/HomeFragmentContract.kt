@@ -1,12 +1,12 @@
 package com.example.stationgx.pages.mainbaseactivity.homefragment
 
-import com.example.stationgx.pages.BasePresenter
-import com.example.stationgx.pages.BaseView
+import com.example.stationgx.base.BasePresenter
+import com.example.stationgx.base.BaseView
 import java.util.*
 
 interface HomeFragmentContract {
 
-    interface View:BaseView{
+    interface View: BaseView {
 
         fun showDate(current:Date)
         fun showLastDocumenting(current:Date)
@@ -16,9 +16,10 @@ interface HomeFragmentContract {
 
     }
 
-    interface Presenter:BasePresenter<View>{
+    interface Presenter: BasePresenter<View> {
 
         fun notificationListner(id:Int,content:String)
 
+        fun settingUserName(userName:String)
     }
 }

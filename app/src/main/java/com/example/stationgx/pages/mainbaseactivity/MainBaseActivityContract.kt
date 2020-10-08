@@ -1,7 +1,6 @@
 package com.example.stationgx.pages.mainbaseactivity
 
-import com.example.stationgx.pages.BasePresenter
-import com.example.stationgx.pages.BaseView
+import com.example.stationgx.base.BasePresenter
 
 interface MainBaseActivityContract {
 
@@ -9,7 +8,7 @@ interface MainBaseActivityContract {
         fun onFragmentLoaded()
     }
 
-    interface Presenter:BasePresenter<View>{
+    interface Presenter: BasePresenter<View> {
         fun loadFragment(id:Int)
     }
 }

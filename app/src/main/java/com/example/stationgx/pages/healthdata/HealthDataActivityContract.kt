@@ -1,12 +1,12 @@
 package com.example.stationgx.pages.healthdata
 
-import com.example.stationgx.pages.BasePresenter
+import com.example.stationgx.base.BasePresenter
 
 interface HealthDataActivityContract {
     interface View{
 
     }
-    interface Presenter:BasePresenter<View>{
+    interface Presenter: BasePresenter<View> {
 
     }
 }

@@ -4,12 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.example.stationgx.R
-import com.example.stationgx.pages.BaseActivity
+import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.mainbaseactivity.MainBaseActivity
-import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeActivity
 import kotlinx.android.synthetic.main.main_telehealth.*
 
-class TeleHealthActivity:BaseActivity(),View.OnClickListener {
+class TeleHealthActivity: BaseActivity(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

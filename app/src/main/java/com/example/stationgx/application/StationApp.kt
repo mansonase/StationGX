@@ -1,4 +1,4 @@
-package com.example.stationgx.pages
+package com.example.stationgx.application
 
 import com.example.stationgx.di.DaggerStationAppComponent
 import dagger.android.AndroidInjector

@@ -2,28 +2,30 @@ package com.example.stationgx.pages.mainbaseactivity.homefragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.stationgx.R
-import com.example.stationgx.pages.BaseFragment
+import com.example.stationgx.data.prefs.SharedPreferencesHelper
+import com.example.stationgx.base.BaseFragment
 import com.example.stationgx.pages.healthdata.HealthDataActivity
 import com.example.stationgx.pages.manuelinput.ManualInputActivity
 import com.example.stationgx.pages.measurement.MeasurementActivity
 import com.example.stationgx.pages.medication.MedicationActivity
-import com.example.stationgx.pages.myprofile.MyProfileActivity
 import com.example.stationgx.pages.phone.PhoneActivity
 import com.example.stationgx.pages.telehealth.TeleHealthActivity
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
 import javax.inject.Inject
 
-class HomeFragment:BaseFragment(),HomeFragmentContract.View,View.OnClickListener{
+class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListener{
 
     @Inject
     lateinit var presenter:HomeFragmentPresenter
+
+    @Inject
+    lateinit var sharedPreferencesHelper:SharedPreferencesHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -64,9 +66,12 @@ class HomeFragment:BaseFragment(),HomeFragmentContract.View,View.OnClickListener
             }
             R.id.frame_music->{
                 //todo implement music app?
+                Log.d(".....","my name is ${sharedPreferencesHelper.getUserName("user_name")}")
             }
             R.id.img_profile->{
-                //todo implement MyProfile?
+                //todo implement myprofile?
+                //presenter.settingUserName("Mary Lin")
+                sharedPreferencesHelper.setUserName("user_name","Mary Lin")
             }
             R.id.frame_health_data->{
                 val intent=Intent(this.context,HealthDataActivity::class.java)

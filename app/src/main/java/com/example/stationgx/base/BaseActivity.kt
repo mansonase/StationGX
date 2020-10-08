@@ -1,11 +1,11 @@
-package com.example.stationgx.pages
+package com.example.stationgx.base
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import dagger.android.support.DaggerAppCompatActivity
 
-open class BaseActivity:DaggerAppCompatActivity(),BaseView {
+open class BaseActivity:DaggerAppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

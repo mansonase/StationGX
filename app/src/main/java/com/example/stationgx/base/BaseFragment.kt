@@ -1,12 +1,12 @@
-package com.example.stationgx.pages
+package com.example.stationgx.base
 
 
 import android.app.Activity
 import dagger.android.support.DaggerFragment
 
-open class BaseFragment: DaggerFragment(),BaseView {
+open class BaseFragment: DaggerFragment(), BaseView {
 
-   private fun getBaseActivity():BaseActivity?{
+   private fun getBaseActivity(): BaseActivity?{
         val activity=Activity()
         if (activity is BaseActivity){
             return activity

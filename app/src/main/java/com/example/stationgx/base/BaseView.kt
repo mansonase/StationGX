@@ -1,4 +1,4 @@
-package com.example.stationgx.pages
+package com.example.stationgx.base
 
 interface BaseView {
 

@@ -1,4 +1,4 @@
-package com.example.stationgx.di
+package com.example.stationgx.application
 
 import com.example.stationgx.pages.healthdata.HealthDataActivity
 import com.example.stationgx.pages.healthdata.HealthDataActivityModule

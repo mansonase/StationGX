@@ -1,23 +1,14 @@
 package com.example.stationgx.pages.mainbaseactivity.homefragment
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.example.stationgx.R
-import com.example.stationgx.pages.BaseActivity
-import com.example.stationgx.pages.healthdata.HealthDataActivity
-import com.example.stationgx.pages.manuelinput.ManualInputActivity
-import com.example.stationgx.pages.measurement.MeasurementActivity
-import com.example.stationgx.pages.medication.MedicationActivity
-import com.example.stationgx.pages.phone.PhoneActivity
-import com.example.stationgx.pages.telehealth.TeleHealthActivity
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.stationgx.base.BaseActivity
 import javax.inject.Inject
 
 
-class HomeActivity:BaseActivity(), View.OnClickListener{
+class HomeActivity: BaseActivity(), View.OnClickListener{
 
     @Inject
     lateinit var shared:SharedPreferences

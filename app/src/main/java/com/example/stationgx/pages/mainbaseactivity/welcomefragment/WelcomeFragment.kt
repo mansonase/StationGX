@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.stationgx.R
-import com.example.stationgx.pages.BaseFragment
+import com.example.stationgx.base.BaseFragment
 import javax.inject.Inject
 
-class WelcomeFragment:BaseFragment(),WelcomeFragmentContract.View {
+class WelcomeFragment: BaseFragment(),WelcomeFragmentContract.View {
 
     @Inject
     lateinit var presenter:WelcomeFragmentPresenter

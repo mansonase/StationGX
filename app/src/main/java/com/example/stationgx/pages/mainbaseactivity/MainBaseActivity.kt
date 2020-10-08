@@ -1,13 +1,11 @@
 package com.example.stationgx.pages.mainbaseactivity
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.stationgx.R
-import com.example.stationgx.pages.BaseActivity
+import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeFragment
 import com.example.stationgx.pages.mainbaseactivity.welcomefragment.WelcomeFragment
 import kotlinx.android.synthetic.main.main_base.*

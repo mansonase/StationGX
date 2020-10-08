@@ -1,6 +1,5 @@
-package com.example.stationgx.di
+package com.example.stationgx.application
 
-import com.example.stationgx.pages.StationApp
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector

@@ -1,8 +1,6 @@
-package com.example.stationgx.di
+package com.example.stationgx.application
 
-import android.app.Application
 import android.content.Context
-import com.example.stationgx.pages.StationApp
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
