@@ -2,6 +2,8 @@ package com.example.stationgx.data.prefs
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,7 +22,8 @@ class SP @Inject constructor(context: Context) :SharedPreferencesHelper {
     }
 
 
-    override fun setParam(key: String, obj: Any) {
+    /*
+    override fun <T>setParam(key: String, obj: T) {
         when(obj){
             obj is String-> mPrefs.edit().putString( key,obj as String).apply()
             obj is Int->    mPrefs.edit().putInt(    key,obj as Int).apply()
@@ -29,16 +32,45 @@ class SP @Inject constructor(context: Context) :SharedPreferencesHelper {
             obj is Long->   mPrefs.edit().putLong(   key,obj as Long).apply()
         }
     }
+     */
 
-    override fun getParam(key: String, defaultValue: Any): Any {
-        when(defaultValue){
-            defaultValue is String  -> return mPrefs.getString( key,defaultValue as String) as String
-            defaultValue is Int     -> return mPrefs.getInt(    key,defaultValue as Int)
-            defaultValue is Boolean -> return mPrefs.getBoolean(key,defaultValue as Boolean)
-            defaultValue is Float   -> return mPrefs.getFloat(  key,defaultValue as Float)
-            defaultValue is Long    -> return mPrefs.getLong(   key,defaultValue as Long)
+    override fun putStringItem(key: String, value: String) {
+        mPrefs.edit().putString(key,value).apply()
+    }
+
+    override fun putIntItem(key: String, value: Int) {
+        mPrefs.edit().putInt(key,value).apply()
+    }
+
+    override fun putBooleanItem(key: String, value: Boolean) {
+        mPrefs.edit().putBoolean(key,value).apply()
+    }
+
+    /*
+        override fun <T>getParam(key: String, defaultValue: T): T {
+            Log.d("test","what......$key, default is $defaultValue")
+
+            val value = when(defaultValue){
+                defaultValue is String  -> mPrefs.getString( key, defaultValue as String)!!
+                defaultValue is Int     -> mPrefs.getInt(    key,defaultValue as Int)
+                defaultValue is Boolean -> mPrefs.getBoolean(key,defaultValue as Boolean)
+                defaultValue is Float   -> mPrefs.getFloat(  key,defaultValue as Float)
+                defaultValue is Long    -> mPrefs.getLong(   key,defaultValue as Long)
+                else-> "Nothing"
+            }
+            return value as T
         }
-        return Any()
+         */
+    override fun getStringItem(key: String, defaultValue: String): String {
+        return mPrefs.getString(key,defaultValue)!!
+    }
+
+    override fun getIntItem(key: String, defaultValue: Int): Int {
+        return mPrefs.getInt(key,defaultValue)
+    }
+
+    override fun getBooleanItem(key: String, defaultValue: Boolean): Boolean {
+        return mPrefs.getBoolean(key,defaultValue)
     }
 
     override fun clear(key: String) {

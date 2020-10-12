@@ -25,7 +25,10 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
     lateinit var presenter:HomeFragmentPresenter
 
     @Inject
-    lateinit var sharedPreferencesHelper:SharedPreferencesHelper
+    lateinit var homeDataManager: HomeDataManager
+
+    //@Inject
+    //lateinit var sharedPreferencesHelper:SharedPreferencesHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -36,7 +39,7 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
         view.frame_medication .setOnClickListener(this)
         view.frame_measurement.setOnClickListener(this)
         view.frame_music      .setOnClickListener(this)
-        view.img_profile    .setOnClickListener(this)
+
         view.frame_health_data.setOnClickListener(this)
         view.frame_phone      .setOnClickListener(this)
         view.img_date       .setOnClickListener(this)
@@ -66,12 +69,9 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
             }
             R.id.frame_music->{
                 //todo implement music app?
-                Log.d(".....","my name is ${sharedPreferencesHelper.getUserName("user_name")}")
-            }
-            R.id.img_profile->{
-                //todo implement myprofile?
-                //presenter.settingUserName("Mary Lin")
-                sharedPreferencesHelper.setUserName("user_name","Mary Lin")
+                //Log.d(".....","my name is ${sharedPreferencesHelper.getUserName("user_name")}")
+                val name:String=homeDataManager.getStringItem("example","Mary Lynn")
+                Log.d("For example","my other name is $name")
             }
             R.id.frame_health_data->{
                 val intent=Intent(this.context,HealthDataActivity::class.java)

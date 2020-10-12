@@ -9,6 +9,11 @@ import dagger.Provides
 class HomeFragmentModule {
 
     @Provides
+    fun provideHomeDataManager(dm: DM):HomeDataManager{
+        return dm
+    }
+
+    @Provides
     fun provideSharedPreferencesHelper(sp: SP):SharedPreferencesHelper{
         return sp
     }

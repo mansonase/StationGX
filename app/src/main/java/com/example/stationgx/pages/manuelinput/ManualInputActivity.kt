@@ -13,17 +13,38 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_manualinput)
 
-        btn_manualinput.setOnClickListener(this)
+        manualinput_back.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.btn_manualinput-> {
+            R.id.manualinput_back-> {
                 val intent = Intent(this, MainBaseActivity::class.java)
                 val bundle=Bundle()
                 bundle.putInt(getString(R.string.fragment_indicator),1)
                 intent.putExtra(getString(R.string.bundle_between_activities),bundle)
                 startActivity(intent)
+            }
+            R.id.entrance_blood_pressure->{
+
+            }
+            R.id.entrance_weight->{
+
+            }
+            R.id.entrance_temperature->{
+
+            }
+            R.id.entrance_oxygenation->{
+
+            }
+            R.id.entrance_blood_sugar->{
+
+            }
+            R.id.entrance_spirometer->{
+
+            }
+            R.id.entrance_others->{
+
             }
         }
     }

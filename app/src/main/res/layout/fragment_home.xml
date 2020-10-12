@@ -7,14 +7,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/transparent">
 
-
+    <ImageView
+        android:layout_width="544px"
+        android:layout_height="264px"
+        android:layout_marginTop="49px"
+        android:layout_marginStart="64px"
+        android:background="@drawable/background_yellow_block"/>
+    
     <TextView
-        android:id="@+id/img_profile"
-        android:layout_width="576px"
-        android:layout_height="281px"
-        android:layout_marginStart="32px"
+        android:layout_width="198px"
+        android:layout_height="24px"
+        android:layout_marginTop="281px"
+        android:layout_marginStart="208px"
+        android:text="@string/last_document_at"
+        android:textColor="@color/main_white"
+        android:textSize="18px"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_horizontal"/>
+    <ImageView
+        android:layout_width="544px"
+        android:layout_height="223px"
+        android:id="@+id/img_home_profile"
+        android:layout_marginTop="49px"
+        android:layout_marginStart="64px"
+        android:src="@drawable/dummy_home_profile"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="43px"
+        android:id="@+id/tx_user_name"
+        android:textColor="@color/main_white"
+        android:textSize="32px"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_marginTop="183px"
+        android:layout_marginStart="208px"
+        android:text="Mary Lin"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="32px"
+        android:id="@+id/tx_user_location"
+        android:textColor="@color/main_white"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="225px"
+        android:layout_marginStart="208px"
+        android:text="New York, USA"/>
+    
+    <ImageView
+        android:layout_width="160px"
+        android:layout_height="256px"
+        android:src="@drawable/dummy_home_avatar"
         android:layout_marginTop="32px"
-        android:background="@drawable/dummy_home_profile_and_avatar" />
+        android:layout_marginStart="32px"/>
+
 
 
     <FrameLayout

@@ -14,6 +14,7 @@
     <color name="word_blue">#0288D1</color>
 
     <color name="icon_grey">#AAABAD</color>
+    <color name="frame_grey">#D4D5D6</color>
 
     <color name="scroll_foreground_transparent">#B205003A</color>
 

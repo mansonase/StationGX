@@ -1,18 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_manualinput"
+    <ImageView
+        android:layout_width="16px"
+        android:layout_height="16px"
+        android:id="@+id/manualinput_back"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        android:layout_marginTop="40px"
+        android:layout_marginStart="33px"/>
+    
+    <TextView
+        android:layout_width="142px"
+        android:layout_height="32px"
         android:text="@string/manual_input"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textColor="@color/main_blue"
+        android:layout_marginTop="32px"
+        android:layout_marginStart="569px"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto_bold"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="80px"/>
+    
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="80px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/blood_pressure"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_blood_pressure"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_blood_pressure"/>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="170px"/>
+
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="170px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/weight"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_weight"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_weight"/>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="260px"/>
+
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="260px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/temperature"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_temperature"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_temperature"/>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="350px"/>
+
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="350px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/oxygenation"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_oxygenation"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_oxygenation"/>
+
+    </FrameLayout>
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="440px"/>
+
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="440px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/blood_sugar"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_blood_sugar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_blood_sugar"/>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="530px"/>
+
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="530px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/spirometer"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_spirometer"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_spirometer"/>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="620px"/>
+
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="90px"
+        android:layout_marginStart="0px"
+        android:layout_marginTop="620px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:text="@string/others"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="24px"
+            android:textColor="@color/word_black"
+            android:layout_marginStart="79.5px"
+            android:layout_marginTop="17px"
+            android:id="@+id/entrance_others"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24px"
+            android:textSize="18px"
+            android:textColor="@color/frame_grey"
+            android:text="@string/no_data"
+            android:layout_marginTop="49px"
+            android:layout_marginStart="79.5px"
+            android:id="@+id/last_others"/>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="640px"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="710px"/>
+    
+    <View
+        android:layout_width="1px"
+        android:layout_height="720px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="80px"
+        android:layout_marginStart="640px"/>
+    
+    <FrameLayout
+        android:layout_width="640px"
+        android:layout_height="720px"
+        android:layout_marginStart="640px"
+        android:layout_marginTop="80px">
+
+        <TextView
+            android:layout_width="608px"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/libre_baskerville_bold"
+            android:textSize="32px"
+            android:textColor="@color/word_black"
+            android:text="@string/eistein_quotes"
+            android:layout_marginTop="272px"
+            android:layout_marginStart="0px"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="608px"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/libre_baskerville_italic"
+            android:textSize="32px"
+            android:textColor="@color/word_black"
+            android:text="@string/eistein"
+            android:layout_marginTop="400px"
+            android:layout_marginStart="0px"
+            android:gravity="center_horizontal" />
+
+    </FrameLayout>
+
+
+
+</RelativeLayout>

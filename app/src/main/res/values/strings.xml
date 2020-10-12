@@ -10,8 +10,8 @@
     <string name="medication">Medication</string>
     <string name="measurement">Measurement</string>
     <string name="music">Music</string>
-
-
+    
+    <string name="last_document_at">Last document at </string>
 
     <string name="welcome_text">Hi Mary,\nHere is your health flower!</string>
 
@@ -19,4 +19,16 @@
     <string name="bundle_between_activities">ActivityBundle</string>
     <string name="fragment_indicator">FragmentIndicator</string>
 
+<!-- Manuel Input txt -->
+    <string name="no_data">no data</string>
+    <string name="blood_pressure">Blood Pressure</string>
+    <string name="weight">Weight</string>
+    <string name="temperature">Temperature</string>
+    <string name="oxygenation">Oxygenation</string>
+    <string name="blood_sugar">Blood Sugar</string>
+    <string name="spirometer">Spirometer</string>
+    <string name="others">Others</string>
+    
+    <string name="eistein_quotes">\"I have no special talent.\nI am only passionately curious.\"</string>
+    <string name="eistein">Albert Eistein</string>
 </resources>

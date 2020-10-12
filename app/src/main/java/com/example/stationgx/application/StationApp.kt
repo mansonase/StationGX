@@ -1,6 +1,5 @@
 package com.example.stationgx.application
 
-import com.example.stationgx.di.DaggerStationAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
