@@ -9,6 +9,7 @@ import com.example.stationgx.pages.mainbaseactivity.MainBaseActivityModule
 import com.example.stationgx.pages.mainbaseactivity.MainBaseFragmentProvider
 import com.example.stationgx.pages.manuelinput.ManualInputActivity
 import com.example.stationgx.pages.manuelinput.ManualInputActivityModule
+import com.example.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity
 import com.example.stationgx.pages.measurement.MeasurementActivity
 import com.example.stationgx.pages.measurement.MeasurementActivityModule
 import com.example.stationgx.pages.medication.MedicationActivity
@@ -54,4 +55,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [MyProfileActivityModule::class])
     abstract fun bindMyProfileActivity():MyProfileActivity
+
+    @ContributesAndroidInjector()
+    abstract fun bindBloodPressureActivity():BloodPressureActivity
 }

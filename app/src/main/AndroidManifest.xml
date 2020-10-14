@@ -10,20 +10,23 @@
         android:theme="@style/FullscreenTheme"
         android:name=".application.StationApp">
 
-        <activity android:name=".pages.mainbaseactivity.MainBaseActivity">
+        <activity android:name=".pages.mainbaseactivity.MainBaseActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".pages.phone.PhoneActivity"/>
+        <activity android:name=".pages.phone.PhoneActivity" />
         <activity android:name=".pages.healthdata.HealthDataActivity"/>
         <activity android:name=".pages.manuelinput.ManualInputActivity"/>
         <activity android:name=".pages.measurement.MeasurementActivity"/>
         <activity android:name=".pages.medication.MedicationActivity"/>
         <activity android:name=".pages.myprofile.MyProfileActivity"/>
         <activity android:name=".pages.telehealth.TeleHealthActivity"/>
+
+        <activity android:name=".pages.manuelinput.bloodpressure.BloodPressureActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

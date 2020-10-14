@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/transparent">
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
 
     <ImageView
         android:layout_width="544px"
         android:layout_height="264px"
         android:layout_marginTop="49px"
         android:layout_marginStart="64px"
-        android:background="@drawable/background_yellow_block"/>
+        android:background="@drawable/main_yellow_four_60"
+        android:elevation="5px"/>
     
     <TextView
         android:layout_width="198px"
@@ -23,14 +23,16 @@
         android:textColor="@color/main_white"
         android:textSize="18px"
         android:fontFamily="@font/roboto_medium"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:elevation="5px"/>
     <ImageView
         android:layout_width="544px"
         android:layout_height="223px"
         android:id="@+id/img_home_profile"
         android:layout_marginTop="49px"
         android:layout_marginStart="64px"
-        android:src="@drawable/dummy_home_profile"/>
+        android:background="@drawable/dummy_home_profile"
+        android:elevation="10px"/>
     
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +44,8 @@
         android:fontFamily="@font/roboto_bold"
         android:layout_marginTop="183px"
         android:layout_marginStart="208px"
-        android:text="Mary Lin"/>
+        android:text="Mary Lin"
+        android:elevation="10px"/>
     
     <TextView
         android:layout_width="wrap_content"
@@ -54,14 +57,17 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="225px"
         android:layout_marginStart="208px"
-        android:text="New York, USA"/>
+        android:text="New York, USA"
+        android:elevation="10px"/>
     
     <ImageView
         android:layout_width="160px"
         android:layout_height="256px"
-        android:src="@drawable/dummy_home_avatar"
+        android:background="@drawable/dummy_home_avatar_1"
+        android:scaleType="fitCenter"
         android:layout_marginTop="32px"
-        android:layout_marginStart="32px"/>
+        android:layout_marginStart="32px"
+        android:elevation="15px" />
 
 
 
@@ -70,12 +76,14 @@
         android:layout_height="264px"
         android:id="@+id/frame_health_data"
         android:layout_marginTop="49px"
-        android:layout_marginStart="653px">
+        android:layout_marginStart="653px"
+        android:background="@drawable/main_blue_four_60"
+        android:elevation="10px"
+        android:outlineAmbientShadowColor="@android:color/transparent">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_blue_main_block"/>
+            android:layout_height="match_parent" />
         <TextView
             android:layout_width="127px"
             android:layout_height="32px"
@@ -93,19 +101,9 @@
         android:layout_height="264px"
         android:id="@+id/frame_phone"
         android:layout_marginTop="49px"
-        android:layout_marginStart="963px">
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="132px"
-            android:background="@drawable/background_white_main_upper_block"/>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="132px"
-            android:background="@drawable/background_blue_main_lower_block"
-            android:layout_marginTop="132px"/>
+        android:layout_marginStart="963px"
+        android:background="@drawable/main_phone_background"
+        android:elevation="10px">
         
         <TextView
             android:layout_width="69px"
@@ -120,13 +118,70 @@
     </FrameLayout>
 
 
-    <Button
-        android:id="@+id/img_date"
+    <FrameLayout
         android:layout_width="120px"
         android:layout_height="264px"
-        android:background="@drawable/dummy_date"
         android:layout_marginTop="49px"
-        android:layout_marginStart="1128px"/>
+        android:layout_marginStart="1128px"
+        android:background="@drawable/background_date_combine"
+        android:id="@+id/img_date"
+        android:elevation="10px">
+
+        <TextView
+            android:id="@+id/home_day"
+            android:layout_width="81px"
+            android:layout_height="57px"
+            android:layout_marginStart="19.5px"
+            android:layout_marginTop="48px"
+            android:fontFamily="serif"
+            android:text="SAT"
+            android:textColor="@color/word_black"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="120px"
+            android:layout_height="5px"
+            android:background="@color/word_black"
+            android:layout_marginTop="129.5px"/>
+        <View
+            android:layout_width="5px"
+            android:layout_height="9.28px"
+            android:background="@drawable/word_black_four_2_5"
+            android:layout_marginTop="127.86px"
+            android:layout_marginStart="36.6px" />
+        <View
+            android:layout_width="5px"
+            android:layout_height="9.28px"
+            android:background="@drawable/word_black_four_2_5"
+            android:layout_marginTop="127.86px"
+            android:layout_marginStart="73.2px" />
+
+        <TextView
+            android:id="@+id/home_date"
+            android:layout_width="52px"
+            android:layout_height="57px"
+            android:layout_marginStart="34.5px"
+            android:layout_marginTop="143.31px"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:text="30"
+            android:textColor="@color/word_blue"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="53px"
+            android:layout_height="32px"
+            android:id="@+id/home_month"
+            android:layout_marginTop="194px"
+            android:layout_marginStart="34.5px"
+            android:text="Aug"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/word_black"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"/>
+
+    </FrameLayout>
 
 
     <HorizontalScrollView
@@ -150,7 +205,7 @@
                 <ImageView
                     android:layout_width="264px"
                     android:layout_height="264px"
-                    android:background="@drawable/background_blue_main_block"/>
+                    android:background="@drawable/main_blue_four_60"/>
                 
                 <TextView
                     android:layout_width="124px"
@@ -176,7 +231,7 @@
                 <ImageView
                     android:layout_width="264px"
                     android:layout_height="264px"
-                    android:background="@drawable/background_blue_main_block"/>
+                    android:background="@drawable/main_blue_four_60"/>
 
                 <TextView
                     android:layout_width="124px"
@@ -201,7 +256,7 @@
                 <ImageView
                     android:layout_width="264px"
                     android:layout_height="264px"
-                    android:background="@drawable/background_blue_main_block"/>
+                    android:background="@drawable/main_blue_four_60"/>
 
                 <TextView
                     android:layout_width="124px"
@@ -225,7 +280,7 @@
                 <ImageView
                     android:layout_width="264px"
                     android:layout_height="264px"
-                    android:background="@drawable/background_blue_main_block"/>
+                    android:background="@drawable/main_blue_four_60"/>
 
                 <TextView
                     android:layout_width="124px"
@@ -250,7 +305,7 @@
                 <ImageView
                     android:layout_width="264px"
                     android:layout_height="264px"
-                    android:background="@drawable/background_blue_main_block"/>
+                    android:background="@drawable/main_blue_four_60"/>
 
                 <TextView
                     android:layout_width="124px"

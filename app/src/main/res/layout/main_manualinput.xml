@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="horizontal">
 
     <ImageView
         android:layout_width="16px"
@@ -17,11 +17,12 @@
         android:layout_width="142px"
         android:layout_height="32px"
         android:text="@string/manual_input"
-        android:textColor="@color/main_blue"
+        android:textColor="@color/word_blue"
         android:layout_marginTop="32px"
         android:layout_marginStart="569px"
-        android:textSize="24px"
-        android:fontFamily="@font/roboto_bold"/>
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"/>
 
     <View
         android:layout_width="match_parent"
@@ -43,7 +44,7 @@
             android:textColor="@color/word_black"
             android:layout_marginStart="79.5px"
             android:layout_marginTop="17px"
-            android:id="@+id/entrance_blood_pressure"/>
+            android:id="@+id/entrance_blood_pressure" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="24px"

@@ -13,6 +13,8 @@
     
     <string name="last_document_at">Last document at </string>
 
+    <string name="save">Save</string>
+
     <string name="welcome_text">Hi Mary,\nHere is your health flower!</string>
 
 
@@ -31,4 +33,12 @@
     
     <string name="eistein_quotes">\"I have no special talent.\nI am only passionately curious.\"</string>
     <string name="eistein">Albert Eistein</string>
+
+    <!-- blood pressure txt -->
+    <string name="start_input">Start Input</string>
+    <string name="systolic">Systolic</string>
+    <string name="diastolic">/ Diastolic</string>
+    <string name="mmhg">mmHg</string>
+    <string name="target_systolic">Target Systolic</string>
+    <string name="date_time">Date/ Time</string>
 </resources>

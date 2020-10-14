@@ -2,10 +2,12 @@ package com.example.stationgx.pages.manuelinput
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.stationgx.R
 import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.mainbaseactivity.MainBaseActivity
+import com.example.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity
 import kotlinx.android.synthetic.main.main_manualinput.*
 
 class ManualInputActivity: BaseActivity(),View.OnClickListener {
@@ -14,6 +16,7 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
         setContentView(R.layout.main_manualinput)
 
         manualinput_back.setOnClickListener(this)
+        entrance_blood_pressure.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -26,7 +29,8 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
                 startActivity(intent)
             }
             R.id.entrance_blood_pressure->{
-
+                val intent=Intent(this,BloodPressureActivity::class.java)
+                startActivity(intent)
             }
             R.id.entrance_weight->{
 

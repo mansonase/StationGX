@@ -10,7 +10,7 @@
         android:id="@+id/main_animation"
         android:layout_width="607px"
         android:layout_height="736px"
-        android:background="@drawable/background_animation_block"
+        android:background="@drawable/main_blue_left_two_15"
         android:layout_marginTop="32px"
         android:layout_marginStart="32px"/>
     
@@ -20,7 +20,7 @@
         android:layout_height="736px"
         android:layout_marginTop="32px"
         android:layout_toEndOf="@id/main_animation"
-        android:background="@drawable/background_welcome_block">
+        android:background="@drawable/main_white_right_two_15">
 
         <ImageView
             android:layout_width="48px"
