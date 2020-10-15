@@ -25,10 +25,7 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
     lateinit var presenter:HomeFragmentPresenter
 
     @Inject
-    lateinit var homeDataManager: HomeDataManager
-
-    //@Inject
-    //lateinit var sharedPreferencesHelper:SharedPreferencesHelper
+    lateinit var sp:SharedPreferencesHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -44,7 +41,7 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
         view.frame_phone      .setOnClickListener(this)
         view.img_date       .setOnClickListener(this)
 
-
+        Log.d("homeFra","gment: ${sp.getStringItem("testAAA","no data")}")
         return view
     }
 
@@ -70,8 +67,8 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
             R.id.frame_music->{
                 //todo implement music app?
                 //Log.d(".....","my name is ${sharedPreferencesHelper.getUserName("user_name")}")
-                val name:String=homeDataManager.getStringItem("example","Mary Lynn")
-                Log.d("For example","my other name is $name")
+                //val name:String=homeDataManager.getStringItem("example","Mary Lynn")
+                //Log.d("For example","my other name is $name")
             }
             R.id.frame_health_data->{
                 val intent=Intent(this.context,HealthDataActivity::class.java)

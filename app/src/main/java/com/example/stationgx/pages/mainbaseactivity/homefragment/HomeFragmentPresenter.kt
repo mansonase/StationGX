@@ -6,7 +6,7 @@ class HomeFragmentPresenter @Inject constructor(var view: HomeFragmentContract.V
 
 
 
-    override fun notificationListner(id: Int, content: String) {
+    override fun notificationListener(id: Int, content: String) {
         //TODO("Not yet implemented")
     }
 

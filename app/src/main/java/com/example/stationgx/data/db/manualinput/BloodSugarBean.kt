@@ -2,5 +2,6 @@ package com.example.stationgx.data.db.manualinput
 
 import io.realm.RealmObject
 
-class BloodSugarBean:RealmObject() {
+open class BloodSugarBean:RealmObject() {
+    var name:String?=null
 }

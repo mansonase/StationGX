@@ -2,8 +2,6 @@ package com.example.stationgx.application
 
 import com.example.stationgx.pages.healthdata.HealthDataActivity
 import com.example.stationgx.pages.healthdata.HealthDataActivityModule
-import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeActivity
-import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeActivityModule
 import com.example.stationgx.pages.mainbaseactivity.MainBaseActivity
 import com.example.stationgx.pages.mainbaseactivity.MainBaseActivityModule
 import com.example.stationgx.pages.mainbaseactivity.MainBaseFragmentProvider

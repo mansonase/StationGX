@@ -2,5 +2,6 @@ package com.example.stationgx.data.db.manualinput
 
 import io.realm.RealmObject
 
-class WeightBean:RealmObject() {
+open class WeightBean:RealmObject() {
+    var name:String?=null
 }

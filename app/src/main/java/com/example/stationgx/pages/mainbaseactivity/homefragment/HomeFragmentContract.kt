@@ -18,7 +18,7 @@ interface HomeFragmentContract {
 
     interface Presenter: BasePresenter<View> {
 
-        fun notificationListner(id:Int,content:String)
+        fun notificationListener(id:Int, content:String)
 
         fun settingUserName(userName:String)
     }
