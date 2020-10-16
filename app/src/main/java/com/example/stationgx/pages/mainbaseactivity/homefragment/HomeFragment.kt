@@ -27,6 +27,8 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
     @Inject
     lateinit var sp:SharedPreferencesHelper
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view=inflater.inflate(R.layout.fragment_home,container,false)
@@ -43,6 +45,15 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
 
         Log.d("homeFra","gment: ${sp.getStringItem("testAAA","no data")}")
         return view
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 
     override fun onClick(v: View?) {
@@ -103,5 +114,13 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
 
     override fun showLocation(location: String) {
         //TODO("Not yet implemented")
+    }
+
+    override fun showAvatar(path: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showProfile(path: String) {
+        TODO("Not yet implemented")
     }
 }

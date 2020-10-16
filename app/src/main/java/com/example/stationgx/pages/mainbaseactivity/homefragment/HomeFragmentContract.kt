@@ -13,6 +13,9 @@ interface HomeFragmentContract {
         fun showNotificationRedPoint(numbers:Int)
         fun showName(name:String)
         fun showLocation(location:String)
+        fun showAvatar(path:String)
+        fun showProfile(path: String)
+
 
     }
 
@@ -21,5 +24,7 @@ interface HomeFragmentContract {
         fun notificationListener(id:Int, content:String)
 
         fun settingUserName(userName:String)
+
+
     }
 }
