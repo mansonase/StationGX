@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.stationgx.R
 import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeFragment
+import com.example.stationgx.pages.mainbaseactivity.homefragment.HomeFragmentPresenter
 import com.example.stationgx.pages.mainbaseactivity.welcomefragment.WelcomeFragment
 import kotlinx.android.synthetic.main.main_base.*
 import javax.inject.Inject
@@ -16,7 +17,6 @@ class MainBaseActivity: BaseActivity(),MainBaseActivityContract.View {
     @Inject
     lateinit var presenter: MainBaseActivityPresenter
 
-    //private lateinit var viewPager:ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,7 +8,6 @@ interface HomeFragmentContract {
 
     interface View: BaseView {
 
-        fun showDate(current:Date)
         fun showLastDocumenting(current:Date)
         fun showNotificationRedPoint(numbers:Int)
         fun showName(name:String)
@@ -24,7 +23,5 @@ interface HomeFragmentContract {
         fun notificationListener(id:Int, content:String)
 
         fun settingUserName(userName:String)
-
-
     }
 }

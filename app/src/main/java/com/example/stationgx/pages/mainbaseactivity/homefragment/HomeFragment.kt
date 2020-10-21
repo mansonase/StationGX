@@ -1,5 +1,7 @@
 package com.example.stationgx.pages.mainbaseactivity.homefragment
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.stationgx.R
+import com.example.stationgx.apis.dateapi.TimeIntent
 import com.example.stationgx.data.prefs.SharedPreferencesHelper
 import com.example.stationgx.base.BaseFragment
 import com.example.stationgx.pages.healthdata.HealthDataActivity
@@ -27,7 +30,7 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
     @Inject
     lateinit var sp:SharedPreferencesHelper
 
-
+    val TAG = HomeFragment::class.simpleName
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -47,13 +50,14 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
         return view
     }
 
-
     override fun onResume() {
         super.onResume()
+        activity?.applicationContext?.registerReceiver(dateBroadcastReceiver,TimeIntent().intentFilter())
     }
 
     override fun onPause() {
         super.onPause()
+        activity?.applicationContext?.unregisterReceiver(dateBroadcastReceiver)
     }
 
     override fun onClick(v: View?) {
@@ -90,15 +94,13 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
                 startActivity(intent)
             }
             R.id.img_date->{
+
             }
             else->{
             }
         }
     }
 
-    override fun showDate(current: Date) {
-        //TODO("Not yet implemented")
-    }
 
     override fun showLastDocumenting(current: Date) {
         //TODO("Not yet implemented")
@@ -122,5 +124,23 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
 
     override fun showProfile(path: String) {
         TODO("Not yet implemented")
+    }
+
+    private val dateBroadcastReceiver=object :BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val action=intent?.action
+            Log.d("date broadcast","action is :$action")
+            if (//action.equals(Intent.ACTION_TIME_CHANGED)
+                 //   ||action.equals(Intent.ACTION_TIMEZONE_CHANGED)
+                 //   ||action.equals(Intent.ACTION_TIME_TICK)
+                    action.equals(Intent.ACTION_DATE_CHANGED)){
+
+                // TODO: 2020/10/19 update date
+                val calendar=Calendar.getInstance()
+                Log.d("date broadcast","time is ${calendar.get(Calendar.HOUR)}:${calendar.get(Calendar.MINUTE)}")
+
+
+            }
+        }
     }
 }

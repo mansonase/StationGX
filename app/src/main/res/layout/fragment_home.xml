@@ -83,7 +83,16 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@drawable/background_health_data"/>
+        
+        <ImageView
+            android:layout_width="94px"
+            android:layout_height="72px"
+            android:layout_marginTop="58px"
+            android:layout_marginStart="85px"
+            android:background="@drawable/ic_health_data"/>
+
         <TextView
             android:layout_width="127px"
             android:layout_height="32px"
@@ -104,6 +113,13 @@
         android:layout_marginStart="963px"
         android:background="@drawable/main_phone_background"
         android:elevation="10px">
+
+        <ImageView
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_marginTop="47px"
+            android:layout_marginStart="25px"
+            android:background="@drawable/ic_phone"/>
         
         <TextView
             android:layout_width="69px"
@@ -205,7 +221,16 @@
                 <ImageView
                     android:layout_width="264px"
                     android:layout_height="264px"
-                    android:background="@drawable/main_blue_four_60"/>
+                    android:background="@drawable/main_blue_four_60"
+                    android:elevation="10px"/>
+                
+                <ImageView
+                    android:layout_width="72px"
+                    android:layout_height="94px"
+                    android:layout_marginTop="87px"
+                    android:layout_marginStart="95px"
+                    android:background="@drawable/ic_tele_health"
+                    android:elevation="20px"/>
                 
                 <TextView
                     android:layout_width="124px"
@@ -232,9 +257,17 @@
                     android:layout_width="264px"
                     android:layout_height="264px"
                     android:background="@drawable/main_blue_four_60"/>
+                
+                <ImageView
+                    android:layout_width="94px"
+                    android:layout_height="94px"
+                    android:layout_marginTop="88px"
+                    android:layout_marginStart="85px"
+                    android:background="@drawable/ic_manual_input"
+                    android:elevation="10px"/>
 
                 <TextView
-                    android:layout_width="124px"
+                    android:layout_width="142px"
                     android:layout_height="32px"
                     android:textSize="24px"
                     android:fontFamily="@font/roboto_medium"
@@ -257,6 +290,13 @@
                     android:layout_width="264px"
                     android:layout_height="264px"
                     android:background="@drawable/main_blue_four_60"/>
+
+                <ImageView
+                    android:layout_width="94px"
+                    android:layout_height="94px"
+                    android:layout_marginTop="85px"
+                    android:layout_marginStart="85px"
+                    android:background="@drawable/ic_medication"/>
 
                 <TextView
                     android:layout_width="124px"
@@ -281,9 +321,16 @@
                     android:layout_width="264px"
                     android:layout_height="264px"
                     android:background="@drawable/main_blue_four_60"/>
+                
+                <ImageView
+                    android:layout_width="94px"
+                    android:layout_height="94px"
+                    android:layout_marginTop="88px"
+                    android:layout_marginStart="85px"
+                    android:background="@drawable/ic_measurement"/>
 
                 <TextView
-                    android:layout_width="124px"
+                    android:layout_width="122px"
                     android:layout_height="32px"
                     android:textSize="24px"
                     android:fontFamily="@font/roboto_medium"
@@ -306,14 +353,21 @@
                     android:layout_width="264px"
                     android:layout_height="264px"
                     android:background="@drawable/main_blue_four_60"/>
+                
+                <ImageView
+                    android:layout_width="94px"
+                    android:layout_height="94px"
+                    android:layout_marginTop="88px"
+                    android:layout_marginStart="85px"
+                    android:background="@drawable/ic_settings"/>
 
                 <TextView
-                    android:layout_width="124px"
+                    android:layout_width="150px"
                     android:layout_height="32px"
                     android:textSize="24px"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/main_white"
-                    android:text="@string/music"
+                    android:text="@string/settings"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="289px" />

@@ -1,12 +1,15 @@
 package com.example.stationgx.pages.mainbaseactivity.homefragment
 
+
+import java.util.*
 import javax.inject.Inject
 
-class HomeFragmentPresenter @Inject constructor(var view: HomeFragmentContract.View) :HomeFragmentContract.Presenter {
+class HomeFragmentPresenter @Inject constructor() :HomeFragmentContract.Presenter {
 
 
+    var view: HomeFragmentContract.View? = null
 
-    override fun notificationListener(id: Int, content: String) {
+ override fun notificationListener(id: Int, content: String) {
         //TODO("Not yet implemented")
     }
 
@@ -15,10 +18,12 @@ class HomeFragmentPresenter @Inject constructor(var view: HomeFragmentContract.V
     }
 
     override fun takeView(view: HomeFragmentContract.View) {
-        //TODO("Not yet implemented")
+        this.view=view
     }
 
     override fun dropView() {
-        //TODO("Not yet implemented")
+        this.view=null
     }
+
+
 }
