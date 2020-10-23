@@ -1,11 +1,16 @@
 package com.example.stationgx.base
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.example.stationgx.apis.dateapi.DateRepository
 import dagger.android.support.DaggerAppCompatActivity
+import java.util.*
 
 open class BaseActivity:DaggerAppCompatActivity(), BaseView {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,4 +58,5 @@ open class BaseActivity:DaggerAppCompatActivity(), BaseView {
     override fun cancelLoading() {
         //TODO("Not yet implemented")
     }
+
 }
