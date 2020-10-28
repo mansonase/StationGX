@@ -59,7 +59,7 @@
             android:layout_height="456px"
             android:layout_marginStart="32px"
             android:layout_alignParentTop="true"
-            android:id="@+id/blood_pressure_barchart"/>
+            android:id="@+id/blood_pressure_barchart" />
 
         <RelativeLayout
             android:layout_width="80px"

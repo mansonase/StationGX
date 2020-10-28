@@ -21,6 +21,8 @@
     <color name="background_grey">#F9F9F9</color>
     <color name="background_blue">#E5F6FF</color>
     <color name="background_pink">#F9EBEC</color>
+    
+    <color name="warning_red">#D41C23</color>
 
     <color name="scroll_foreground_transparent">#B205003A</color>
 

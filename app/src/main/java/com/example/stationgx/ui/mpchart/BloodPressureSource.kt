@@ -29,15 +29,15 @@ class BloodPressureSource(private val duration:String) {
 
         val count=getCount(duration)
 
-        for (i in 0..count){
+        for (i in 0 until count){
 
 
             var dia_bp=0
             while (dia_bp<minDia){
                 dia_bp=(Math.random()*maxDia).toInt()
             }
-            val rangeBP= floatArrayOf(dia_bp.toFloat(),40f)
-            val barEntry=BarEntry((i).toFloat(),rangeBP)
+            //val rangeBP= floatArrayOf(dia_bp.toFloat(),40f)
+            val barEntry=BarEntry((i).toFloat(),dia_bp.toFloat())
 
 
             list.add(barEntry)

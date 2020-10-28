@@ -42,4 +42,8 @@
     <string name="mmhg">mmHg</string>
     <string name="target_systolic">Target Systolic</string>
     <string name="date_time">Date/ Time</string>
+    <string name="sp">SP</string>
+    <string name="dp">DP</string>
+    <string name="individual_sp_range">Individual SP Range</string>
+    <string name="individual_dp_range">Individual DP Range</string>
 </resources>

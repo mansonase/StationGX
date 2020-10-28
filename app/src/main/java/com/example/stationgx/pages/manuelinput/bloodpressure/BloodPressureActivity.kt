@@ -10,6 +10,7 @@ import com.example.stationgx.R
 import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.manuelinput.ManualInputActivity
 import com.example.stationgx.ui.mpchart.BloodPressureBarChart
+import com.example.stationgx.ui.mpchart.BloodPressureRenderer
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import kotlinx.android.synthetic.main.dialog_blood_pressure_input.*
@@ -20,10 +21,10 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
 
     private var isFirst=true
 
-    lateinit var bpBarChart: BloodPressureBarChart
+    private lateinit var bpBarChart: BloodPressureBarChart
 
-    var barChart: BarChart? =null
-    var barData: BarData?=null
+    private var barChart: BarChart? =null
+    private var barData: BarData?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,6 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
 
 
         // todo 感覺可以用rxJava
-
 
 
 
@@ -87,7 +87,6 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
             //todo save input
             dialog.dismiss()
             bpBarChart= BloodPressureBarChart(findViewById(R.id.blood_pressure_barchart),"week")
-
             barChart=bpBarChart.getChart()
             barData=bpBarChart.getData()
             barChart?.data=barData
