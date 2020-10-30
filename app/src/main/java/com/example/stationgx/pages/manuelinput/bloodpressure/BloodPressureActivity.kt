@@ -89,7 +89,10 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
             bpBarChart= BloodPressureBarChart(findViewById(R.id.blood_pressure_barchart),"week")
             barChart=bpBarChart.getChart()
             barData=bpBarChart.getData()
+            //barData?.barWidth=16f
+            //Log.d("testinging","bar width is ${barData?.barWidth.toString()}")
             barChart?.data=barData
+
         }
         dialog.show()
     }
