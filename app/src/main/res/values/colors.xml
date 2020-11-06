@@ -9,10 +9,12 @@
     <color name="main_white">#FFFFFF</color>
     <color name="main_blue">#63B8E3</color>
     <color name="main_yellow">#FFD500</color>
+    <color name="main_pink">#EEA4A7</color>
 
     <color name="word_black">#050505</color>
     <color name="word_blue">#0288D1</color>
     <color name="word_pink">#E15F64</color>
+    <color name="label_black">#707070</color>
 
     <color name="icon_grey">#AAABAD</color>
     <color name="frame_grey">#D4D5D6</color>
@@ -21,8 +23,10 @@
     <color name="background_grey">#F9F9F9</color>
     <color name="background_blue">#E5F6FF</color>
     <color name="background_pink">#F9EBEC</color>
+    <color name="background_yellow">#FFF9DB</color>
     
     <color name="warning_red">#D41C23</color>
+    <color name="indicator_grey">#BBBBBB</color>
 
     <color name="scroll_foreground_transparent">#B205003A</color>
 

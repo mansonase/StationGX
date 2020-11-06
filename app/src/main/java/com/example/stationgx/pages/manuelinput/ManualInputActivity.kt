@@ -17,6 +17,8 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
 
         manualinput_back.setOnClickListener(this)
         entrance_blood_pressure.setOnClickListener(this)
+        entrance_weight.setOnClickListener(this)
+        entrance_others.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -29,11 +31,27 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
                 startActivity(intent)
             }
             R.id.entrance_blood_pressure->{
-                val intent=Intent(this,BloodPressureActivity::class.java)
-                startActivity(intent)
+                //val intent=Intent(this,BloodPressureActivity::class.java)
+                //startActivity(intent)
+                entrance_blood_pressure.setTextColor(resources.getColor(R.color.word_blue,null))
+                last_blood_pressure.setTextColor(resources.getColor(R.color.word_blue,null))
+                quote_text.text=""
+                quote_author.text=""
+                animation_manualinput.visibility=View.VISIBLE
+                animation_manualinput.setAnimation("mi_bloddpressure.json")
+                animation_manualinput.repeatCount=1
+                animation_manualinput.playAnimation()
+
             }
             R.id.entrance_weight->{
-
+                entrance_weight.setTextColor(resources.getColor(R.color.word_blue,null))
+                last_weight.setTextColor(resources.getColor(R.color.word_blue,null))
+                quote_text.text=""
+                quote_author.text=""
+                animation_manualinput.visibility=View.VISIBLE
+                animation_manualinput.setAnimation("mi_weight.json")
+                animation_manualinput.repeatCount=1
+                animation_manualinput.playAnimation()
             }
             R.id.entrance_temperature->{
 
@@ -48,7 +66,14 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
 
             }
             R.id.entrance_others->{
-
+                entrance_others.setTextColor(resources.getColor(R.color.word_blue,null))
+                last_others.setTextColor(resources.getColor(R.color.word_blue,null))
+                quote_text.text= null
+                quote_author.text=null
+                animation_manualinput.visibility=View.VISIBLE
+                animation_manualinput.setAnimation("mi_others.json")
+                animation_manualinput.repeatCount=1
+                animation_manualinput.playAnimation()
             }
         }
     }

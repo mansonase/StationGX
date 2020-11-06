@@ -9,19 +9,23 @@ import kotlin.collections.ArrayList
 class BloodPressureSource(private val duration:String) {
 
     private val maxDia=110
-    private val minDia=50
+    private val minDia=60
+    private var maxIndex=0
 
     private fun getCount(duration: String):Int{
         var count=0
         when(duration){
             "today"->{
                 count=3
+                maxIndex=24
             }
             "week"->{
                 count=21
+                maxIndex=168
             }
             "month"->{
                 count=120
+                maxIndex=30
             }
         }
         return count
@@ -69,13 +73,11 @@ class BloodPressureSource(private val duration:String) {
             }
             val rangeBP= floatArrayOf(dia_bp.toFloat(),40f)
 
-            var index:Int?
-            if (i==0){
-                index=1
-            }else{
-
-                index=(Math.random()*168).toInt()
+            var index:Int=0
+            while (index<1){
+                index=(Math.random()*maxIndex).toInt()
             }
+
             Log.d("testinging","index is $index")
             val barEntry=BarEntry((index).toFloat(),rangeBP)
 

@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/main_white">
 
     <ImageView
         android:layout_width="16px"
@@ -49,43 +50,190 @@
 
     </RelativeLayout>
     
-    <RelativeLayout
+    
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="608px"
         android:layout_marginTop="192px">
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:layout_width="1216px"
-            android:layout_height="456px"
-            android:layout_marginStart="32px"
-            android:layout_alignParentTop="true"
-            android:id="@+id/blood_pressure_barchart" />
-
         <RelativeLayout
-            android:layout_width="80px"
-            android:layout_height="80px"
-            android:id="@+id/share_blood_pressure"
-            android:layout_marginTop="528px"
-            android:layout_marginStart="0px"
-            android:background="@drawable/word_blue_right_two_60">
-            <ImageView
-                android:layout_width="40px"
-                android:layout_height="40px"/>
-        </RelativeLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="80px"
-            android:layout_height="80px"
-            android:id="@+id/input_blood_pressure"
-            android:layout_marginTop="528px"
-            android:layout_marginStart="1200px"
-            android:background="@drawable/word_blue_left_two_60">
+            <com.example.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
+                android:layout_width="1216px"
+                android:layout_height="400px"
+                android:layout_marginStart="32px"
+                android:layout_alignParentTop="true"
+                android:id="@+id/blood_pressure_barchart" />
+
             <ImageView
-                android:layout_width="40px"
-                android:layout_height="40px"/>
-        </RelativeLayout>
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:src="@drawable/label_blood_pressure_pink_round"
+                android:layout_marginStart="277px"
+                android:layout_marginTop="428px"/>
+            <TextView
+                android:layout_width="29px"
+                android:layout_height="32px"
+                android:textSize="24px"
+                android:textColor="@color/word_black"
+                android:fontFamily="@font/roboto"
+                android:layout_marginStart="309px"
+                android:layout_marginTop="424px"
+                android:text="@string/sp"/>
+
+            <ImageView
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:src="@drawable/label_blood_pressure_blue_round"
+                android:layout_marginStart="394px"
+                android:layout_marginTop="428px"/>
+            <TextView
+                android:layout_width="31px"
+                android:layout_height="32px"
+                android:textSize="24px"
+                android:textColor="@color/word_black"
+                android:fontFamily="@font/roboto"
+                android:layout_marginStart="426px"
+                android:layout_marginTop="424px"
+                android:text="@string/dp"/>
+
+            <ImageView
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:src="@drawable/label_blood_pressure_pink_square"
+                android:layout_marginStart="513px"
+                android:layout_marginTop="428px"/>
+            <TextView
+                android:layout_width="213px"
+                android:layout_height="32px"
+                android:textSize="24px"
+                android:textColor="@color/word_black"
+                android:fontFamily="@font/roboto"
+                android:layout_marginStart="545px"
+                android:layout_marginTop="424px"
+                android:text="@string/individual_sp_range"/>
+
+            <ImageView
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:src="@drawable/label_blood_pressure_blue_square"
+                android:layout_marginStart="814px"
+                android:layout_marginTop="428px"/>
+
+            <TextView
+                android:layout_width="213px"
+                android:layout_height="32px"
+                android:textSize="24px"
+                android:textColor="@color/word_black"
+                android:fontFamily="@font/roboto"
+                android:layout_marginStart="846px"
+                android:layout_marginTop="424px"
+                android:text="@string/individual_dp_range"/>
+
+
+            <RelativeLayout
+                android:layout_width="1216px"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32px"
+                android:layout_marginTop="544px"
+                android:layout_marginBottom="128px"
+                android:background="@drawable/header_blood_pressure_recyclerview">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64px"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+                    <TextView
+                        android:layout_width="50px"
+                        android:layout_height="32px"
+                        android:layout_marginStart="25px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/date"/>
+
+                    <TextView
+                        android:layout_width="55px"
+                        android:layout_height="32px"
+                        android:layout_marginStart="284.81px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/time"/>
+
+                    <TextView
+                        android:layout_width="203px"
+                        android:layout_height="32px"
+                        android:layout_marginStart="409px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/systolic_diastolic"/>
+                    
+                    <TextView
+                        android:layout_width="52px"
+                        android:layout_height="32px"
+                        android:layout_marginStart="664px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/note"/>
+                    <TextView
+                        android:layout_width="70px"
+                        android:layout_height="32px"
+                        android:layout_marginStart="993px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/status"/>
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="1216px"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recyclerview_blood_pressure"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="64px"
+                    />
+
+            </RelativeLayout>
+
+    </RelativeLayout>
+    
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:id="@+id/share_blood_pressure"
+        android:layout_marginTop="672px"
+        android:layout_marginStart="0px"
+        android:background="@drawable/word_blue_right_two_60">
+        <ImageView
+            android:layout_width="40px"
+            android:layout_height="40px"/>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:id="@+id/input_blood_pressure"
+        android:layout_marginTop="672px"
+        android:layout_marginStart="1200px"
+        android:background="@drawable/word_blue_left_two_60">
+        <ImageView
+            android:layout_width="40px"
+            android:layout_height="40px"/>
+    </RelativeLayout>
     
 
 </RelativeLayout>

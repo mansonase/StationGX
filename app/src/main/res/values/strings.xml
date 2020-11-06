@@ -11,6 +11,12 @@
     <string name="measurement">Measurement</string>
     <string name="music">Music</string>
     <string name="settings">Setting</string>
+    <string name="time">Time</string>
+    <string name="note">Note</string>
+    <string name="status">Status</string>
+    <string name="today">Today</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
     
     <string name="last_document_at">Last document at </string>
 
@@ -46,4 +52,6 @@
     <string name="dp">DP</string>
     <string name="individual_sp_range">Individual SP Range</string>
     <string name="individual_dp_range">Individual DP Range</string>
+    <string name="systolic_diastolic">Systolic / Diastolic</string>
+
 </resources>

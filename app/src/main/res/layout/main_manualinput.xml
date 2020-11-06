@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
     <ImageView
@@ -273,6 +273,13 @@
         android:layout_marginStart="640px"
         android:layout_marginTop="80px">
 
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/animation_manualinput"
+            android:scaleType="fitCenter"/>
+
         <TextView
             android:layout_width="608px"
             android:layout_height="wrap_content"
@@ -282,7 +289,9 @@
             android:text="@string/eistein_quotes"
             android:layout_marginTop="272px"
             android:layout_marginStart="0px"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:id="@+id/quote_text"/>
 
         <TextView
             android:layout_width="608px"
@@ -293,7 +302,9 @@
             android:text="@string/eistein"
             android:layout_marginTop="400px"
             android:layout_marginStart="0px"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:id="@+id/quote_author"/>
 
     </FrameLayout>
 

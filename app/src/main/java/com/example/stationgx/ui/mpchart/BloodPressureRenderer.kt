@@ -50,14 +50,14 @@ class BloodPressureRenderer(chart: BarDataProvider?, animator: ChartAnimator?, v
         mRenderPaint.color = Color.rgb(0xE1,0x5F,0x64)
 
         val mRenderGrey=Paint(Paint.ANTI_ALIAS_FLAG)
-        mRenderGrey.color=Color.parseColor("#46F5F5F5")
+        mRenderGrey.color=Color.parseColor("#B2F5F5F5")
         //mRenderGrey.color=Color.parseColor("#050505")
         mRenderGrey.style=Paint.Style.FILL
         val mRenderBlue=Paint(Paint.ANTI_ALIAS_FLAG)
-        mRenderBlue.color=Color.parseColor("#460288D1")
+        mRenderBlue.color=Color.parseColor("#960288D1")
         mRenderBlue.style=Paint.Style.FILL
         val mRenderRed=Paint(Paint.ANTI_ALIAS_FLAG)
-        mRenderRed.color=Color.parseColor("#46E15F64")
+        mRenderRed.color=Color.parseColor("#96E15F64")
         mRenderRed.style=Paint.Style.FILL
 
         Log.d("testinging","buffer size is ${buffer.size()}")

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="1216px"
+    android:layout_height="64px"
+    android:orientation="horizontal"
+    android:background="@drawable/frame_blood_pressure_recyclerview">
+    <TextView
+        android:layout_width="280px"
+        android:layout_height="match_parent"
+        android:id="@+id/list_blood_pressure_date"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/word_black"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto"
+        />
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="@color/frame_grey"
+        android:layout_marginStart="280px" />
+    <TextView
+        android:layout_width="100px"
+        android:layout_height="match_parent"
+        android:id="@+id/list_blood_pressure_time"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/list_blood_pressure_date"
+        android:textColor="@color/word_black"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto"
+        />
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="@color/frame_grey"
+        android:layout_toEndOf="@id/list_blood_pressure_time"/>
+    
+    <TextView
+        android:layout_width="150px"
+        android:layout_height="match_parent"
+        android:id="@+id/list_blood_pressure_sys_dia"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/list_blood_pressure_time"
+        android:textColor="@color/word_black"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto_bold"
+        />
+
+    <TextView
+        android:layout_width="150px"
+        android:layout_height="match_parent"
+        android:id="@+id/mmhg_blood_pressure"
+        android:gravity="center|start"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/list_blood_pressure_sys_dia"
+        android:textColor="@color/word_black"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto"
+        android:text="@string/mmhg"
+        />
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="@color/frame_grey"
+        android:layout_toEndOf="@id/mmhg_blood_pressure"/>
+
+    <TextView
+        android:layout_width="300px"
+        android:layout_height="match_parent"
+        android:id="@+id/list_blood_pressure_note"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/mmhg_blood_pressure"
+        android:textColor="@color/word_black"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto"
+        />
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="@color/frame_grey"
+        android:layout_toEndOf="@id/list_blood_pressure_note"/>
+    <RelativeLayout
+        android:layout_width="200px"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/list_blood_pressure_note">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32px"
+            android:id="@+id/list_blood_pressure_result"
+            android:gravity="center"
+            android:layout_marginTop="16px"
+            android:layout_marginStart="32px"
+            android:textColor="@color/main_white"
+            android:textSize="24px"
+            android:fontFamily="@font/roboto"
+            />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
