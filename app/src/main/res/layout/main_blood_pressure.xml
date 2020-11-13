@@ -7,8 +7,8 @@
     android:background="@color/main_white">
 
     <ImageView
-        android:layout_width="16px"
-        android:layout_height="16px"
+        android:layout_width="24px"
+        android:layout_height="24px"
         android:id="@+id/blood_pressure_back"
         android:src="@drawable/ic_baseline_arrow_back_ios_24"
         android:layout_marginTop="40px"

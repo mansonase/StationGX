@@ -65,7 +65,8 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
                 startActivity(intent)
             }
             R.id.blood_pressure_calendar->{
-
+                BPCalendarFragment().show(supportFragmentManager,"test")
+                Log.d("where","show the process here")
             }
         }
     }

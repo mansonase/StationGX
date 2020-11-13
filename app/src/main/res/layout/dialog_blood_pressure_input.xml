@@ -46,7 +46,9 @@
         android:layout_marginStart="128px"
         android:background="@drawable/main_white_four_15_frame_blue_2"
         android:inputType="numberDecimal"
-        android:id="@+id/input_systolic"/>
+        android:id="@+id/input_systolic"
+        android:imeOptions="flagNoExtractUi|actionNext"
+        android:nextFocusForward="@+id/input_diastolic"/>
     
     <TextView
         android:layout_width="110px"
@@ -66,7 +68,9 @@
         android:layout_marginStart="376px"
         android:background="@drawable/main_white_four_15_frame_blue_2"
         android:inputType="numberDecimal"
-        android:id="@+id/input_diastolic"/>
+        android:id="@+id/input_diastolic"
+        android:imeOptions="flagNoExtractUi|actionNext"
+        android:nextFocusForward="@+id/input_target_systolic"/>
     
     <TextView
         android:layout_width="73px"
@@ -103,7 +107,9 @@
         android:layout_marginStart="235px"
         android:background="@drawable/main_white_four_15_frame_blue_2"
         android:inputType="numberDecimal"
-        android:id="@+id/input_target_systolic"/>
+        android:id="@+id/input_target_systolic"
+        android:imeOptions="flagNoExtractUi|actionNext"
+        android:nextFocusForward="@+id/input_target_diastolic"/>
 
     <TextView
         android:layout_width="110px"
@@ -123,7 +129,8 @@
         android:layout_marginStart="480px"
         android:background="@drawable/main_white_four_15_frame_blue_2"
         android:inputType="numberDecimal"
-        android:id="@+id/input_target_diastolic"/>
+        android:id="@+id/input_target_diastolic"
+        android:imeOptions="flagNoExtractUi|actionDone"/>
     <TextView
         android:layout_width="73px"
         android:layout_height="32px"

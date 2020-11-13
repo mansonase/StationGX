@@ -27,6 +27,8 @@
     
     <color name="warning_red">#D41C23</color>
     <color name="indicator_grey">#BBBBBB</color>
+    <color name="border_blue">#229AD7</color>
+    <color name="shadow_grey">#00000029</color>
 
     <color name="scroll_foreground_transparent">#B205003A</color>
 
