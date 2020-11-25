@@ -55,7 +55,6 @@
         android:layout_marginStart="309px"
         android:background="@color/main_white"
         app:month_view="com.example.stationgx.ui.custom.calendar.CalendarMonth"
-
         app:calendar_height="56px"
         app:week_background="@color/main_white"
         app:week_text_color="@color/icon_grey"

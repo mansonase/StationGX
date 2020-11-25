@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.romandanylyk:pageindicatorview:1.0.3'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    implementation 'com.haibin:calendarview:3.6.9'
+    implementation 'com.haibin:calendarview:3.6.8'
 
     def lottieVersion="3.4.4"
     implementation "com.airbnb.android:lottie:$lottieVersion"

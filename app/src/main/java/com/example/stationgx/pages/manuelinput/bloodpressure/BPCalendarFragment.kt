@@ -54,13 +54,11 @@ class BPCalendarFragment : DialogFragment(){
 
         val calendar=Calendar()
         calendar.year=2020
-        calendar.month=10
-        calendar.day=20
-        setBackgroundScheme(calendar,"today")
+        calendar.month=11
+        calendar.day=23
+        setBackgroundScheme(calendar,"week")
 
     }
-
-
 
     private fun showFragment(string:String){
         when(string){
@@ -110,13 +108,27 @@ class BPCalendarFragment : DialogFragment(){
     private fun setBackgroundScheme(calendar: Calendar, duration:String){
 
         var days=0
+        var daysOfMonth=0
+
         when(duration){
             "today"->{
                 days=1
-                setTodayScheme(calendar)
             }
             "week"->{
                 days=7
+                when(calendar.month){
+                    1,3,5,7,8,10,12->{
+                        daysOfMonth=31
+                    }
+                    2->{
+                        daysOfMonth=if (calendar.isLeapYear){ 29 }
+                        else { 28 }
+                    }
+                    4,6,9,11->{
+                        daysOfMonth=30
+                    }
+                }
+
             }
             "month"->{
                 when(calendar.month){
@@ -135,85 +147,89 @@ class BPCalendarFragment : DialogFragment(){
         }
 
 
-
-/*
-
-        val map= hashMapOf<String,Calendar>()
+        var map= hashMapOf<String,Calendar>()
 
         var year=calendar.year
         var month=calendar.month
         var day: Int
 
-
-        // 用原生API找出現在的日期
-        val calendarReal=java.util.Calendar.getInstance()
-
-
         //如果days==1,表示就是系統日期的今天
-        if (days==1){
-            map["mark"]=getSingleScheme(
-                                calendarReal.get(java.util.Calendar.YEAR)+0,
-                              calendarReal.get(java.util.Calendar.MONTH)+1,
-                                 calendarReal.get(java.util.Calendar.DAY_OF_MONTH)+0,
-                                        "today")
+        when {
+            days==1 -> {  // today , do nothing
 
-        }
-        //days!=0 表示有範圍, 不止1天而已
-        else{
+            }
+            days==7 -> {  // week
 
-            day=calendar.day
+                day=calendar.day
 
-            if (days>1){
+                for (i in 0 until days) {
 
-                // if week or month
-                for (i in 0..days) {
+                    if (day+i>daysOfMonth){// 有over這個月
 
-                    if (day+i>days){// week 有over這個月
-
+                        var newDay:Int
+                        var newMonth: Int
+                        var newYear=0
                         if (month+1>12){//有over今年
 
-                            month=1
-                            year+=1
-                            day=1
+                            newMonth=1
+                            newYear=year+1
+                            newDay=day+i-daysOfMonth
                         }else{//沒有over今年
 
-                            month+=1
-                            day=1
+                            newYear=year
+                            newMonth=month+1
+                            newDay=day+i-daysOfMonth
                         }
 
-                        map["mark"] = getSingleScheme(year, month, (day + i-days),  "range")
 
+                        val cal = getSingleScheme(newYear, newMonth, newDay,  "range")
+                        map[cal.toString()]=cal
+                        Log.d("setbackgroundscheme","$year, $month, $day+$i, ${cal.toString()}")
 
-                    }else {// week沒有過這個月
-                        map["mark"] = getSingleScheme(year, month, (day + i),  "range")
+                    } else {// week沒有過這個月
+                        Log.d("setbackgroundscheme","$year, $month, $day+$i")
+                        val cal= getSingleScheme(year, month, (day + i),  "range")
+                        map[cal.toString()]=cal
                     }
                 }
             }
+            days>7 -> { // days超過7天, 表示是month了
 
-            if (calendar.year == calendarReal.get(java.util.Calendar.YEAR)&&calendar.month==(calendarReal.get(java.util.Calendar.MONTH)+1)){
-                // 判斷現在展示的這個月曆 是今年&&這個月, 如果是的話 要加 today的mark
-                //                                      如果是別的月份 就不用加today's mark
+                day=calendar.day
 
-                day=calendarReal.get(java.util.Calendar.DAY_OF_MONTH)
-                map["mark"]=getSingleScheme(year,month,day,"both")
+                for (i in 0 until days){
+
+                    day += i
+
+                    val cal=getSingleScheme(year,month,day,"range")
+                    map[cal.toString()]=cal
+                }
             }
-
-
         }
+        Log.d("bpcalendar","map size is ${map.size}, before, ${getSingleScheme(year,month,4,"record").toString()}")
+
+
 
         // for example mark some date to show record
-        map["mark"]=getSingleScheme(year,month,4,"record")
-        map["mark"]=getSingleScheme(year,month,5,"record")
-        map["mark"]=getSingleScheme(year,month,6,"record")
-        map["mark"]=getSingleScheme(year,month,7,"record")
-        map["mark"]=getSingleScheme(year,month,8,"record")
-        map["mark"]=getSingleScheme(year,month,9,"record")
-        map["mark"]=getSingleScheme(year,month,10,"record")
-        map["mark"]=getSingleScheme(year,month,11,"record")
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,4,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,5,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,6,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,7,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,8,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,9,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,10,"record"))
+        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,11,"record"))
+
+
+        for (m in map){
+            Log.d("bpcalendarrr","it is ${m.key}")
+        }
+        Log.d("bpcalendar","map size is ${map.size},after")
+
 
         calendarView.setSchemeDate(map)
 
- */
+
     }
 
     private fun getSingleScheme(year:Int,month:Int,day:Int,text:String):Calendar{
@@ -222,33 +238,42 @@ class BPCalendarFragment : DialogFragment(){
         calendar.month=month
         calendar.day=day
 
-        if (text=="today"||text=="range"||text=="both"){
-            calendar.scheme=text
+        calendar.schemeColor=0xFFFFFF
+
+        if (text=="none"||text=="range"){
+            calendar.addScheme(0xFFFFFF,text)
         }else{
             Log.d("bpcalendarff", "$text,$year year,  $month month, $day day")
-            //calendar.addScheme(0x229AD7,text)
-            calendar.scheme=text
+            calendar.addScheme(0x229AD7,text)
+
         }
-        //calendar.scheme=text
+        Log.d("setEventsScheme",calendar.toString())
         return calendar
     }
 
 
-    private fun setTodayScheme(calendar: Calendar){
+    private fun setEventsScheme(map: HashMap<String,Calendar>,calendar: Calendar):HashMap<String,Calendar>{
 
-        val map= hashMapOf<String,Calendar>()
-        val calendar=getSingleScheme(calendar.year,calendar.month,calendar.day,"record")
+        val date=calendar.toString()
 
-        map.put("mark",calendar)
+        var cal=Calendar()
 
+        if (map.containsKey(date)){
 
-        calendarView.setSchemeDate(map)
-        calendarView.invalidate()
+            cal.year=calendar.year
+            cal.month=calendar.month
+            cal.day=calendar.day
+            cal.schemeColor=0xFFFFFF
+            cal.addScheme(0x000000,"range")
+            cal.addScheme(0x000000,"record")
 
-    }
-    private fun setWeekScheme(calendar: Calendar, days:Int){
+        }else{
+            cal=getSingleScheme(calendar.year,calendar.month,calendar.day,"record")
 
-    }
-    private fun setMonthScheme(calendar: Calendar, days: Int){
+        }
+        Log.d("setEventsScheme",cal.toString())
+        map[date]=cal
+
+        return map
     }
 }
