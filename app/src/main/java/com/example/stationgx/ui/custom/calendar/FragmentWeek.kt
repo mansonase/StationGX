@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.stationgx.R
+import com.example.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
 
 class FragmentWeek:Fragment(),View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,7 +31,7 @@ class FragmentWeek:Fragment(),View.OnClickListener {
 
             }
             R.id.calendar_week_return->{
-
+                (parentFragment as BPCalendarFragment).controlCalendar("switcher","week")
             }
         }
     }

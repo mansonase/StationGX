@@ -1,4 +1,4 @@
-package com.example.stationgx.pages.manuelinput.bloodpressure
+package com.example.stationgx.pages.manuelinput.weight
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,7 @@ import com.example.stationgx.ui.custom.calendar.*
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
 
-class BPCalendarFragment : DialogFragment(){
+class WeightCalendarFragment : DialogFragment(){
 
     private var today: FragmentToday?=null
     private var week:FragmentWeek?=null
@@ -80,7 +80,7 @@ class BPCalendarFragment : DialogFragment(){
         when(fragment){
             "today"->{
 
-                (activity as BloodPressureActivity).selectDuration("today")
+                (activity as WeightActivity).selectDuration("today")
                 dismiss()
 
                 /*
@@ -106,7 +106,7 @@ class BPCalendarFragment : DialogFragment(){
                  */
             }
             "week"->{
-                (activity as BloodPressureActivity).selectDuration("week")
+                (activity as WeightActivity).selectDuration("week")
                 dismiss()
                 /*
                 transaction=childFragmentManager.beginTransaction()
@@ -131,7 +131,7 @@ class BPCalendarFragment : DialogFragment(){
                  */
             }
             "month"->{
-                (activity as BloodPressureActivity).selectDuration("month")
+                (activity as WeightActivity).selectDuration("month")
                 dismiss()
                 /*
                 transaction=childFragmentManager.beginTransaction()
@@ -180,7 +180,7 @@ class BPCalendarFragment : DialogFragment(){
     }
 
     fun controlCalendar(change:String,duration: String){
-        Log.d("bpcalendar","test function")
+        Log.d("weightcalendar","test function")
         showFragment(change,duration)
     }
 
@@ -301,9 +301,9 @@ class BPCalendarFragment : DialogFragment(){
 
 
         for (m in map){
-            Log.d("bpcalendarrr","it is ${m.key}")
+            Log.d("weightcalendarrr","it is ${m.key}")
         }
-        Log.d("bpcalendar","map size is ${map.size},after")
+        Log.d("weightcalendar","map size is ${map.size},after")
 
 
         calendarView.setSchemeDate(map)
@@ -322,7 +322,7 @@ class BPCalendarFragment : DialogFragment(){
         if (text=="none"||text=="range"){
             calendar.addScheme(0xFFFFFF,text)
         }else{
-            Log.d("bpcalendarff", "$text,$year year,  $month month, $day day")
+            Log.d("weightcalendarff", "$text,$year year,  $month month, $day day")
             calendar.addScheme(0x229AD7,text)
 
         }

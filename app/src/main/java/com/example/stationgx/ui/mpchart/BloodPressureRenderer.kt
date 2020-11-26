@@ -2,14 +2,12 @@ package com.example.stationgx.ui.mpchart
 
 import android.graphics.*
 import android.util.Log
-import com.example.stationgx.R
 import com.github.mikephil.charting.animation.ChartAnimator
 import com.github.mikephil.charting.interfaces.dataprovider.BarDataProvider
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.renderer.BarChartRenderer
 import com.github.mikephil.charting.utils.Utils
 import com.github.mikephil.charting.utils.ViewPortHandler
-import kotlin.math.ceil
 
 class BloodPressureRenderer(chart: BarDataProvider?, animator: ChartAnimator?, viewPortHandler: ViewPortHandler?, private val duration: String) : BarChartRenderer(chart, animator, viewPortHandler) {
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.stationgx.R
+import com.example.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
 
 class FragmentMonth:Fragment(),View.OnClickListener {
 
@@ -31,7 +32,7 @@ class FragmentMonth:Fragment(),View.OnClickListener {
 
             }
             R.id.calendar_month_return->{
-
+                (parentFragment as BPCalendarFragment).controlCalendar("switcher","month")
             }
         }
     }

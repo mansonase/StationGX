@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="24px"
         android:layout_height="24px"
-        android:id="@+id/blood_pressure_back"
+        android:id="@+id/weight_back"
         android:src="@drawable/ic_baseline_arrow_back_ios_24"
         android:layout_marginTop="40px"
         android:layout_marginStart="33px"/>
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="166px"
         android:layout_height="32px"
-        android:text="@string/blood_pressure"
+        android:text="@string/weight"
         android:textColor="@color/word_blue"
         android:autoSizeTextType="uniform"
         android:gravity="center"
@@ -34,7 +34,7 @@
     <ImageView
         android:layout_width="48px"
         android:layout_height="48px"
-        android:id="@+id/blood_pressure_calendar"
+        android:id="@+id/weight_calendar"
         android:layout_marginTop="104px"
         android:layout_marginStart="1200px"
         android:src="@color/background_blue"/>
@@ -94,77 +94,123 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
+            <com.example.stationgx.ui.mpchart.weight.WeightBackgroundLineChart
                 android:layout_width="1216px"
                 android:layout_height="400px"
                 android:layout_marginStart="32px"
                 android:layout_alignParentTop="true"
-                android:id="@+id/blood_pressure_barchart" />
+                android:id="@+id/weight_linechart" />
 
             <ImageView
                 android:layout_width="24px"
                 android:layout_height="24px"
-                android:src="@drawable/label_blood_pressure_pink_round"
-                android:layout_marginStart="277px"
+                android:src="@drawable/label_weight_blue_round"
+                android:layout_marginStart="216px"
                 android:layout_marginTop="428px"/>
             <TextView
-                android:layout_width="29px"
+                android:layout_width="wrap_content"
                 android:layout_height="32px"
                 android:textSize="24px"
                 android:textColor="@color/word_black"
                 android:fontFamily="@font/roboto"
-                android:layout_marginStart="309px"
+                android:layout_marginStart="248px"
                 android:layout_marginTop="424px"
-                android:text="@string/sp"/>
+                android:text="@string/weight"/>
 
             <ImageView
                 android:layout_width="24px"
                 android:layout_height="24px"
                 android:src="@drawable/label_blood_pressure_blue_round"
-                android:layout_marginStart="394px"
+                android:layout_marginStart="379px"
                 android:layout_marginTop="428px"/>
             <TextView
-                android:layout_width="31px"
+                android:layout_width="wrap_content"
                 android:layout_height="32px"
                 android:textSize="24px"
                 android:textColor="@color/word_black"
                 android:fontFamily="@font/roboto"
-                android:layout_marginStart="426px"
+                android:layout_marginStart="411px"
                 android:layout_marginTop="424px"
-                android:text="@string/dp"/>
+                android:text="@string/normal_bmi_range"/>
 
-            <ImageView
-                android:layout_width="24px"
-                android:layout_height="24px"
-                android:src="@drawable/label_blood_pressure_pink_square"
-                android:layout_marginStart="513px"
-                android:layout_marginTop="428px"/>
-            <TextView
-                android:layout_width="213px"
-                android:layout_height="32px"
-                android:textSize="24px"
-                android:textColor="@color/word_black"
-                android:fontFamily="@font/roboto"
-                android:layout_marginStart="545px"
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/target_weight"
+                android:layout_marginStart="669px"
+                android:layout_marginTop="424px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:textColor="@color/word_black"
+                    android:fontFamily="@font/roboto"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/target_weight"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32px"
+                    android:textColor="@color/word_blue"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginStart="165px"
+                    android:layout_alignParentTop="true"
+                    android:textSize="24px"
+                    android:text="55"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:textColor="@color/word_black"
+                    android:fontFamily="@font/roboto"
+                    android:layout_marginStart="201px"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/kg"/>
+            </RelativeLayout>
+
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/height"
                 android:layout_marginTop="424px"
-                android:text="@string/individual_sp_range"/>
+                android:layout_marginStart="952px">
 
-            <ImageView
-                android:layout_width="24px"
-                android:layout_height="24px"
-                android:src="@drawable/label_blood_pressure_blue_square"
-                android:layout_marginStart="814px"
-                android:layout_marginTop="428px"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:textColor="@color/word_black"
+                    android:fontFamily="@font/roboto"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/height"/>
 
-            <TextView
-                android:layout_width="213px"
-                android:layout_height="32px"
-                android:textSize="24px"
-                android:textColor="@color/word_black"
-                android:fontFamily="@font/roboto"
-                android:layout_marginStart="846px"
-                android:layout_marginTop="424px"
-                android:text="@string/individual_dp_range"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32px"
+                    android:textColor="@color/word_blue"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginStart="85px"
+                    android:layout_alignParentTop="true"
+                    android:textSize="24px"
+                    android:text="163"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32px"
+                    android:textSize="24px"
+                    android:textColor="@color/word_black"
+                    android:fontFamily="@font/roboto"
+                    android:layout_marginStart="135px"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/cm"/>
+
+            </RelativeLayout>
 
 
             <RelativeLayout
@@ -181,7 +227,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true">
                     <TextView
-                        android:layout_width="50px"
+                        android:layout_width="wrap_content"
                         android:layout_height="32px"
                         android:layout_marginStart="25px"
                         android:layout_marginTop="16px"
@@ -191,7 +237,7 @@
                         android:text="@string/date"/>
 
                     <TextView
-                        android:layout_width="55px"
+                        android:layout_width="wrap_content"
                         android:layout_height="32px"
                         android:layout_marginStart="284.81px"
                         android:layout_marginTop="16px"
@@ -201,26 +247,44 @@
                         android:text="@string/time"/>
 
                     <TextView
-                        android:layout_width="203px"
+                        android:layout_width="wrap_content"
                         android:layout_height="32px"
-                        android:layout_marginStart="409px"
+                        android:layout_marginStart="411.89px"
                         android:layout_marginTop="16px"
                         android:fontFamily="@font/roboto_bold"
                         android:textSize="24px"
                         android:textColor="@color/word_black"
-                        android:text="@string/systolic_diastolic"/>
+                        android:text="@string/weight"/>
                     
                     <TextView
-                        android:layout_width="52px"
+                        android:layout_width="wrap_content"
                         android:layout_height="32px"
-                        android:layout_marginStart="664px"
+                        android:layout_marginStart="554px"
                         android:layout_marginTop="16px"
                         android:fontFamily="@font/roboto_bold"
                         android:textSize="24px"
                         android:textColor="@color/word_black"
-                        android:text="@string/note"/>
+                        android:text="@string/changes"/>
                     <TextView
-                        android:layout_width="70px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32px"
+                        android:layout_marginStart="697px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/target"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="32px"
+                        android:layout_marginStart="845.7px"
+                        android:layout_marginTop="16px"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="24px"
+                        android:textColor="@color/word_black"
+                        android:text="@string/bmi"/>
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="32px"
                         android:layout_marginStart="993px"
                         android:layout_marginTop="16px"
@@ -234,7 +298,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="1216px"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recyclerview_blood_pressure"
+                    android:id="@+id/recyclerview_weight"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="64px"
                     />
@@ -248,7 +312,7 @@
     <RelativeLayout
         android:layout_width="80px"
         android:layout_height="80px"
-        android:id="@+id/share_blood_pressure"
+        android:id="@+id/share_weight"
         android:layout_marginTop="672px"
         android:layout_marginStart="0px"
         android:background="@drawable/word_blue_right_two_60">
@@ -260,7 +324,7 @@
     <RelativeLayout
         android:layout_width="80px"
         android:layout_height="80px"
-        android:id="@+id/input_blood_pressure"
+        android:id="@+id/input_weight"
         android:layout_marginTop="672px"
         android:layout_marginStart="1200px"
         android:background="@drawable/word_blue_left_two_60">

@@ -27,6 +27,8 @@
         <activity android:name=".pages.telehealth.TeleHealthActivity"/>
 
         <activity android:name=".pages.manuelinput.bloodpressure.BloodPressureActivity"/>
+        <activity android:name=".pages.manuelinput.weight.WeightActivity"/>
+
 
         <meta-data
             android:name="preloaded_fonts"

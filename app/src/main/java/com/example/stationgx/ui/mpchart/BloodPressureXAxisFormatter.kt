@@ -12,6 +12,7 @@ class BloodPressureXAxisFormatter(private val interval:Array<String>):ValueForma
 
         Log.d("testing...","value is $value")
         val index=value.toInt()/getDivideNumber(interval)
+        //val index=value.toInt()
         return interval[index]
     }
 

@@ -17,6 +17,7 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
 
     override fun getChart(): BloodPressureBackgroundBarChart {
         //TODO("Not yet implemented")
+        barChart.clear()
         barChart.setBackgroundColor(Color.WHITE)
         barChart.setDrawGridBackground(false)
         barChart.setDrawBarShadow(false)
@@ -79,7 +80,8 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
         }
 
         //barChart.xAxis.valueFormatter=BloodPressureXFormatter(interval!!)
-        barChart.xAxis.valueFormatter=BloodPressureXAxisFormatter(interval!!)
+        //todo 設X軸會在切換today/week/month時crash (不好處理, 可能先不要放顯示X軸的功能)
+        //barChart.xAxis.valueFormatter=BloodPressureXAxisFormatter(interval!!)
 
         barChart.setTouchEnabled(false)
         barChart.setDrawBarShadow(false)

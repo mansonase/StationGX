@@ -1,4 +1,4 @@
-package com.example.stationgx.pages.manuelinput.bloodpressure
+package com.example.stationgx.pages.manuelinput.weight
 
 import android.app.Dialog
 import android.content.Intent
@@ -12,36 +12,38 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stationgx.R
 import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.manuelinput.ManualInputActivity
-import com.example.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
-import com.example.stationgx.ui.mpchart.BloodPressureBarChart
-import com.github.mikephil.charting.data.BarData
+import com.example.stationgx.ui.mpchart.weight.WeightBackgroundLineChart
+import com.example.stationgx.ui.mpchart.weight.WeightLineChart
+import com.github.mikephil.charting.data.LineData
 import kotlinx.android.synthetic.main.dialog_blood_pressure_input.*
 import kotlinx.android.synthetic.main.first_start_input.*
 import kotlinx.android.synthetic.main.main_blood_pressure.*
+import kotlinx.android.synthetic.main.main_blood_pressure.calendar_text
+import kotlinx.android.synthetic.main.main_weight.*
 import kotlin.collections.ArrayList
 
-class BloodPressureActivity:BaseActivity(),View.OnClickListener {
+class WeightActivity:BaseActivity(),View.OnClickListener {
 
     private var isFirst=true
 
     private lateinit var duration:String
 
-    private var bpBarChart: BloodPressureBarChart?=null
+    private var weightLineChart: WeightLineChart?=null
 
-    private var barChart: BloodPressureBackgroundBarChart? =null
-    private var barData: BarData?=null
+    private var lineChart: WeightBackgroundLineChart? =null
+    private var lineData: LineData?=null
     private lateinit var list:ArrayList<Entity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_blood_pressure)
+        setContentView(R.layout.main_weight)
 
 
         // todo 感覺可以用rxJava
 
 
-        blood_pressure_back.setOnClickListener(this)
-        blood_pressure_calendar.setOnClickListener(this)
+        weight_back.setOnClickListener(this)
+        weight_calendar.setOnClickListener(this)
 
         if (isFirst){
             createFirstDialog()
@@ -67,13 +69,13 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
             }
 
              */
-            R.id.blood_pressure_back->{
-                Log.d("testing","clicked in blood pressure")
+            R.id.weight_back->{
+                Log.d("testing","clicked in weight")
                 val intent=Intent(this,ManualInputActivity::class.java)
                 startActivity(intent)
             }
             R.id.blood_pressure_calendar -> {
-                val fragment = BPCalendarFragment()
+                val fragment = WeightCalendarFragment()
                 val bundle = Bundle()
                 bundle.putString("range",duration)
                 fragment.arguments=bundle
@@ -86,7 +88,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
     private fun createFirstDialog(){
         val dialog=Dialog(this)
         dialog.setContentView(R.layout.first_start_input)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCanceledOnTouchOutside(false)
         dialog.fist_input.setOnClickListener {
             dialog.dismiss()
@@ -98,7 +100,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
     private fun createInputDialog(){
         val dialog=Dialog(this)
         dialog.setContentView(R.layout.dialog_blood_pressure_input)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCanceledOnTouchOutside(false)
         dialog.blood_pressure_dialog_clear.setOnClickListener { dialog.dismiss() }
         dialog.input_blood_pressure_save.setOnClickListener {
@@ -115,25 +117,25 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
 
     fun selectDuration(duration:String){
         this.duration=duration
-        Log.d("BPA","whaaaaaaaaaaaaaaaaaaa$duration")
+        Log.d("WA","whaaaaaaaaaaaaaaaaaaa$duration")
         doFakeData(this.duration)
         calendar_text.text = this.duration
     }
 
     private fun doFakeData(duration: String){
-        bpBarChart=null
-        bpBarChart= BloodPressureBarChart(findViewById(R.id.blood_pressure_barchart),duration)
-        barChart?.clear()
-        barChart=bpBarChart!!.getChart()
-        barData=bpBarChart!!.getData()
+        weightLineChart=null
+        weightLineChart= WeightLineChart(findViewById(R.id.blood_pressure_barchart),duration)
+        lineChart?.clear()
+        lineChart=weightLineChart!!.getChart()
+        lineData=weightLineChart!!.getData()
 
-        barChart?.addTargetZone(BloodPressureBackgroundBarChart.TargetZone(Color.parseColor("#F9EBEC"),100f,140f))
-        barChart?.addTargetZone(BloodPressureBackgroundBarChart.TargetZone(Color.parseColor("#E5F6FF"),60f,100f))
+        //lineChart?.addTargetZone(WeightBackgroundLineChart.TargetZone(Color.parseColor("#F9EBEC"),100f,140f))
+        lineChart?.addTargetZone(WeightBackgroundLineChart.TargetZone(Color.parseColor("#C0E3F4"),55f,65f))
         //barData?.barWidth=16f
         //Log.d("testinging","bar width is ${barData?.barWidth.toString()}")
-        barChart?.data=barData
+        lineChart?.data=lineData
 
-        val dataSet= barData!!.dataSets[0]
+        val dataSet= lineData!!.dataSets[0]
 
         val count=dataSet.entryCount
 
@@ -142,18 +144,22 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         list=ArrayList()
         for (i in 0 until count){
 
-            var abnormal=false
-            val diastolic=dataSet.getEntryForIndex(i).yVals[0].toInt()
-            val systolic=(dataSet.getEntryForIndex(i).yVals[1]+diastolic).toInt()
+            var status="normal"
+            val weight=dataSet.getEntryForIndex(i).y
+            //val systolic=(dataSet.getEntryForIndex(i).yVals[1]+weight).toInt()
 
-            if (systolic>140){
-                abnormal=true
+            if (weight>65f){
+                status="overweight"
             }
 
-            Log.d("data","sys $systolic and dia $diastolic")
-            val bloodPressure= "$systolic / $diastolic "
+            Log.d("data","weight is $weight ")
+            val weightTx= weight.toString()
 
-            list.add(Entity("August 27th, 2020","18:00", bloodPressure,"blah blahbla ",abnormal))
+            val changeTx=0.4f
+            val bmiTx=21.9f
+            val targetTx=55f
+
+            list.add(Entity("August 27th, 2020","18:00", weight,changeTx,targetTx,bmiTx,status))
         }
 
         val layoutManager=LinearLayoutManager(this)

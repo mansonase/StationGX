@@ -10,6 +10,7 @@ import com.example.stationgx.R
 import com.example.stationgx.base.BaseActivity
 import com.example.stationgx.pages.mainbaseactivity.MainBaseActivity
 import com.example.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity
+import com.example.stationgx.pages.manuelinput.weight.WeightActivity
 import kotlinx.android.synthetic.main.main_manualinput.*
 
 class ManualInputActivity: BaseActivity(),View.OnClickListener {
@@ -73,6 +74,25 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
                 animation_manualinput.setAnimation("mi_weight.json")
                 animation_manualinput.repeatCount=1
                 animation_manualinput.playAnimation()
+                animation_manualinput.addAnimatorListener(object :Animator.AnimatorListener{
+                    override fun onAnimationStart(animation: Animator?) {
+                        //TODO("Not yet implemented")
+                    }
+
+                    override fun onAnimationEnd(animation: Animator?) {
+                        val intent=Intent(this@ManualInputActivity,WeightActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    override fun onAnimationCancel(animation: Animator?) {
+                        //TODO("Not yet implemented")
+                    }
+
+                    override fun onAnimationRepeat(animation: Animator?) {
+                        //TODO("Not yet implemented")
+                    }
+
+                })
             }
             R.id.entrance_temperature->{
                 entrance_temperature.setTextColor(resources.getColor(R.color.word_blue,null))

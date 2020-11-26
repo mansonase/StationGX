@@ -28,6 +28,9 @@
     <string name="bundle_between_activities">ActivityBundle</string>
     <string name="fragment_indicator">FragmentIndicator</string>
 
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
+
 <!-- Manuel Input txt -->
     <string name="no_data">no data</string>
     <string name="blood_pressure">Blood Pressure</string>
@@ -53,5 +56,15 @@
     <string name="individual_sp_range">Individual SP Range</string>
     <string name="individual_dp_range">Individual DP Range</string>
     <string name="systolic_diastolic">Systolic / Diastolic</string>
+    
+    <!-- weight txt-->
+    <string name="normal_bmi_range">Normal BMI Range</string>
+    <string name="target_weight">Target Weight:</string>
+    <string name="height">Height:</string>
+    <string name="changes">Changes</string>
+    <string name="target">Target</string>
+    <string name="bmi">BMI</string>
+
+
 
 </resources>
