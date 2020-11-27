@@ -72,9 +72,13 @@ class WeightActivity:BaseActivity(),View.OnClickListener {
             R.id.weight_back->{
                 Log.d("testing","clicked in weight")
                 val intent=Intent(this,ManualInputActivity::class.java)
+                val bundle=Bundle()
+                bundle.putString("kg","65")
+                bundle.putString("bmi","23.9")
+                intent.putExtra("weight",bundle)
                 startActivity(intent)
             }
-            R.id.blood_pressure_calendar -> {
+            R.id.weight_calendar -> {
                 val fragment = WeightCalendarFragment()
                 val bundle = Bundle()
                 bundle.putString("range",duration)
@@ -92,7 +96,10 @@ class WeightActivity:BaseActivity(),View.OnClickListener {
         dialog.setCanceledOnTouchOutside(false)
         dialog.fist_input.setOnClickListener {
             dialog.dismiss()
-            createInputDialog()
+
+            //createInputDialog()
+            duration="today"
+            doFakeData(duration)
         }
         dialog.show()
     }
@@ -124,7 +131,7 @@ class WeightActivity:BaseActivity(),View.OnClickListener {
 
     private fun doFakeData(duration: String){
         weightLineChart=null
-        weightLineChart= WeightLineChart(findViewById(R.id.blood_pressure_barchart),duration)
+        weightLineChart= WeightLineChart(findViewById(R.id.weight_linechart),duration)
         lineChart?.clear()
         lineChart=weightLineChart!!.getChart()
         lineData=weightLineChart!!.getData()
@@ -164,7 +171,7 @@ class WeightActivity:BaseActivity(),View.OnClickListener {
 
         val layoutManager=LinearLayoutManager(this)
         layoutManager.orientation=LinearLayoutManager.VERTICAL
-        val dataList=findViewById<RecyclerView>(R.id.recyclerview_blood_pressure)
+        val dataList=findViewById<RecyclerView>(R.id.recyclerview_weight)
         dataList.layoutManager=layoutManager
         dataList.adapter=DataAdapter(list)
     }

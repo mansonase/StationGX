@@ -9,15 +9,18 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.stationgx.R
-import com.example.stationgx.ui.custom.calendar.*
+import com.example.stationgx.ui.custom.calendar.weight.FragmentMonth
+import com.example.stationgx.ui.custom.calendar.weight.FragmentSwitcher
+import com.example.stationgx.ui.custom.calendar.weight.FragmentToday
+import com.example.stationgx.ui.custom.calendar.weight.FragmentWeek
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
 
 class WeightCalendarFragment : DialogFragment(){
 
     private var today: FragmentToday?=null
-    private var week:FragmentWeek?=null
-    private var month:FragmentMonth?=null
+    private var week: FragmentWeek?=null
+    private var month: FragmentMonth?=null
     private var switcher: FragmentSwitcher?=null
     private lateinit var duration:String
     private lateinit var transaction: FragmentTransaction
@@ -44,7 +47,7 @@ class WeightCalendarFragment : DialogFragment(){
             duration= bundle.getString("range").toString()
         }
 
-        val view=inflater.inflate(R.layout.calendar,container,false)
+        val view=inflater.inflate(R.layout.calendar_weight,container,false)
         calendarView=view.findViewById(R.id.custom_calendar)
         dialog?.window?.decorView?.systemUiVisibility=activity?.window?.decorView?.systemUiVisibility!!
         dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)

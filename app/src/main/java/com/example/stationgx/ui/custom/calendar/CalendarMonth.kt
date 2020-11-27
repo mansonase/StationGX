@@ -106,17 +106,17 @@ class CalendarMonth(context: Context) :MonthView(context) {
 
         Log.d("howabout","current month, $calendar")
         /*
-        if (calendar.isCurrentMonth){
-            Log.d("howabout","current month, $calendar")
+        if (calendar_bp.isCurrentMonth){
+            Log.d("howabout","current month, $calendar_bp")
         }else{
-            Log.d("howabout","not in current month, $calendar")
+            Log.d("howabout","not in current month, $calendar_bp")
         }
 
          */
 
 
         /*
-        val schemes=calendar.schemes
+        val schemes=calendar_bp.schemes
         if (schemes?.get(1)?.scheme=="record"){
 
             canvas?.drawCircle(centerX.toFloat(), centerY.toFloat(), (mItemWidth / 2).toFloat(), paintEventDates)
@@ -162,7 +162,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
                 calendarCompare.set(calendar.year, calendar.month - 1, calendar.day)
 
                 if (calendarCompare.before(calendarNow)){ //是本月的今天之前
-                    //Log.d("calendarMonth", "before, ${calendar.day}")
+                    //Log.d("calendarMonth", "before, ${calendar_bp.day}")
                     canvas?.drawText(
                             calendar.day.toString(),
                             centerX+wordX,
@@ -170,7 +170,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
                             currentMonthPassedDates)
 
                 }else if (calendarCompare.after(calendarNow)){ //是本月的今天之後
-                    //Log.d("calendarMonth", "after, ${calendar.day}")
+                    //Log.d("calendarMonth", "after, ${calendar_bp.day}")
                     canvas?.drawText(
                             calendar.day.toString(),
                             centerX+wordX,
@@ -189,7 +189,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
                         nextMonthDates)
 
             }
-            //Log.d("hohoho","fuck ${calendar.schemes.size}")
+            //Log.d("hohoho","fuck ${calendar_bp.schemes.size}")
         }
     }
 }

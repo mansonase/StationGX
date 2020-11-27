@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="129px"
+        android:layout_height="7px"
+        android:id="@+id/drawer_indicator"
+        android:layout_marginTop="9px"
+        android:layout_marginStart="576px"
+        android:background="@color/indicator_grey"/>
+
+    <TextView
+        android:layout_width="55px"
+        android:layout_height="32px"
+        android:id="@+id/calendar_year"
+        android:layout_marginTop="31px"
+        android:layout_marginStart="600px"
+        android:textSize="24px"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/word_blue"
+        android:text="2020"
+        android:autoSizeTextType="uniform" />
+    
+    <ImageView
+        android:layout_width="24px"
+        android:layout_height="24px"
+        android:id="@+id/calendar_year_indicator"
+        android:layout_marginTop="36px"
+        android:layout_marginStart="656px"
+        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:scaleType="fitXY"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/frame_grey"
+        android:layout_marginTop="80px"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48px"
+        android:layout_marginTop="105px"
+        android:layout_alignParentStart="true"
+        android:id="@+id/calendar_switcher"/>
+
+    <com.haibin.calendarview.CalendarView
+        android:layout_width="661px"
+        android:layout_height="432px"
+        android:id="@+id/custom_calendar"
+        android:layout_marginTop="241px"
+        android:layout_marginStart="309px"
+        android:background="@color/main_white"
+        app:month_view="com.example.stationgx.ui.custom.calendar.CalendarMonth"
+        app:calendar_height="56px"
+        app:week_background="@color/main_white"
+        app:week_text_color="@color/icon_grey"
+        app:week_text_size="24px"
+        app:day_text_size="24px"
+        app:week_start_with="mon"
+        app:current_month_text_color="@color/word_black"
+        app:current_month_lunar_text_color="@android:color/transparent"
+        app:current_day_lunar_text_color="@android:color/transparent"
+        app:other_month_lunar_text_color="@android:color/transparent"
+        app:selected_lunar_text_color="@android:color/transparent"
+        app:scheme_lunar_text_color="@android:color/transparent"
+        />
+
+
+</RelativeLayout>

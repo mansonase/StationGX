@@ -1,4 +1,4 @@
-package com.example.stationgx.ui.custom.calendar
+package com.example.stationgx.ui.custom.calendar.bp
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.stationgx.R
 import com.example.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
+import com.example.stationgx.pages.manuelinput.weight.WeightCalendarFragment
 import kotlinx.android.synthetic.main.fragment_calendar_switcher.*
 
 class FragmentSwitcher:Fragment(),View.OnClickListener{
@@ -18,9 +19,34 @@ class FragmentSwitcher:Fragment(),View.OnClickListener{
     lateinit var textToday:TextView
     lateinit var textWeek:TextView
     lateinit var textMonth:TextView
+    var duration="today"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments==null){
+            duration="today"
+            Log.d("bpswitcher","arguments is null")
+        }else{
+            duration= arguments!!.getString("range").toString()
+            Log.d("bpswitcher","arguments is not null, $duration")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view=inflater.inflate(R.layout.fragment_calendar_switcher,container,false)
+
+/*
+        if (arguments==null){
+            duration="today"
+            Log.d("bpswitcher","arguments is null")
+        }else{
+            duration= arguments!!.getString("range").toString()
+            Log.d("bpswitcher","arguments is not null, $duration")
+        }
+
+ */
+
+
 
         textToday=view.findViewById(R.id.switcher_today)
         textWeek=view.findViewById(R.id.switcher_week)
@@ -29,14 +55,20 @@ class FragmentSwitcher:Fragment(),View.OnClickListener{
         textWeek.setOnClickListener(this)
         textMonth.setOnClickListener(this)
         view.findViewById<ImageView>(R.id.switcher_cancel).setOnClickListener(this)
+        Log.d("fragmentSwitcher","onCreateView")
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("fragmentSwitcher","onviewcreated")
+        //setTextBackground(duration)
     }
 
+
+
     fun setTextBackground(duration:String){
+        this.duration=duration
         when(duration){
             "today"->{
                 textToday.setBackgroundResource(R.drawable.calendar_today_pressed)
@@ -56,6 +88,12 @@ class FragmentSwitcher:Fragment(),View.OnClickListener{
         }
     }
 
+    fun fragmentSetDuration(howLong:String){
+        this.duration=howLong
+        Log.d("switcherrr",howLong)
+        setTextBackground(duration)
+    }
+
 
     override fun onClick(v: View?) {
         when(v?.id){
@@ -71,7 +109,7 @@ class FragmentSwitcher:Fragment(),View.OnClickListener{
                 Log.d("fs","month????")
             }
             R.id.switcher_cancel->{
-                (parentFragment as BPCalendarFragment).controlCalendar("switcher","today")
+                (parentFragment as BPCalendarFragment).controlCalendar("switcher",duration)
                 Log.d("fs","cancel????")
             }
         }

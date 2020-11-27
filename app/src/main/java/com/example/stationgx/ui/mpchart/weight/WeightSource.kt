@@ -39,28 +39,28 @@ class WeightSource(private val duration:String) {
 
         //todo 這一part沒有用?!
         /*
-        val calendar=Calendar.getInstance()
+        val calendar_bp=Calendar.getInstance()
         val timestamps= arrayOfNulls<Timestamp>(count)
         when(duration){
             "today"->{
                 for (i in 0 until count){
-                    calendar.set(Calendar.HOUR_OF_DAY,(Math.random()*24).toInt())
-                    calendar.set(Calendar.MINUTE,(Math.random()*60).toInt())
+                    calendar_bp.set(Calendar.HOUR_OF_DAY,(Math.random()*24).toInt())
+                    calendar_bp.set(Calendar.MINUTE,(Math.random()*60).toInt())
 
-                    timestamps[i]= Timestamp(calendar.timeInMillis)
+                    timestamps[i]= Timestamp(calendar_bp.timeInMillis)
                 }
             }
             "week"->{
                 for (i in 0 until count){
-                    calendar.set(Calendar.DAY_OF_WEEK,(i/3))
-                    calendar.set(Calendar.HOUR_OF_DAY,(Math.random()*24).toInt())
-                    timestamps[i]= Timestamp(calendar.timeInMillis)
+                    calendar_bp.set(Calendar.DAY_OF_WEEK,(i/3))
+                    calendar_bp.set(Calendar.HOUR_OF_DAY,(Math.random()*24).toInt())
+                    timestamps[i]= Timestamp(calendar_bp.timeInMillis)
                 }
             }
             "month"->{
                 for (i in 0 until count){
-                    calendar.set(Calendar.DAY_OF_MONTH,(i/4))
-                    timestamps[i]= Timestamp(calendar.timeInMillis)
+                    calendar_bp.set(Calendar.DAY_OF_MONTH,(i/4))
+                    timestamps[i]= Timestamp(calendar_bp.timeInMillis)
                 }
             }
         }

@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stationgx.R
@@ -27,6 +28,9 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
     private lateinit var duration:String
 
     private var bpBarChart: BloodPressureBarChart?=null
+
+    private var transaction:FragmentTransaction?=null
+    private var fragmentCalendar:BPCalendarFragment?=null
 
     private var barChart: BloodPressureBackgroundBarChart? =null
     private var barData: BarData?=null
@@ -69,15 +73,32 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
              */
             R.id.blood_pressure_back->{
                 Log.d("testing","clicked in blood pressure")
+
+                val bundle=Bundle()
+                bundle.putString("value","115/85")
                 val intent=Intent(this,ManualInputActivity::class.java)
+                intent.putExtra("bloodpressure",bundle)
                 startActivity(intent)
             }
             R.id.blood_pressure_calendar -> {
-                val fragment = BPCalendarFragment()
+                if (fragmentCalendar==null){
+                    fragmentCalendar= BPCalendarFragment()
+                    Log.d("bpactivity","only once??")
+                }
+                transaction= supportFragmentManager.beginTransaction()
                 val bundle = Bundle()
                 bundle.putString("range",duration)
-                fragment.arguments=bundle
-                fragment.show(supportFragmentManager, "test")
+                fragmentCalendar!!.arguments=bundle
+                //fragment.show(supportFragmentManager, "test")
+
+                if (fragmentCalendar!!.isAdded){
+                    transaction!!.show(fragmentCalendar!!)
+                    Log.d("bpactivity","show")
+                }else {
+                    transaction!!.add(fragmentCalendar!!, "calendar")
+                    Log.d("bpactivity","add?")
+                }
+                transaction!!.commit()
                 Log.d("where", "show the process here")
             }
         }
@@ -90,7 +111,10 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         dialog.setCanceledOnTouchOutside(false)
         dialog.fist_input.setOnClickListener {
             dialog.dismiss()
-            createInputDialog()
+            //createInputDialog()
+
+            duration="today"
+            doFakeData(duration)
         }
         dialog.show()
     }
@@ -118,6 +142,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         Log.d("BPA","whaaaaaaaaaaaaaaaaaaa$duration")
         doFakeData(this.duration)
         calendar_text.text = this.duration
+
     }
 
     private fun doFakeData(duration: String){

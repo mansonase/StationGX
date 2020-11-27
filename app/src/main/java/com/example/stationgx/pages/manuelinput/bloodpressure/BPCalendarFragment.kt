@@ -9,15 +9,18 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.stationgx.R
-import com.example.stationgx.ui.custom.calendar.*
+import com.example.stationgx.ui.custom.calendar.bp.FragmentMonth
+import com.example.stationgx.ui.custom.calendar.bp.FragmentSwitcher
+import com.example.stationgx.ui.custom.calendar.bp.FragmentToday
+import com.example.stationgx.ui.custom.calendar.bp.FragmentWeek
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
 
 class BPCalendarFragment : DialogFragment(){
 
     private var today: FragmentToday?=null
-    private var week:FragmentWeek?=null
-    private var month:FragmentMonth?=null
+    private var week: FragmentWeek?=null
+    private var month: FragmentMonth?=null
     private var switcher: FragmentSwitcher?=null
     private lateinit var duration:String
     private lateinit var transaction: FragmentTransaction
@@ -39,12 +42,13 @@ class BPCalendarFragment : DialogFragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val bundle=arguments
-
+        Log.d("bpcalendarNew","oncreateview")
         if (bundle!=null){
             duration= bundle.getString("range").toString()
+            Log.d("bpcalendarNew","duration is $duration")
         }
 
-        val view=inflater.inflate(R.layout.calendar,container,false)
+        val view=inflater.inflate(R.layout.calendar_bp,container,false)
         calendarView=view.findViewById(R.id.custom_calendar)
         dialog?.window?.decorView?.systemUiVisibility=activity?.window?.decorView?.systemUiVisibility!!
         dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
@@ -53,7 +57,7 @@ class BPCalendarFragment : DialogFragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Log.d("bpcalendarNew","onviewcreated")
         switcher= FragmentSwitcher()
         today= FragmentToday()
         week= FragmentWeek()
@@ -157,6 +161,20 @@ class BPCalendarFragment : DialogFragment(){
             }
             "switcher"->{
                 transaction=childFragmentManager.beginTransaction()
+
+                when(duration){
+                    "today"->{
+                        transaction.hide(switcher!!).hide(week!!).hide(month!!).show(today!!)
+                    }
+                    "week"->{
+                        transaction.hide(switcher!!).hide(today!!).hide(month!!).show(week!!)
+                    }
+                    "month"->{
+                        transaction.hide(switcher!!).hide(today!!).hide(week!!).show(month!!)
+                    }
+                }
+
+/*
                 if (today!=null){
                     transaction.hide(today!!)
                 }
@@ -169,12 +187,26 @@ class BPCalendarFragment : DialogFragment(){
                 //switcher=childFragmentManager.findFragmentByTag(TAG_CALENDAR_SWITCHER) as FragmentSwitcher
                 if (switcher==null){
                     switcher= FragmentSwitcher()
-                    transaction.add(R.id.calendar_switcher,switcher!!,TAG_CALENDAR_SWITCHER).commit()
+                    val bundle=Bundle()
+                    bundle.putString("range",duration)
+                    switcher!!.arguments=bundle
+                    transaction.add(R.id.calendar_switcher,switcher!!,TAG_CALENDAR_SWITCHER)
+                    Log.d("bpcalendarfre","switcher is null")
                 }else{
-                    switcher!!.setTextBackground(duration)
+
+                    if (switcher!!.isAdded){
+                        transaction.show(switcher!!)
+                    }else{
+                        transaction.add(R.id.calendar_switcher,switcher!!,TAG_CALENDAR_SWITCHER)
+                    }
+                    switcher!!.fragmentSetDuration(duration)
                     transaction.show(switcher!!)
+                    Log.d("bpcalendarfre","switcher is not null")
                 }
+
+ */
                 transaction.commit()
+
             }
         }
     }
@@ -182,6 +214,19 @@ class BPCalendarFragment : DialogFragment(){
     fun controlCalendar(change:String,duration: String){
         Log.d("bpcalendar","test function")
         showFragment(change,duration)
+    }
+
+    fun controlSwitcher(duration: String){
+        transaction=childFragmentManager.beginTransaction()
+        
+        switcher?.fragmentSetDuration(duration)
+        val bundle=Bundle()
+        bundle.putString("range",duration)
+        (childFragmentManager.findFragmentByTag(TAG_CALENDAR_SWITCHER))?.arguments=bundle
+
+        transaction.hide(week!!).hide(month!!).hide(today!!).show(switcher!!)
+        
+        transaction.commit()
     }
 
     private fun setBackgroundScheme(calendar: Calendar, duration:String){
@@ -307,7 +352,6 @@ class BPCalendarFragment : DialogFragment(){
 
 
         calendarView.setSchemeDate(map)
-
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.stationgx.ui.custom.calendar
+package com.example.stationgx.ui.custom.calendar.weight
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.stationgx.R
 import com.example.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
+import com.example.stationgx.pages.manuelinput.weight.WeightCalendarFragment
 
 class FragmentWeek:Fragment(),View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,7 +32,7 @@ class FragmentWeek:Fragment(),View.OnClickListener {
 
             }
             R.id.calendar_week_return->{
-                (parentFragment as BPCalendarFragment).controlCalendar("switcher","week")
+                (parentFragment as WeightCalendarFragment).controlCalendar("switcher","week")
             }
         }
     }

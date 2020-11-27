@@ -2,6 +2,7 @@ package com.example.stationgx.pages.manuelinput
 
 import android.animation.Animator
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,6 +27,35 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
         entrance_blood_sugar.setOnClickListener(this)
         entrance_spirometer.setOnClickListener(this)
         entrance_others.setOnClickListener(this)
+
+
+
+
+
+        val bundleBP=intent.getBundleExtra("bloodpressure")
+        if (bundleBP!=null){
+            last_blood_pressure.text=bundleBP.getString("value")
+            last_blood_pressure.setTextColor(resources.getColor(R.color.word_blue,null))
+            last_mmhg.text="mmHg"
+
+            val share= getSharedPreferences("bloodpressure", MODE_PRIVATE)
+            share.edit().putString("bloodpressure",bundleBP.getString("value")).apply()
+
+        }
+        val bundleW=intent.getBundleExtra("weight")
+        if (bundleW!=null){
+            last_weight.text=bundleW.getString("kg")
+            last_weight.setTextColor(resources.getColor(R.color.word_blue,null))
+            last_weight_kg.text="kg/BMI"
+            last_bmi.text=bundleW.getString("bmi")
+            last_bmi.setTextColor(resources.getColor(R.color.word_blue,null))
+
+            val share=getSharedPreferences("weight", MODE_PRIVATE)
+            share.edit().putString("kg",bundleW.getString("kg")).putString("bmi",bundleW.getString("bmi")).apply()
+
+        }
+
+        Log.d("tagggg","oncreate")
     }
 
     override fun onClick(v: View?) {

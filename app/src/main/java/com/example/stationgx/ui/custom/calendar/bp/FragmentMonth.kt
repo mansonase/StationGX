@@ -1,4 +1,4 @@
-package com.example.stationgx.ui.custom.calendar
+package com.example.stationgx.ui.custom.calendar.bp
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.stationgx.R
 import com.example.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
+import com.example.stationgx.pages.manuelinput.weight.WeightCalendarFragment
 
 class FragmentMonth:Fragment(),View.OnClickListener {
 
@@ -32,7 +33,7 @@ class FragmentMonth:Fragment(),View.OnClickListener {
 
             }
             R.id.calendar_month_return->{
-                (parentFragment as BPCalendarFragment).controlCalendar("switcher","month")
+                (parentFragment as BPCalendarFragment).controlSwitcher("month")
             }
         }
     }
