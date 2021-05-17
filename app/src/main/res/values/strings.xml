@@ -65,6 +65,29 @@
     <string name="target">Target</string>
     <string name="bmi">BMI</string>
 
+    <!--SignIn-->
+    <string name="signin_hello_wording">Hello, Friend</string>
+    <string name="signin_welcome_wording">Please enter your personal info and start a jounery with us.</string>
+    <string name="signin_btn_signin_wording">SIGN IN</string>
+    <string name="signin_btn_signup_wording">SIGN UP</string>
+    <string name="signin_title_wording">Sign Into Corbit</string>
+    <string name="signin_using_email_wording">Or use your e-mail account</string>
+    <string name="signin_email_hint_wording">Your e-mail</string>
+    <string name="signin_pwd_hint_wording">Password</string>
+    <string name="signin_forgot_pwd_wording">Forgot your password?</string>
+
+    <!--SignUp-->
+    <string name="signup_hello_wording">Welcome Back</string>
+    <string name="signup_welcome_wording">To keep connected with us please login your personal info</string>
+    <string name="signup_btn_signin_wording">SIGN IN</string>
+    <string name="signup_btn_signup_wording">SIGN UP</string>
+    <string name="signup_create_account_wording">Create an account</string>
+    <string name="signup_using_email_wording">Or use your e-mail to registration</string>
+    <string name="signup_first_name_hint_wording">First name</string>
+    <string name="signup_last_name_hint_wording">Last name</string>
+    <string name="signup_email_hint_wording">Your e-mail</string>
+    <string name="signup_pwd_hint_wording">Password</string>
+    <string name="signup_check_email_wording">Check email</string>
 
 
 </resources>

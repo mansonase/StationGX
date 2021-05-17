@@ -10,7 +10,16 @@
         android:theme="@style/FullscreenTheme"
         android:name=".application.StationApp">
 
-        <activity android:name=".pages.mainbaseactivity.MainBaseActivity"
+<!--        <activity android:name=".pages.mainbaseactivity.MainBaseActivity"-->
+<!--            android:screenOrientation="landscape">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity android:name=".pages.mainbaseactivity.MainBaseActivity" android:screenOrientation="landscape"/>
+
+        <activity android:name=".pages.signinup.SignInUpActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

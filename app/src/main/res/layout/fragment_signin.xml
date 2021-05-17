@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_signup_section"
+        android:layout_width="512px"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_signin_blue_round_60"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tv_hello_wording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signin_hello_wording"
+            android:textColor="@color/main_white"
+            android:textSize="48px"
+            android:layout_marginTop="78px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_welcome_wording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signin_welcome_wording"
+            android:textColor="@color/main_white"
+            android:textSize="24px"
+            android:layout_marginTop="140px"
+            android:paddingHorizontal="70px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hello_wording"/>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="192px"
+            android:layout_height="64px"
+            android:text="@string/signin_btn_signup_wording"
+            android:textColor="@color/blue_0288d1"
+            android:textSize="24px"
+            android:layout_marginBottom="24px"
+            android:background="@drawable/bg_white_stroke_0288d1_round_60"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signin_title_wording"
+        android:textColor="@color/main_blue"
+        android:textSize="48px"
+        android:layout_marginTop="30px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/ll_social_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="41px"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="G"
+            android:textColor="@color/main_white"
+            android:textSize="48px"
+            android:layout_marginHorizontal="24px"
+            android:background="@color/main_blue"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="f"
+            android:textColor="@color/main_white"
+            android:textSize="48px"
+            android:layout_marginHorizontal="24px"
+            android:background="@color/main_blue"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_using_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signin_using_email_wording"
+        android:textColor="@color/grey_727478"
+        android:textSize="24px"
+        android:layout_marginTop="35px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintTop_toBottomOf="@id/ll_social_login"/>
+    
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="632px"
+        android:layout_height="64px"
+        android:layout_marginTop="25px"
+        android:hint="@string/signin_email_hint_wording"
+        android:textColorHint="@color/grey_aaabad"
+        android:background="@drawable/bg_grey_e9eaea_round_15"
+        android:paddingHorizontal="50px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintTop_toBottomOf="@id/tv_using_email"/>
+
+    <EditText
+        android:id="@+id/et_pwd"
+        android:layout_width="632px"
+        android:layout_height="64px"
+        android:layout_marginTop="24px"
+        android:hint="@string/signin_pwd_hint_wording"
+        android:textColorHint="@color/grey_aaabad"
+        android:background="@drawable/bg_grey_e9eaea_round_15"
+        android:paddingHorizontal="50px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintTop_toBottomOf="@id/et_email"/>
+
+    <Button
+        android:id="@+id/btn_forgot_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="64px"
+        android:text="@string/signin_forgot_pwd_wording"
+        android:textColor="@color/grey_aaabad"
+        android:textSize="20px"
+        android:padding="16px"
+        android:layout_marginBottom="24px"
+        android:background="@drawable/bg_grey_aaabad_round_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintBottom_toTopOf="@id/btn_signin"/>
+
+    <Button
+        android:id="@+id/btn_signin"
+        android:layout_width="192px"
+        android:layout_height="64px"
+        android:text="@string/signin_btn_signin_wording"
+        android:textColor="@color/main_white"
+        android:textSize="24px"
+        android:layout_marginBottom="24px"
+        android:background="@drawable/bg_blue_0288d1_round_60"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
