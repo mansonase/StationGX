@@ -75,6 +75,10 @@
     <string name="signin_email_hint_wording">Your e-mail</string>
     <string name="signin_pwd_hint_wording">Password</string>
     <string name="signin_forgot_pwd_wording">Forgot your password?</string>
+    <string name="signin_wrong_email_or_pwd_wording">Wrong Password or e-mail. Try again or click Forgot password to reset it.</string>
+    <string name="signin_resend_pwd_title">Resend password</string>
+    <string name="signin_resend_pwd_message_1">We send a letter to:</string>
+    <string name="signin_resend_pwd_message_2">Please check your e-mail, and reset your password.</string>
 
     <!--SignUp-->
     <string name="signup_hello_wording">Welcome Back</string>

@@ -21,7 +21,6 @@ class SignInUpActivity: FragmentActivity() {
         setContentView(R.layout.activity_signin_signup)
 
         signinup_viewpager.adapter = SignInUpPagerAdapter(this)
-
     }
 
     open fun switchToSignUpPage() {
@@ -39,14 +38,8 @@ class SignInUpActivity: FragmentActivity() {
 
         override fun createFragment(position: Int): Fragment {
             when(position){
-                0->{
-//                    pageindicators.selection=0
-                    return SignInFragment()
-                }
-                1->{
-//                    pageindicators.selection=1
-                    return SignUpFragment()
-                }
+                0-> return SignInFragment()
+                1-> return SignUpFragment()
             }
             return SignInFragment()
         }

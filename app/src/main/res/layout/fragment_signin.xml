@@ -74,6 +74,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <Button
+            android:id="@+id/btn_google_signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="G"
@@ -83,6 +84,7 @@
             android:background="@color/main_blue"/>
 
         <Button
+            android:id="@+id/btn_fb_signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="f"
@@ -129,6 +131,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cl_signup_section"
         app:layout_constraintTop_toBottomOf="@id/et_email"/>
+
+    <TextView
+        android:id="@+id/tv_wrong_email_pwd_wording"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/signin_wrong_email_or_pwd_wording"
+        android:textColor="@color/word_pink"
+        android:textSize="24px"
+        android:layout_marginTop="8px"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/et_pwd"
+        app:layout_constraintEnd_toEndOf="@id/et_pwd"
+        app:layout_constraintTop_toBottomOf="@id/et_pwd"/>
 
     <Button
         android:id="@+id/btn_forgot_pwd"
