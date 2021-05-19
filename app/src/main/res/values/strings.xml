@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">StationGX</string>
-    
+
+    <!--Common-->
+    <string name="common_ok">OK</string>
+    <string name="common_no">NO</string>
+    <string name="common_confirm">CONFIRM</string>
+    <string name="common_cancel">CANCEL</string>
+    <string name="common_warning">WARNING</string>
+    <string name="common_error">ERROR</string>
+    <string name="common_tip">TIP</string>
+
     <string name="health_data">Health Data</string>
     <string name="phone">Phone</string>
     <string name="date">Date</string>
@@ -79,6 +88,7 @@
     <string name="signin_resend_pwd_title">Resend password</string>
     <string name="signin_resend_pwd_message_1">We send a letter to:</string>
     <string name="signin_resend_pwd_message_2">Please check your e-mail, and reset your password.</string>
+    <string name="signin_resend_pwd_message">We send a letter to:\n <font color='#0288D1'>xxx</font>%1s\nPlease check your e-mail, and reset your password.</string>
 
     <!--SignUp-->
     <string name="signup_hello_wording">Welcome Back</string>

@@ -1,7 +1,10 @@
 package com.example.stationgx.pages.signinup.signinfragment
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.opengl.Visibility
 import android.os.Bundle
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +25,7 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = SignInFragmentPresenter(this)
+        presenter = SignInFragmentPresenter(this, requireContext())
         btn_signup?.setOnClickListener {
             presenter.clearInputField()
             presenter.switchToSignUpPage()
@@ -35,6 +38,9 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
         }
         btn_signin?.setOnClickListener {
             presenter.startLoginWithEmail(et_email, et_pwd)
+        }
+        btn_forgot_pwd?.setOnClickListener {
+            presenter.forgotPwd(et_email)
         }
     }
 
@@ -63,7 +69,14 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
         TODO("Not yet implemented")
     }
 
-    override fun presentResetPwdAlert() {
-        TODO("Not yet implemented")
+    override fun presentResetPwdAlert(title:String, message: SpannableString) {
+        val dialog = SignInCustomAlertDialog(requireContext())
+        dialog.show()
+        dialog.setCustomTitle(title)
+        dialog.setCustomMessage(message)
+    }
+
+    override fun presentEmailFormatErrorHint() {
+        et_email.error = "Wrong e-mail format"
     }
 }

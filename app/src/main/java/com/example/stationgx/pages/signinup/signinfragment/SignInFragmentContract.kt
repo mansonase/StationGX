@@ -1,5 +1,7 @@
 package com.example.stationgx.pages.signinup.signinfragment
 
+import android.text.SpannableString
+
 class SignInFragmentContract {
     interface ISignInFragmentView {
         fun switchToSignUpPage()
@@ -14,7 +16,9 @@ class SignInFragmentContract {
 
         fun presentEmptyEmailAlert()
 
-        fun presentResetPwdAlert()
+        fun presentResetPwdAlert(title: String, message: SpannableString)
+
+        fun presentEmailFormatErrorHint()
     }
 
     interface ISignInFragmentPresenter {

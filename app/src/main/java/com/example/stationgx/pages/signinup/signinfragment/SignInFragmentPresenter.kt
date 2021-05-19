@@ -1,9 +1,17 @@
 package com.example.stationgx.pages.signinup.signinfragment
 
+import android.content.Context
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.EditText
+import androidx.core.content.ContextCompat
+import androidx.core.text.color
+import com.example.stationgx.R
 
-class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFragmentView): SignInFragmentContract.ISignInFragmentPresenter {
+class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFragmentView, private val context: Context): SignInFragmentContract.ISignInFragmentPresenter {
 
     fun switchToSignUpPage() {
         view.switchToSignUpPage()
@@ -37,6 +45,17 @@ class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFr
     }
 
     fun forgotPwd(email: EditText) {
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches())
+            view.presentEmailFormatErrorHint()
+        else {
+            val title = context.getString(R.string.signin_resend_pwd_title)
+            val message1 = context.getString(R.string.signin_resend_pwd_message_1)
+            val emailStr = email.text.toString()
+            val message2 = context.getString(R.string.signin_resend_pwd_message_2)
+            var spannableString: SpannableString = SpannableString(message1 + "\n" + emailStr + "\n" + message2)
+            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.word_blue)), message1.length, (message1 + "\n" + emailStr).length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
+            view.presentResetPwdAlert(title, spannableString)
+        }
     }
 }
