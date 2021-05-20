@@ -45,8 +45,11 @@ class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFr
     }
 
     fun forgotPwd(email: EditText) {
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches())
-            view.presentEmailFormatErrorHint()
+        if (email == null || email.text.toString() == "") {
+            view.presentEmptyEmailAlert()
+        }
+        else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches())
+            view.presentWrongEmailFormatAlert()
         else {
             val title = context.getString(R.string.signin_resend_pwd_title)
             val message1 = context.getString(R.string.signin_resend_pwd_message_1)

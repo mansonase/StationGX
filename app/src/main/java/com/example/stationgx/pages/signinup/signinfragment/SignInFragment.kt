@@ -62,11 +62,11 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
     }
 
     override fun presentWrongEmailFormatAlert() {
-        TODO("Not yet implemented")
+        et_email.error = getString(R.string.signin_wrong_email_format_wording)
     }
 
     override fun presentEmptyEmailAlert() {
-        TODO("Not yet implemented")
+        et_email.error = getString(R.string.signin_empty_email_hint_wording)
     }
 
     override fun presentResetPwdAlert(title:String, message: SpannableString) {
@@ -74,9 +74,5 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
         dialog.show()
         dialog.setCustomTitle(title)
         dialog.setCustomMessage(message)
-    }
-
-    override fun presentEmailFormatErrorHint() {
-        et_email.error = "Wrong e-mail format"
     }
 }

@@ -17,8 +17,6 @@ class SignInFragmentContract {
         fun presentEmptyEmailAlert()
 
         fun presentResetPwdAlert(title: String, message: SpannableString)
-
-        fun presentEmailFormatErrorHint()
     }
 
     interface ISignInFragmentPresenter {
