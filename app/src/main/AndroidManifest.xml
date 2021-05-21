@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.stationgx">
+    package="com.corbit.stationgx">
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullscreenTheme"
-        android:name=".application.StationApp">
+        android:name="com.corbit.stationgx.application.StationApp">
 
-        <activity android:name=".pages.mainbaseactivity.MainBaseActivity"
+        <activity android:name="com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,16 +18,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".pages.phone.PhoneActivity" />
-        <activity android:name=".pages.healthdata.HealthDataActivity"/>
-        <activity android:name=".pages.manuelinput.ManualInputActivity"/>
-        <activity android:name=".pages.measurement.MeasurementActivity"/>
-        <activity android:name=".pages.medication.MedicationActivity"/>
-        <activity android:name=".pages.myprofile.MyProfileActivity"/>
-        <activity android:name=".pages.telehealth.TeleHealthActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.phone.PhoneActivity" />
+        <activity android:name="com.corbit.stationgx.pages.healthdata.HealthDataActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.ManualInputActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.measurement.MeasurementActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.medication.MedicationActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.myprofile.MyProfileActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.telehealth.TeleHealthActivity"/>
 
-        <activity android:name=".pages.manuelinput.bloodpressure.BloodPressureActivity"/>
-        <activity android:name=".pages.manuelinput.weight.WeightActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.weight.WeightActivity"/>
 
 
         <meta-data

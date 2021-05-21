@@ -21,6 +21,9 @@
     <string name="last_document_at">Last document at </string>
 
     <string name="save">Save</string>
+    <string name="common_alert">ALERT</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Cancel</string>
 
     <string name="welcome_text">Hi Mary,\nHere is your health flower!</string>
 
@@ -40,6 +43,7 @@
     <string name="blood_sugar">Blood Sugar</string>
     <string name="spirometer">Spirometer</string>
     <string name="others">Others</string>
+
     
     <string name="eistein_quotes">\"I have no special talent.\nI am only passionately curious.\"</string>
     <string name="eistein">Albert Eistein</string>
@@ -57,6 +61,8 @@
     <string name="individual_dp_range">Individual DP Range</string>
     <string name="systolic_diastolic">Systolic / Diastolic</string>
     
+    <string name="manual_input_invalid_blood_pressure">wrong blood pressure value, please enter again.</string>
+    <string name="manual_input_outofrange_blood_pressure">blood pressure value NOT in normal range, confirm to save this record?</string>
     <!-- weight txt-->
     <string name="normal_bmi_range">Normal BMI Range</string>
     <string name="target_weight">Target Weight:</string>
