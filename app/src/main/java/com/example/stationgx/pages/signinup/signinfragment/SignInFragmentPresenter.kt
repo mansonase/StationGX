@@ -3,18 +3,18 @@ package com.example.stationgx.pages.signinup.signinfragment
 import android.content.Context
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.EditText
 import androidx.core.content.ContextCompat
-import androidx.core.text.color
 import com.example.stationgx.R
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFragmentView, private val context: Context): SignInFragmentContract.ISignInFragmentPresenter {
 
     fun switchToSignUpPage() {
-        view.switchToSignUpPage()
+        view.goToSignUpPage()
     }
 
     fun clearInputField() {
@@ -28,10 +28,21 @@ class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFr
         var emailStr = email.text.toString()
         var pwdStr = pwd.text.toString()
 
-        if ("abc@abc.com" == emailStr && "123qwe" == pwdStr) {
+//        if ("abc@abc.com" == emailStr && "123qwe" == pwdStr) {
+//            view.hideWrongPwdAlert()
+//        }
+//        else {
+//            view.showWrongPwdAlert()
+//        }
+
+        val auth = Firebase.auth
+        auth.signInWithEmailAndPassword(emailStr, pwdStr).addOnSuccessListener {
+            Log.d("de", "success:　${it.user?.uid}")
             view.hideWrongPwdAlert()
-        }
-        else {
+            view.clearInputField()
+            view.goToMainPage()
+
+        }.addOnFailureListener {
             view.showWrongPwdAlert()
         }
     }
@@ -51,14 +62,17 @@ class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFr
         else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches())
             view.presentWrongEmailFormatAlert()
         else {
-            val title = context.getString(R.string.signin_resend_pwd_title)
-            val message1 = context.getString(R.string.signin_resend_pwd_message_1)
-            val emailStr = email.text.toString()
-            val message2 = context.getString(R.string.signin_resend_pwd_message_2)
-            var spannableString: SpannableString = SpannableString(message1 + "\n" + emailStr + "\n" + message2)
-            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.word_blue)), message1.length, (message1 + "\n" + emailStr).length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            val auth = Firebase.auth
+            auth.sendPasswordResetEmail(email.text.toString()).addOnSuccessListener {
+                val title = context.getString(R.string.signin_resend_pwd_title)
+                val message1 = context.getString(R.string.signin_resend_pwd_message_1)
+                val emailStr = email.text.toString()
+                val message2 = context.getString(R.string.signin_resend_pwd_message_2)
+                var spannableString: SpannableString = SpannableString(message1 + "\n" + emailStr + "\n" + message2)
+                spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.word_blue)), message1.length, (message1 + "\n" + emailStr).length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-            view.presentResetPwdAlert(title, spannableString)
+                view.presentResetPwdAlert(title, spannableString)
+            }
         }
     }
 }

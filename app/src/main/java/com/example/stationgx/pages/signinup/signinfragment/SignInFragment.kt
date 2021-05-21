@@ -1,30 +1,38 @@
 package com.example.stationgx.pages.signinup.signinfragment
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.SpannableString
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.stationgx.R
 import com.example.stationgx.pages.signinup.SignInUpActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_signin.*
 
 class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresenter, SignInFragmentContract.ISignInFragmentView {
 
     lateinit var presenter: SignInFragmentPresenter
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        auth = Firebase.auth
         return inflater.inflate(R.layout.fragment_signin, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (auth.currentUser == null) {
+            Log.d("de", "currentUser == null")
+        }
+        else {
+            Log.d("de", "currentUser != null")
+        }
         presenter = SignInFragmentPresenter(this, requireContext())
         btn_signup?.setOnClickListener {
             presenter.clearInputField()
@@ -44,8 +52,12 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
         }
     }
 
-    override fun switchToSignUpPage() {
-        (activity as SignInUpActivity).switchToSignUpPage()
+    override fun goToMainPage() {
+        (activity as SignInUpActivity).goToMainPage()
+    }
+
+    override fun goToSignUpPage() {
+        (activity as SignInUpActivity).goToSignUpPage()
     }
 
     override fun clearInputField() {
@@ -74,5 +86,11 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
         dialog.show()
         dialog.setCustomTitle(title)
         dialog.setCustomMessage(message)
+        dialog.getNegativeBtn().setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.getPositiveBtn().setOnClickListener {
+            dialog.dismiss()
+        }
     }
 }

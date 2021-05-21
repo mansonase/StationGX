@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.icu.text.CaseMap
 import android.os.Bundle
 import android.text.SpannableString
+import android.widget.Button
 import android.widget.TextView
 import com.example.stationgx.R
 import kotlinx.android.synthetic.main.bg_signin_custom_alert_dialog.*
@@ -21,14 +22,6 @@ class SignInCustomAlertDialog(context: Context): Dialog(context) {
         btn_close.setOnClickListener {
             dismiss()
         }
-
-        btn_negative.setOnClickListener {
-            dismiss()
-        }
-
-        btn_positive.setOnClickListener {
-
-        }
     }
 
     open fun setCustomTitle(title: String?) {
@@ -37,5 +30,13 @@ class SignInCustomAlertDialog(context: Context): Dialog(context) {
 
     open fun setCustomMessage(message: SpannableString?) {
         tv_custom_dialog_message?.setText(message, TextView.BufferType.SPANNABLE)
+    }
+
+    open fun getNegativeBtn(): Button {
+        return btn_negative
+    }
+
+    open fun getPositiveBtn(): Button {
+        return btn_positive
     }
 }

@@ -1,5 +1,6 @@
 package com.example.stationgx.pages.signinup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -23,12 +24,17 @@ class SignInUpActivity: FragmentActivity() {
         signinup_viewpager.adapter = SignInUpPagerAdapter(this)
     }
 
-    open fun switchToSignUpPage() {
+    open fun goToSignUpPage() {
         signinup_viewpager.currentItem = 1
     }
 
-    open fun switchToSignInPage() {
+    open fun goToSignInPage() {
         signinup_viewpager.currentItem = 0
+    }
+
+    open fun goToMainPage() {
+        val intent = Intent(this, MainBaseActivity::class.java)
+        startActivity(intent)
     }
 
     private inner class SignInUpPagerAdapter(signInUpActivity: SignInUpActivity) : FragmentStateAdapter(signInUpActivity){

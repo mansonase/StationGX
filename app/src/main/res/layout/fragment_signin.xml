@@ -125,6 +125,7 @@
         android:layout_height="64px"
         android:layout_marginTop="24px"
         android:hint="@string/signin_pwd_hint_wording"
+        android:inputType="textPassword"
         android:textColorHint="@color/grey_aaabad"
         android:background="@drawable/bg_grey_e9eaea_round_15"
         android:paddingHorizontal="50px"

@@ -4,7 +4,9 @@ import android.text.SpannableString
 
 class SignInFragmentContract {
     interface ISignInFragmentView {
-        fun switchToSignUpPage()
+        fun goToMainPage()
+
+        fun goToSignUpPage()
 
         fun clearInputField()
 
