@@ -40,6 +40,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_hello_wording"/>
         
         <Button
+            android:id="@+id/btn_signin"
             android:layout_width="192px"
             android:layout_height="64px"
             android:text="@string/signup_btn_signin_wording"
@@ -76,6 +77,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_create_account_wording">
 
         <Button
+            android:id="@+id/btn_google_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="G"
@@ -85,6 +87,7 @@
             android:background="@color/main_blue"/>
 
         <Button
+            android:id="@+id/btn_facebook_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="f"
@@ -157,7 +160,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_email"/>
 
     <Button
-        android:id="@+id/btn_signin"
+        android:id="@+id/btn_signup"
         android:layout_width="192px"
         android:layout_height="64px"
         android:text="@string/signup_btn_signup_wording"
