@@ -2,6 +2,7 @@ package com.example.stationgx.pages.signinup
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -15,6 +16,7 @@ import com.example.stationgx.pages.signinup.signinfragment.SignInFragment
 import com.example.stationgx.pages.signinup.signupfragment.SignUpFragment
 import kotlinx.android.synthetic.main.activity_signin_signup.*
 import kotlinx.android.synthetic.main.main_base.*
+import kotlin.math.sign
 
 class SignInUpActivity: FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,7 @@ class SignInUpActivity: FragmentActivity() {
         setContentView(R.layout.activity_signin_signup)
 
         signinup_viewpager.adapter = SignInUpPagerAdapter(this)
+        signinup_viewpager.isUserInputEnabled = false
     }
 
     open fun goToSignUpPage() {

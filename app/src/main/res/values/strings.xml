@@ -104,6 +104,10 @@
     <string name="signup_email_hint_wording">Your e-mail</string>
     <string name="signup_pwd_hint_wording">Password</string>
     <string name="signup_check_email_wording">Check email</string>
-
+    <string name="signup_empty_email_hint_wording">Empty e-mail</string>
+    <string name="signup_empty_pwd_hint_wording">Empty password</string>
+    <string name="signup_wrong_email_format_wording">Wrong e-mail format</string>
+    <string name="signup_wrong_pwd_format_wording">The password must be at least 6 characters long and may include numbers, letters but not spaces. </string>
+    <string name="signup_pwd_verify_wording">Verify the password here</string>
 
 </resources>
