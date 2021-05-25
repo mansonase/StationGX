@@ -1,6 +1,7 @@
 package com.example.stationgx.pages.signinup.signupfragment
 
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,13 +53,42 @@ class SignUpFragment: Fragment(), SignUpFragmentContract.ISignUpFragmentView{
             presenter.checkEmailValidation(text.toString())
         }
 
-        et_pwd.doOnTextChanged { text, start, before, count ->
-            presenter.checkPwdValidation(text.toString())
+//        et_pwd.doOnTextChanged { text, start, before, count ->
+//            presenter.checkPwdValidation(text.toString())
+//        }
+
+        et_pwd.doAfterTextChanged {
+            presenter.checkPwdValidation(it.toString())
         }
 
+//        et_pwd_confirm.doOnTextChanged { text, start, before, count ->
+//            presenter.checkPwdConfirmValidation(et_pwd?.text.toString(), text.toString())
+//        }
+
         et_pwd_confirm.doAfterTextChanged {
-            presenter.checkPwdConfirmValidation(et_pwd.text.toString(), it.toString())
+            presenter.checkPwdConfirmValidation(et_pwd?.text.toString(), it.toString())
         }
+
+        ib_pwd_visibility.setOnClickListener {
+            presenter.updatePwdVisibility()
+        }
+
+        ib_pwd_confirm_visibility.setOnClickListener {
+            presenter.updatePwdConfirmVisibility()
+        }
+    }
+
+    override fun updatePwdInputMethod(visibility: Boolean) {
+        if (visibility) {
+            et_pwd.transformationMethod = null
+        }
+        else {
+            et_pwd.transformationMethod = PasswordTransformationMethod()
+        }
+    }
+
+    override fun goToMainPage() {
+        (activity as SignInUpActivity).goToMainPage()
     }
 
     override fun goToSignInPage() {
@@ -86,9 +116,41 @@ class SignUpFragment: Fragment(), SignUpFragmentContract.ISignUpFragmentView{
 
     override fun showPwdConfirmInputField(show: Boolean) {
         et_pwd_confirm?.visibility = if(show) View.VISIBLE else View.GONE
+        ib_pwd_confirm_visibility?.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun setSignUpBtnEnable(enable: Boolean) {
         btn_signup?.isEnabled = enable
+    }
+
+    override fun updatePwdVisibility(visibility: Boolean) {
+        if (visibility) {
+            ib_pwd_visibility.setImageResource(R.drawable.ic_visibility)
+        }
+        else {
+            ib_pwd_visibility.setImageResource(R.drawable.ic_visibility_off)
+        }
+    }
+
+    override fun updatePwdConfirmVisibility(visibility: Boolean) {
+        if (visibility) {
+            ib_pwd_confirm_visibility.setImageResource(R.drawable.ic_visibility)
+        }
+        else {
+            ib_pwd_confirm_visibility.setImageResource(R.drawable.ic_visibility_off)
+        }
+    }
+
+    override fun updatePwdConfirmInputMethod(visibility: Boolean) {
+        if (visibility) {
+            et_pwd_confirm.transformationMethod = null
+        }
+        else {
+            et_pwd_confirm.transformationMethod = PasswordTransformationMethod()
+        }
+    }
+
+    override fun updatePwdConfirmCorrect() {
+        ib_pwd_confirm_visibility.setImageResource(R.drawable.ic_check)
     }
 }

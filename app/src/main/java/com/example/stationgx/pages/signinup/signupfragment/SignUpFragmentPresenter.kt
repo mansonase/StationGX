@@ -2,12 +2,17 @@ package com.example.stationgx.pages.signinup.signupfragment
 
 import android.util.Log
 import android.widget.EditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class SignUpFragmentPresenter(private val view: SignUpFragmentContract.ISignUpFragmentView) {
+
+    var pwdVisibility: Boolean = false
+    var pwdConfirmVisibility: Boolean = false
+
     open fun startSignUp(firstName: EditText, lastName: EditText, email: EditText, pwd: EditText, pwdConfirm: EditText) {
-        Log.d("de", "startSignUp")
         val firstNameStr = firstName?.text.toString()
         val lastNameStr = lastName?.text.toString()
         val emailStr = email?.text.toString()
@@ -20,7 +25,8 @@ class SignUpFragmentPresenter(private val view: SignUpFragmentContract.ISignUpFr
         else {
             val auth = Firebase.auth
             auth.createUserWithEmailAndPassword(emailStr, pwdStr).addOnSuccessListener {
-                Log.d("de", "Sign up success, uid: ${it?.user?.uid}")
+                val user = Firebase.auth.currentUser
+                view.goToMainPage()
             }.addOnFailureListener {
                 Log.d("de", "Sign up failed, ${it.toString()}")
             }
@@ -73,11 +79,23 @@ class SignUpFragmentPresenter(private val view: SignUpFragmentContract.ISignUpFr
     open fun checkPwdConfirmValidation(pwdStr: String, pwdConfirmStr: String) {
         if (pwdConfirmStr == pwdStr) {
             view.setSignUpBtnEnable(true)
+            view.updatePwdConfirmCorrect()
         }
         else {
             view.setSignUpBtnEnable(false)
+            view.updatePwdConfirmVisibility(this.pwdConfirmVisibility)
         }
     }
 
+    open fun updatePwdVisibility() {
+        this.pwdVisibility = !this.pwdVisibility
+        view.updatePwdVisibility(this.pwdVisibility)
+        view.updatePwdInputMethod(this.pwdVisibility)
+    }
 
+    open fun updatePwdConfirmVisibility() {
+        this.pwdConfirmVisibility = !this.pwdConfirmVisibility
+        view.updatePwdConfirmVisibility(this.pwdConfirmVisibility)
+        view.updatePwdConfirmInputMethod(this.pwdConfirmVisibility)
+    }
 }

@@ -27,12 +27,6 @@ class SignInFragment: Fragment(), SignInFragmentContract.ISignInFragmentPresente
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (auth.currentUser == null) {
-            Log.d("de", "currentUser == null")
-        }
-        else {
-            Log.d("de", "currentUser != null")
-        }
         presenter = SignInFragmentPresenter(this, requireContext())
         btn_signup?.setOnClickListener {
             presenter.clearInputField()

@@ -2,6 +2,8 @@ package com.example.stationgx.pages.signinup.signupfragment
 
 class SignUpFragmentContract {
     interface ISignUpFragmentView {
+        fun goToMainPage()
+
         fun goToSignInPage()
 
         fun clearInputField()
@@ -15,6 +17,16 @@ class SignUpFragmentContract {
         fun showPwdConfirmInputField(show: Boolean)
 
         fun setSignUpBtnEnable(enable: Boolean)
+
+        fun updatePwdVisibility(visibility: Boolean)
+
+        fun updatePwdInputMethod(visibility: Boolean)
+
+        fun updatePwdConfirmVisibility(visibility: Boolean)
+
+        fun updatePwdConfirmInputMethod(visibility: Boolean)
+
+        fun updatePwdConfirmCorrect()
     }
 
     interface ISignUpFragmentPresenter {
