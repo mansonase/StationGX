@@ -78,23 +78,23 @@
 
         <Button
             android:id="@+id/btn_google_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64px"
+            android:layout_height="64px"
             android:text="G"
             android:textColor="@color/main_white"
             android:textSize="48px"
             android:layout_marginHorizontal="24px"
-            android:background="@color/main_blue"/>
+            android:background="@drawable/bg_main_blue_round_60"/>
 
         <Button
             android:id="@+id/btn_facebook_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64px"
+            android:layout_height="64px"
             android:text="f"
             android:textColor="@color/main_white"
             android:textSize="48px"
             android:layout_marginHorizontal="24px"
-            android:background="@color/main_blue"/>
+            android:background="@drawable/bg_main_blue_round_60"/>
     </LinearLayout>
 
     <TextView
