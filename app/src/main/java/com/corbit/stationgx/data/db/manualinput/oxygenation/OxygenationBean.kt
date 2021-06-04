@@ -1,4 +1,4 @@
-package com.corbit.stationgx.data.db.manualinput
+package com.corbit.stationgx.data.db.manualinput.oxygenation
 
 import io.realm.RealmObject
 

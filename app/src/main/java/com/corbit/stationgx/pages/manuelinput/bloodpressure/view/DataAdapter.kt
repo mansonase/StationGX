@@ -1,4 +1,4 @@
-package com.corbit.stationgx.pages.manuelinput.bloodpressure
+package com.corbit.stationgx.pages.manuelinput.bloodpressure.view
 
 import android.view.LayoutInflater
 import android.view.View

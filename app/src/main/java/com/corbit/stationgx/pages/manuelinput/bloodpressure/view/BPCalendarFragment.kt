@@ -1,4 +1,4 @@
-package com.corbit.stationgx.pages.manuelinput.bloodpressure
+package com.corbit.stationgx.pages.manuelinput.bloodpressure.view
 
 import android.os.Bundle
 import android.util.Log

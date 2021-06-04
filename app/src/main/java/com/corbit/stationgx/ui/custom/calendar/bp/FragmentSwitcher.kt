@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.corbit.stationgx.R
-import com.corbit.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BPCalendarFragment
 
 class FragmentSwitcher:Fragment(),View.OnClickListener{
 

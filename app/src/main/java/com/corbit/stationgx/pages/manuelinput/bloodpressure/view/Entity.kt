@@ -1,4 +1,4 @@
-package com.corbit.stationgx.pages.manuelinput.bloodpressure
+package com.corbit.stationgx.pages.manuelinput.bloodpressure.view
 
 class Entity(private var date: String, private var time: String,  private var bloodPressure: String, private var note: String, private var abnormal:Boolean) {
 

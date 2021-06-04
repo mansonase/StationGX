@@ -1,4 +1,4 @@
-package com.corbit.stationgx.data.db.manualinput
+package com.corbit.stationgx.data.db.manualinput.weight
 
 import io.realm.RealmObject
 

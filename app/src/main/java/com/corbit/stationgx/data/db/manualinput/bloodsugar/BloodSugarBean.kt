@@ -1,4 +1,4 @@
-package com.corbit.stationgx.data.db.manualinput
+package com.corbit.stationgx.data.db.manualinput.bloodsugar
 
 import io.realm.RealmObject
 

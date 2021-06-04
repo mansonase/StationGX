@@ -1,35 +1,29 @@
-package com.corbit.stationgx.pages.manuelinput.bloodpressure
+package com.corbit.stationgx.pages.manuelinput.bloodpressure.view
 
-import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.corbit.stationgx.R
 import com.corbit.stationgx.base.BaseActivity
-import com.corbit.stationgx.data.db.manualinput.BloodPressureBean
+import com.corbit.stationgx.data.db.manualinput.bloodpressure.BloodPressureBean
 import com.corbit.stationgx.pages.manuelinput.ManualInputActivity
 import com.corbit.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
 import com.corbit.stationgx.ui.mpchart.BloodPressureBarChart
 import com.corbit.stationgx.utils.Utils
 import com.github.mikephil.charting.data.BarData
 import io.realm.Realm
-import io.realm.kotlin.createObject
 import kotlinx.android.synthetic.main.dialog_blood_pressure_input.*
-import kotlinx.android.synthetic.main.dialog_blood_pressure_input.view.*
 import kotlinx.android.synthetic.main.first_start_input.*
 import kotlinx.android.synthetic.main.main_blood_pressure.*
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.logging.SimpleFormatter
 import kotlin.collections.ArrayList
 
 class BloodPressureActivity:BaseActivity(),View.OnClickListener {
@@ -42,7 +36,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
     private var bpBarChart: BloodPressureBarChart?=null
 
     private var transaction:FragmentTransaction?=null
-    private var fragmentCalendar:BPCalendarFragment?=null
+    private var fragmentCalendar: BPCalendarFragment?=null
 
     private var barChart: BloodPressureBackgroundBarChart? =null
     private var barData: BarData?=null
@@ -240,11 +234,14 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         val date_Time=dialog.dialog_date.text.toString()+" "+dialog.dialog_time.text.toString()
         cal.time=format.parse(date_Time)
 
+       /*
         bp.year=cal.get(Calendar.YEAR)
         bp.month=cal.get(Calendar.MONTH)
         bp.day=cal.get(Calendar.DAY_OF_MONTH)
         bp.hour=cal.get(Calendar.HOUR_OF_DAY)
         bp.minute=cal.get(Calendar.MINUTE)
+
+        */
 
         // TODO: 2021/5/21 還有note還沒save
 
@@ -325,7 +322,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         layoutManager.orientation=LinearLayoutManager.VERTICAL
         val dataList=findViewById<RecyclerView>(R.id.recyclerview_blood_pressure)
         dataList.layoutManager=layoutManager
-        dataList.adapter=DataAdapter(list)
+        dataList.adapter= DataAdapter(list)
     }
 
 

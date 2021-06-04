@@ -7,7 +7,7 @@ import com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivityModule
 import com.corbit.stationgx.pages.mainbaseactivity.MainBaseFragmentProvider
 import com.corbit.stationgx.pages.manuelinput.ManualInputActivity
 import com.corbit.stationgx.pages.manuelinput.ManualInputActivityModule
-import com.corbit.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BloodPressureActivity
 import com.corbit.stationgx.pages.manuelinput.weight.WeightActivity
 import com.corbit.stationgx.pages.measurement.MeasurementActivity
 import com.corbit.stationgx.pages.measurement.MeasurementActivityModule
@@ -56,7 +56,7 @@ abstract class ActivityBuilder {
     abstract fun bindMyProfileActivity():MyProfileActivity
 
     @ContributesAndroidInjector()
-    abstract fun bindBloodPressureActivity():BloodPressureActivity
+    abstract fun bindBloodPressureActivity(): BloodPressureActivity
 
     @ContributesAndroidInjector()
     abstract fun bindWeightActivity():WeightActivity

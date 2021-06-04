@@ -26,7 +26,7 @@
         <activity android:name="com.corbit.stationgx.pages.myprofile.MyProfileActivity"/>
         <activity android:name="com.corbit.stationgx.pages.telehealth.TeleHealthActivity"/>
 
-        <activity android:name="com.corbit.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity"/>
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BloodPressureActivity"/>
         <activity android:name="com.corbit.stationgx.pages.manuelinput.weight.WeightActivity"/>
 
 

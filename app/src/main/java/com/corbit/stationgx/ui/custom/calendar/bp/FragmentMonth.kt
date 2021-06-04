@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.corbit.stationgx.R
-import com.corbit.stationgx.pages.manuelinput.bloodpressure.BPCalendarFragment
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BPCalendarFragment
 
 class FragmentMonth:Fragment(),View.OnClickListener {
 

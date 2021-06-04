@@ -8,7 +8,7 @@ import android.view.View
 import com.corbit.stationgx.R
 import com.corbit.stationgx.base.BaseActivity
 import com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivity
-import com.corbit.stationgx.pages.manuelinput.bloodpressure.BloodPressureActivity
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BloodPressureActivity
 import com.corbit.stationgx.pages.manuelinput.weight.WeightActivity
 import kotlinx.android.synthetic.main.main_manualinput.*
 
@@ -80,7 +80,7 @@ class ManualInputActivity: BaseActivity(),View.OnClickListener {
                     }
 
                     override fun onAnimationEnd(animation: Animator?) {
-                        val intent=Intent(this@ManualInputActivity,BloodPressureActivity::class.java)
+                        val intent=Intent(this@ManualInputActivity, BloodPressureActivity::class.java)
                         startActivity(intent)
                     }
 
