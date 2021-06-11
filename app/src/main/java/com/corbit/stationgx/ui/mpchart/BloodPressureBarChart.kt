@@ -10,9 +10,9 @@ import com.github.mikephil.charting.data.BarDataSet
 
 class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChart, private val duration:String):ChartContract<BloodPressureBackgroundBarChart,BarData> {
 
-    val todayInterval= arrayOf("0:00","06:00","12:00","18:00","24:00")
-    val weekInterval= arrayOf("Mon","Tue","Wed","Thu","Fri","Sat","Sun","")
-    val monthInterval= arrayOf("","7th","14th","21th","28th","")
+    private val todayInterval= arrayOf("0:00","06:00","12:00","18:00","24:00")
+    private val weekInterval= arrayOf("Mon","Tue","Wed","Thu","Fri","Sat","Sun","")
+    private val monthInterval= arrayOf("","7th","14th","21th","28th","")
 
 
     override fun getChart(): BloodPressureBackgroundBarChart {

@@ -14,10 +14,12 @@ import com.corbit.stationgx.R
 import com.corbit.stationgx.base.BaseActivity
 import com.corbit.stationgx.data.db.manualinput.bloodpressure.BloodPressureBean
 import com.corbit.stationgx.pages.manuelinput.ManualInputActivity
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.BloodPressurePresenter
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.Contract
 import com.corbit.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
 import com.corbit.stationgx.ui.mpchart.BloodPressureBarChart
-import com.corbit.stationgx.utils.Utils
 import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarEntry
 import io.realm.Realm
 import kotlinx.android.synthetic.main.dialog_blood_pressure_input.*
 import kotlinx.android.synthetic.main.first_start_input.*
@@ -26,7 +28,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class BloodPressureActivity:BaseActivity(),View.OnClickListener {
+class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<BloodPressureBean,BarEntry> {
 
     private var isFirst=true
 
@@ -42,14 +44,14 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
     private var barData: BarData?=null
     private lateinit var list:ArrayList<Entity>
 
-    private var realm:Realm?=null
+
+    private lateinit var mPresenter:Contract.IPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_blood_pressure)
 
 
-        realm= Realm.getDefaultInstance()
         // todo 感覺可以用rxJava
 
 
@@ -59,6 +61,15 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         if (isFirst){
             createFirstDialog()
         }
+        mPresenter=BloodPressurePresenter(this)
+    }
+
+    override fun updateChart(array: BarEntry) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateTable(list: ArrayList<BloodPressureBean>) {
+        TODO("Not yet implemented")
     }
 
     override fun onClick(v: View?) {
@@ -134,7 +145,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
 
         val calendar=Calendar.getInstance()
         val formatDate=SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
-        val formatTime=SimpleDateFormat("aa HH:mm")
+        val formatTime=SimpleDateFormat("aa HH:mm",Locale.getDefault())
 
 
         val dialog=Dialog(this)
@@ -164,7 +175,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
                 presentBloodPressureInvalidAlert()
             }
 
-            //dialog.dismiss()
+            dialog.dismiss()
 
 
             Log.d("createinputdialog","${dialog.input_systolic.text}, date is ${dialog.dialog_date.text}")
@@ -202,7 +213,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
                 .setTitle(R.string.common_alert)
                 .setMessage(R.string.manual_input_outofrange_blood_pressure)
                 .setPositiveButton(R.string.common_ok){dialog,which->
-                    // TODO: 2021/5/19 save data
+
                     saveBloodPressureData(dialog as Dialog)
                 }
                 .setNegativeButton(R.string.common_cancel){dialog,which->}
@@ -219,10 +230,21 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
     private fun saveBloodPressureData(dialog: Dialog){
 
 
+        val calendar=Calendar.getInstance()
+
+        val timeText=dialog.dialog_date.text.toString()+" "+dialog.dialog_time.text.toString()
+        val format=SimpleDateFormat("MMMM dd, yyyy aa HH:mm",Locale.getDefault())
+
+        calendar.time=format.parse(timeText)
+
+Log.d("yeahyeahyeah",timeText)
+        mPresenter.saveData(calendar.timeInMillis, dialog.input_systolic.text.toString().toInt(), dialog.input_diastolic.text.toString().toInt(), (calendar.timeInMillis/1000).toInt(), "")
+
+/*
+
         if (realm==null)return
 
         realm!!.beginTransaction()
-
         val bp= realm!!.createObject(BloodPressureBean::class.java)
         bp.keyIndex=Utils.createKeyIndex()
         // TODO: 2021/5/21 key/index如何產生? 由本地端或後端取得? 再討論
@@ -233,6 +255,8 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         val format=SimpleDateFormat("MMMM dd, yyyy aa HH:mm", Locale.getDefault())
         val date_Time=dialog.dialog_date.text.toString()+" "+dialog.dialog_time.text.toString()
         cal.time=format.parse(date_Time)
+
+         */
 
        /*
         bp.year=cal.get(Calendar.YEAR)
@@ -246,7 +270,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         // TODO: 2021/5/21 還有note還沒save
 
 
-        realm!!.commitTransaction()
+        //realm!!.commitTransaction()
     }
 
 /*
@@ -282,6 +306,9 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener {
         barChart?.clear()
 
     }
+
+
+
     private fun doFakeData(duration: String){
         bpBarChart=null
         bpBarChart= BloodPressureBarChart(findViewById(R.id.blood_pressure_barchart),duration)

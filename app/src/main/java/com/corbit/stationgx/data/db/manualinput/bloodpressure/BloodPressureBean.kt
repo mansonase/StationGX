@@ -5,7 +5,6 @@ import io.realm.annotations.PrimaryKey
 
 open class BloodPressureBean : RealmObject() {
 
-    private val TAG="BloodPressure"
 
     @PrimaryKey
     var keyIndex:Long=0

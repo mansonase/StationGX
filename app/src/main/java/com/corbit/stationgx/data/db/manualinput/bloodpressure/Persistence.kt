@@ -1,9 +1,14 @@
 package com.corbit.stationgx.data.db.manualinput.bloodpressure
 
-interface Persistence {
+interface Persistence<T> {
 
 
-    fun sentToRealm(bpBean: BloodPressureBean)
+    fun sentToRealm(data:T)
     fun queryRealm(query:String)
-    fun updatePerson(bpBean: BloodPressureBean)
+    fun updatePerson(data: T)
+
+    fun getDayData(startTime: Int)
+    fun getWeekData(startTime: Int)
+    fun getMonthData(startTime: Int)
+
 }
