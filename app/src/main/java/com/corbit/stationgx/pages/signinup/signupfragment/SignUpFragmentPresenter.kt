@@ -2,10 +2,13 @@ package com.corbit.stationgx.pages.signinup.signupfragment
 
 import android.util.Log
 import android.widget.EditText
+import com.google.android.gms.common.util.CollectionUtils.mapOf
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class SignUpFragmentPresenter(private val view: SignUpFragmentContract.ISignUpFragmentView) {
 
@@ -24,9 +27,25 @@ class SignUpFragmentPresenter(private val view: SignUpFragmentContract.ISignUpFr
         }
         else {
             val auth = Firebase.auth
+
             auth.createUserWithEmailAndPassword(emailStr, pwdStr).addOnSuccessListener {
                 val user = Firebase.auth.currentUser
-                view.goToMainPage()
+
+                val map: MutableMap<String, Any> = HashMap()
+                map["userEmail"] = emailStr
+                map["userFirstName"] = firstNameStr
+                map["userLastName"] = lastNameStr
+                map["name"] = "$firstNameStr $lastNameStr"
+                map["userUid"] = user!!.uid
+
+                val ref = Firebase.database.reference
+                ref.child("emergencyusers").child(user!!.uid).setValue(map).addOnSuccessListener {
+                    Log.d("de", "add user success")
+                    view.goToMainPage()
+                }.addOnFailureListener {
+                    Log.d("de", "add user failed, ${it.toString()}")
+                }
+
             }.addOnFailureListener {
                 Log.d("de", "Sign up failed, ${it.toString()}")
             }

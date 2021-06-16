@@ -47,10 +47,6 @@ class SignUpFragment: Fragment(), SignUpFragmentContract.ISignUpFragmentView{
             presenter.startSignUp(et_first_name, et_last_name, et_email, et_pwd, et_pwd_confirm)
         }
 
-//        et_email.doOnTextChanged { text, start, before, count ->
-//            presenter.checkEmailValidation(text.toString())
-//        }
-
         et_email.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
             }
@@ -63,13 +59,6 @@ class SignUpFragment: Fragment(), SignUpFragmentContract.ISignUpFragmentView{
             }
 
         })
-//        et_pwd.doOnTextChanged { text, start, before, count ->
-//            presenter.checkPwdValidation(text.toString())
-//        }
-
-//        et_pwd.doAfterTextChanged {
-//            presenter.checkPwdValidation(it.toString())
-//        }
 
         et_pwd.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
@@ -83,14 +72,6 @@ class SignUpFragment: Fragment(), SignUpFragmentContract.ISignUpFragmentView{
             }
 
         })
-
-//        et_pwd_confirm.doOnTextChanged { text, start, before, count ->
-//            presenter.checkPwdConfirmValidation(et_pwd?.text.toString(), text.toString())
-//        }
-
-//        et_pwd_confirm.doAfterTextChanged {
-//            presenter.checkPwdConfirmValidation(et_pwd?.text.toString(), it.toString())
-//        }
 
         et_pwd_confirm.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
