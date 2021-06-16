@@ -10,8 +10,17 @@
         android:theme="@style/FullscreenTheme"
         android:name="com.corbit.stationgx.application.StationApp">
 
-        <activity android:name="com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivity"
-            android:screenOrientation="landscape">
+<!--        <activity android:name="com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivity"-->
+<!--        <activity android:name=".pages.mainbaseactivity.MainBaseActivity"-->
+<!--            android:screenOrientation="landscape">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity android:name=".pages.mainbaseactivity.MainBaseActivity" android:screenOrientation="landscape"/>
+
+        <activity android:name="com.corbit.stationgx.pages.signinup.SignInUpActivity" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
