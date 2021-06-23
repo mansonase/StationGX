@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
 
+<<<<<<< Updated upstream
         <activity android:name=".pages.phone.PhoneActivity" />
         <activity android:name=".pages.healthdata.HealthDataActivity"/>
         <activity android:name=".pages.manuelinput.ManualInputActivity"/>
@@ -37,6 +38,18 @@
 
         <activity android:name=".pages.manuelinput.bloodpressure.BloodPressureActivity"/>
         <activity android:name=".pages.manuelinput.weight.WeightActivity"/>
+=======
+        <activity android:name="com.corbit.stationgx.pages.phone.PhoneActivity"  android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.healthdata.HealthDataActivity" android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.ManualInputActivity" android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.measurement.MeasurementActivity" android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.medication.MedicationActivity" android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.myprofile.MyProfileActivity" android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.telehealth.TeleHealthActivity" android:screenOrientation="landscape"/>
+
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BloodPressureActivity" android:screenOrientation="landscape"/>
+        <activity android:name="com.corbit.stationgx.pages.manuelinput.weight.WeightActivity" android:screenOrientation="landscape"/>
+>>>>>>> Stashed changes
 
 
         <meta-data

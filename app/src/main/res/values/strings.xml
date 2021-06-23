@@ -110,4 +110,24 @@
     <string name="signup_wrong_pwd_format_wording">The password must be at least 6 characters long and may include numbers, letters but not spaces. </string>
     <string name="signup_pwd_verify_wording">Verify the password here</string>
 
+    <!--My Profile-->
+    <string name="profile_title_wording">My Profile</string>
+    <string name="profile_label_name_wording">Name <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_name_hint_wording">Name</string>
+    <string name="profile_label_last_name_wording">Last Name <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_last_name_hint_wording">Last Name</string>
+    <string name="profile_label_email_account_wording">Email-account <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_email_account_hint_wording">e.g. someone123@gmail.com</string>
+    <string name="profile_label_phone_wording">Phone</string>
+    <string name="profile_phone_hint_wording">0511-423-459</string>
+    <string name="profile_label_city_wording">City</string>
+    <string name="profile_city_hint_wording"></string>
+    <string name="profile_label_country_wording">Country</string>
+    <string name="profile_country_hint_wording"></string>
+    <string name="profile_label_gender_wording">Gender</string>
+    <string name="profile_gender_hint_wording"></string>
+    <string name="profile_label_birthday_wording">Birthday</string>
+    <string name="profile_birthday_hint_wording">mm/dd/yyyy</string>
+    <string name="profile_label_age_wording">Age</string>
+
 </resources>

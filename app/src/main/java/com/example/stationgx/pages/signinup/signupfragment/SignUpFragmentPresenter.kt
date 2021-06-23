@@ -26,7 +26,26 @@ class SignUpFragmentPresenter(private val view: SignUpFragmentContract.ISignUpFr
             val auth = Firebase.auth
             auth.createUserWithEmailAndPassword(emailStr, pwdStr).addOnSuccessListener {
                 val user = Firebase.auth.currentUser
+<<<<<<< Updated upstream:app/src/main/java/com/example/stationgx/pages/signinup/signupfragment/SignUpFragmentPresenter.kt
                 view.goToMainPage()
+=======
+
+                val map: MutableMap<String, Any> = HashMap()
+                map.put("userEmail", emailStr)
+                map.put("userFirstName", firstNameStr)
+                map.put("userLastName", lastNameStr)
+                map.put("name", "$firstNameStr $lastNameStr")
+                map.put("userUid", user!!.uid)
+
+                val ref = Firebase.database.reference
+                ref.child("emergencyusers").child(user!!.uid).setValue(map).addOnSuccessListener {
+                    Log.d("de", "add user success")
+                    view.goToMainPage()
+                }.addOnFailureListener {
+                    Log.d("de", "add user failed, ${it.toString()}")
+                }
+
+>>>>>>> Stashed changes:app/src/main/java/com/corbit/stationgx/pages/signinup/signupfragment/SignUpFragmentPresenter.kt
             }.addOnFailureListener {
                 Log.d("de", "Sign up failed, ${it.toString()}")
             }

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< Updated upstream:app/src/main/java/com/example/stationgx/pages/mainbaseactivity/homefragment/HomeFragment.kt
 import com.example.stationgx.R
 import com.example.stationgx.apis.dateapi.TimeIntent
 import com.example.stationgx.data.prefs.SharedPreferencesHelper
@@ -18,6 +19,19 @@ import com.example.stationgx.pages.measurement.MeasurementActivity
 import com.example.stationgx.pages.medication.MedicationActivity
 import com.example.stationgx.pages.phone.PhoneActivity
 import com.example.stationgx.pages.telehealth.TeleHealthActivity
+=======
+import com.corbit.stationgx.R
+import com.corbit.stationgx.apis.dateapi.TimeIntent
+import com.corbit.stationgx.data.prefs.SharedPreferencesHelper
+import com.corbit.stationgx.base.BaseFragment
+import com.corbit.stationgx.pages.healthdata.HealthDataActivity
+import com.corbit.stationgx.pages.manuelinput.ManualInputActivity
+import com.corbit.stationgx.pages.measurement.MeasurementActivity
+import com.corbit.stationgx.pages.medication.MedicationActivity
+import com.corbit.stationgx.pages.myprofile.MyProfileActivity
+import com.corbit.stationgx.pages.phone.PhoneActivity
+import com.corbit.stationgx.pages.telehealth.TeleHealthActivity
+>>>>>>> Stashed changes:app/src/main/java/com/corbit/stationgx/pages/mainbaseactivity/homefragment/HomeFragment.kt
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
 import javax.inject.Inject
@@ -41,6 +55,7 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
         view.frame_medication .setOnClickListener(this)
         view.frame_measurement.setOnClickListener(this)
         view.frame_music      .setOnClickListener(this)
+        view.img_home_profile .setOnClickListener(this)
 
         view.frame_health_data.setOnClickListener(this)
         view.frame_phone      .setOnClickListener(this)
@@ -95,6 +110,11 @@ class HomeFragment: BaseFragment(),HomeFragmentContract.View,View.OnClickListene
             }
             R.id.img_date->{
 
+            }
+            R.id.img_home_profile->{
+                Log.d("de", "click img_home_profile")
+                val intent = Intent(context, MyProfileActivity::class.java)
+                startActivity(intent)
             }
             else->{
             }
