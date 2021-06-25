@@ -134,13 +134,17 @@
     <string name="profile_label_birthday_wording">Birthday</string>
     <string name="profile_birthday_hint_wording">mm/dd/yyyy</string>
     <string name="profile_label_age_wording">Age</string>
+    <string name="profile_label_height_wording">Height</string>
     <string name="profile_label_cm_wording">cm</string>
+    <string name="profile_label_weight_wording">Weight</string>
     <string name="profile_label_kg_wording">kg</string>
     <string name="profile_label_bmi_wording">BMI</string>
     <string name="profile_label_blood_type_wording">Blood Type</string>
     <string name="profile_label_allergies_wording">Allergies</string>
     <string name="profile_label_food_allergies_wording">Food Allergies</string>
+    <string name="profile_food_allergies_hint_wording">Taro, peanuts</string>
     <string name="profile_label_drug_intolerance_wording">Drug Intolerance</string>
+    <string name="profile_drug_intolerance_hint_wording">pyrin, allopurinol</string>
     <string name="profile_label_mobility_wording">How is your mobility?</string>
     
 
