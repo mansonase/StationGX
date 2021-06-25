@@ -162,13 +162,26 @@
         android:layout_marginStart="160px">
         
         <TextView
-            android:layout_width="346px"
+            android:layout_width="246px"
             android:layout_height="32px"
+            android:id="@+id/dialog_date"
             android:textColor="@color/word_black"
             android:fontFamily="@font/roboto_bold"
             android:layout_marginTop="16px"
             android:layout_marginStart="24px"
-            android:text="August / 04 / 2020    14:32"
+            android:text="August 04, 2020"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="100px"
+            android:layout_height="32px"
+            android:id="@+id/dialog_time"
+            android:textColor="@color/word_black"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="16px"
+            android:layout_marginStart="306px"
+            android:text="11:32"
             android:autoSizeTextType="uniform"
             android:gravity="center"/>
 

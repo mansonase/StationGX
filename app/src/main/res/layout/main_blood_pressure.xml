@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
+            <com.corbit.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
                 android:layout_width="1216px"
                 android:layout_height="400px"
                 android:layout_marginStart="32px"

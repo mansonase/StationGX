@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.stationgx">
+    package="com.corbit.stationgx">
 
     <application
         android:allowBackup="true"
@@ -8,8 +8,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullscreenTheme"
-        android:name=".application.StationApp">
+        android:name="com.corbit.stationgx.application.StationApp">
 
+<!--        <activity android:name="com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivity"-->
 <!--        <activity android:name=".pages.mainbaseactivity.MainBaseActivity"-->
 <!--            android:screenOrientation="landscape">-->
 <!--            <intent-filter>-->
@@ -19,26 +20,13 @@
 <!--        </activity>-->
         <activity android:name=".pages.mainbaseactivity.MainBaseActivity" android:screenOrientation="landscape"/>
 
-        <activity android:name=".pages.signinup.SignInUpActivity"
-            android:screenOrientation="landscape">
+        <activity android:name="com.corbit.stationgx.pages.signinup.SignInUpActivity" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-<<<<<<< Updated upstream
-        <activity android:name=".pages.phone.PhoneActivity" />
-        <activity android:name=".pages.healthdata.HealthDataActivity"/>
-        <activity android:name=".pages.manuelinput.ManualInputActivity"/>
-        <activity android:name=".pages.measurement.MeasurementActivity"/>
-        <activity android:name=".pages.medication.MedicationActivity"/>
-        <activity android:name=".pages.myprofile.MyProfileActivity"/>
-        <activity android:name=".pages.telehealth.TeleHealthActivity"/>
-
-        <activity android:name=".pages.manuelinput.bloodpressure.BloodPressureActivity"/>
-        <activity android:name=".pages.manuelinput.weight.WeightActivity"/>
-=======
         <activity android:name="com.corbit.stationgx.pages.phone.PhoneActivity"  android:screenOrientation="landscape"/>
         <activity android:name="com.corbit.stationgx.pages.healthdata.HealthDataActivity" android:screenOrientation="landscape"/>
         <activity android:name="com.corbit.stationgx.pages.manuelinput.ManualInputActivity" android:screenOrientation="landscape"/>
@@ -49,8 +37,6 @@
 
         <activity android:name="com.corbit.stationgx.pages.manuelinput.bloodpressure.view.BloodPressureActivity" android:screenOrientation="landscape"/>
         <activity android:name="com.corbit.stationgx.pages.manuelinput.weight.WeightActivity" android:screenOrientation="landscape"/>
->>>>>>> Stashed changes
-
 
         <meta-data
             android:name="preloaded_fonts"
