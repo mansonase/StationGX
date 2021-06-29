@@ -64,7 +64,7 @@
                 android:layout_width="512px"
                 android:layout_height="64px"
                 android:layout_marginTop="8px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_name_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -86,7 +86,7 @@
                 android:layout_width="512px"
                 android:layout_height="64px"
                 android:layout_marginStart="40px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_last_name_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -110,7 +110,7 @@
                 android:layout_width="1216px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_email_account_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -133,7 +133,7 @@
                 android:layout_width="378px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_phone_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -156,7 +156,7 @@
                 android:layout_width="378px"
                 android:layout_height="64px"
                 android:layout_marginStart="41px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 app:layout_constraintBottom_toBottomOf="@id/et_phone"
@@ -179,7 +179,7 @@
                 android:layout_width="378px"
                 android:layout_height="64px"
                 android:layout_marginStart="41px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 app:layout_constraintBottom_toBottomOf="@id/sp_city"
@@ -202,7 +202,7 @@
                 android:layout_width="588px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 app:layout_constraintStart_toStartOf="@id/tv_gender"
@@ -224,7 +224,7 @@
                 android:layout_width="464px"
                 android:layout_height="64px"
                 android:layout_marginStart="36px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 app:layout_constraintBottom_toBottomOf="@id/sp_gender"
@@ -272,7 +272,7 @@
                 android:layout_width="536px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_phone_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -307,7 +307,7 @@
                 android:id="@+id/et_weight"
                 android:layout_width="423px"
                 android:layout_height="64px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 android:layout_marginStart="36px"
@@ -369,7 +369,7 @@
                 android:layout_width="584px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 app:layout_constraintStart_toStartOf="@id/tv_blood_type"
@@ -379,7 +379,7 @@
                 android:id="@+id/tv_food_allergies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26px"
+                android:layout_marginTop="42px"
                 android:text="@string/profile_label_food_allergies_wording"
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
@@ -391,7 +391,7 @@
                 android:layout_width="1216px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_food_allergies_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -402,7 +402,7 @@
                 android:id="@+id/tv_drug_intolerance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26px"
+                android:layout_marginTop="42px"
                 android:text="@string/profile_label_drug_intolerance_wording"
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
@@ -414,7 +414,7 @@
                 android:layout_width="1216px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:hint="@string/profile_drug_intolerance_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
@@ -425,23 +425,495 @@
                 android:id="@+id/tv_mobility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26px"
+                android:layout_marginTop="44px"
                 android:text="@string/profile_label_mobility_wording"
                 android:textColor="@color/grey_707070"
-                android:textSize="18px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/et_drug_intolerance"
                 app:layout_constraintTop_toBottomOf="@id/et_drug_intolerance" />
-            
-            <LinearLayout
+
+            <Button
+                android:id="@+id/btn_mobility_1"
+                android:layout_width="0dp"
+                android:layout_height="64px"
+                android:background="@drawable/bg_blue_c0e3f4_round_start_15"
+                android:text="1"
+                android:textColor="@color/blue_229ad7"
+                android:layout_marginTop="8px"
+                app:layout_constraintStart_toStartOf="@id/et_drug_intolerance"
+                app:layout_constraintEnd_toStartOf="@id/btn_mobility_2"
+                app:layout_constraintTop_toBottomOf="@id/tv_mobility"/>
+
+            <Button
+                android:id="@+id/btn_mobility_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4"
+                android:text="2"
+                android:textColor="@color/blue_229ad7"
+                app:layout_constraintStart_toEndOf="@id/btn_mobility_1"
+                app:layout_constraintEnd_toStartOf="@id/btn_mobility_3"
+                app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
+                app:layout_constraintBottom_toBottomOf="@id/btn_mobility_1"/>
+
+            <Button
+                android:id="@+id/btn_mobility_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4"
+                android:text="3"
+                android:textColor="@color/blue_229ad7"
+                app:layout_constraintStart_toEndOf="@id/btn_mobility_2"
+                app:layout_constraintEnd_toStartOf="@id/btn_mobility_4"
+                app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
+                app:layout_constraintBottom_toBottomOf="@id/btn_mobility_1"/>
+
+            <Button
+                android:id="@+id/btn_mobility_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4"
+                android:text="4"
+                android:textColor="@color/blue_229ad7"
+                app:layout_constraintStart_toEndOf="@id/btn_mobility_3"
+                app:layout_constraintEnd_toStartOf="@id/btn_mobility_5"
+                app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
+                app:layout_constraintBottom_toBottomOf="@id/btn_mobility_1"/>
+
+            <Button
+                android:id="@+id/btn_mobility_5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_round_end_15"
+                android:text="5"
+                android:textColor="@color/blue_229ad7"
+                app:layout_constraintEnd_toEndOf="@id/et_drug_intolerance"
+                app:layout_constraintStart_toEndOf="@id/btn_mobility_4"
+                app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
+                app:layout_constraintBottom_toBottomOf="@id/btn_mobility_1"/>
+
+            <TextView
+                android:id="@+id/tv_lying_in_bed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11px"
+                android:text="@string/profile_label_lying_in_bed_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_727478"
+                app:layout_constraintStart_toStartOf="@id/btn_mobility_1"
+                app:layout_constraintTop_toBottomOf="@id/btn_mobility_1"/>
+
+            <TextView
+                android:id="@+id/tv_lying_independently"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11px"
+                android:text="@string/profile_label_lying_independently_wording"
+                android:textColor="@color/grey_727478"
+                android:textSize="24px"
+                app:layout_constraintEnd_toEndOf="@id/btn_mobility_5"
+                app:layout_constraintTop_toBottomOf="@id/btn_mobility_5"/>
+
+            <TextView
+                android:id="@+id/tv_vision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_vision_wording"
+                android:textSize="24px"
+                android:textColor="@color/black_050505"
+                android:textStyle="bold"
+                android:layout_marginTop="44px"
+                app:layout_constraintStart_toStartOf="@id/tv_lying_in_bed"
+                app:layout_constraintTop_toBottomOf="@id/tv_lying_in_bed"/>
+
+            <Button
+                android:id="@+id/btn_vision_good"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:text="@string/profile_label_vision_good_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:layout_marginTop="9px"
+                app:layout_constraintStart_toStartOf="@id/tv_vision"
+                app:layout_constraintTop_toBottomOf="@id/tv_vision"/>
+
+            <Button
+                android:id="@+id/btn_vision_cataract"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:text="@string/profile_label_vision_cataract_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:layout_marginStart="40px"
+                app:layout_constraintStart_toEndOf="@+id/btn_vision_good"
+                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>
+
+            <Button
+                android:id="@+id/btn_vision_myopia"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:text="@string/profile_label_vision_myopia_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:layout_marginStart="40px"
+                app:layout_constraintStart_toEndOf="@+id/btn_vision_cataract"
+                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>
+
+            <Button
+                android:id="@+id/btn_vision_presbyopia"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:text="@string/profile_label_vision_presbyopia_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:layout_marginStart="40px"
+                app:layout_constraintStart_toEndOf="@+id/btn_vision_myopia"
+                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>
+
+            <TextView
+                android:id="@+id/tv_hearing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_hearing_wording"
+                android:textColor="@color/black_050505"
+                android:textSize="24px"
+                android:textStyle="bold"
+                android:layout_marginTop="43px"
+                app:layout_constraintStart_toStartOf="@id/btn_vision_good"
+                app:layout_constraintTop_toBottomOf="@id/btn_vision_good"/>
+
+            <Button
+                android:id="@+id/btn_hearing_good"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:text="@string/profile_label_hearing_good_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:layout_marginTop="9px"
+                app:layout_constraintStart_toStartOf="@id/tv_hearing"
+                app:layout_constraintTop_toBottomOf="@id/tv_hearing"/>
+
+            <Button
+                android:id="@+id/btn_hearing_moderate"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:text="@string/profile_label_hearing_moderate_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:layout_marginStart="40px"
+                app:layout_constraintStart_toEndOf="@id/btn_hearing_good"
+                app:layout_constraintTop_toTopOf="@id/btn_hearing_good"/>
+
+            <Button
+                android:id="@+id/btn_hearing_need_aid"
+                android:layout_width="274px"
+                android:layout_height="64px"
+                android:text="@string/profile_label_hearing_need_hearing_aid_wording"
+                android:textSize="24px"
+                android:textColor="@color/grey_aaabad"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:layout_marginStart="40px"
+                app:layout_constraintStart_toEndOf="@id/btn_hearing_moderate"
+                app:layout_constraintTop_toTopOf="@id/btn_hearing_moderate"/>
+
+            <TextView
+                android:id="@+id/tv_medical_event_experience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_medical_event_experience_wording"
+                android:textColor="@color/black_050505"
+                android:textSize="24px"
+                android:textStyle="bold"
+                android:layout_marginTop="43px"
+                app:layout_constraintStart_toStartOf="@id/btn_hearing_good"
+                app:layout_constraintTop_toBottomOf="@id/btn_hearing_good"/>
+
+            <Button
+                android:id="@+id/btn_heart_attack"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:text="@string/profile_label_heart_attack_wording"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:layout_marginTop="28px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toStartOf="@id/tv_medical_event_experience"
+                app:layout_constraintTop_toBottomOf="@id/tv_medical_event_experience"/>
+
+            <Button
+                android:id="@+id/btn_stroke"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:text="@string/profile_label_stroke_wording"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:layout_marginStart="21px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_heart_attack"
+                app:layout_constraintTop_toTopOf="@id/btn_heart_attack"/>
+
+            <Button
+                android:id="@+id/btn_bleeding"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:text="@string/profile_label_stroke_wording"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:layout_marginStart="21px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_stroke"
+                app:layout_constraintTop_toTopOf="@id/btn_stroke"/>
+
+            <Button
+                android:id="@+id/btn_cancer"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:text="@string/profile_label_cancer_wording"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:layout_marginStart="21px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_bleeding"
+                app:layout_constraintTop_toTopOf="@id/btn_bleeding"/>
+
+            <Button
+                android:id="@+id/btn_faint_or_fall"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:text="@string/profile_label_faint_or_fall_wording"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:layout_marginStart="21px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_cancer"
+                app:layout_constraintTop_toTopOf="@id/btn_cancer"/>
+
+            <Button
+                android:id="@+id/btn_dialysis"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:text="@string/profile_label_dialysis_wording"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:layout_marginStart="21px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_faint_or_fall"
+                app:layout_constraintTop_toTopOf="@id/btn_faint_or_fall"/>
+
+            <Button
+                android:id="@+id/btn_surgery"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:text="@string/profile_label_surgery_wording"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:layout_marginTop="25px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toStartOf="@id/btn_heart_attack"
+                app:layout_constraintTop_toBottomOf="@id/btn_heart_attack"/>
+
+            <Button
+                android:id="@+id/btn_others"
+                android:layout_width="184px"
+                android:layout_height="60px"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:text="@string/profile_label_stroke_wording"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:layout_marginStart="21px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_surgery"
+                app:layout_constraintTop_toTopOf="@id/btn_surgery"/>
+
+            <EditText
+                android:id="@+id/et_search_event"
                 android:layout_width="1216px"
                 android:layout_height="64px"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_blue_stroke_c0e3f4_four_15"
-                app:layout_constraintStart_toStartOf="@id/tv_mobility"
-                app:layout_constraintTop_toBottomOf="@id/tv_mobility">
+                android:background="@color/blue_e5f6ff"
+                android:hint="@string/profile_search_event_hint_wording"
+                android:textColorHint="@color/blue_0288d1"
+                android:drawableStart="@android:drawable/ic_search_category_default"
+                android:drawablePadding="8px"
+                android:layout_marginTop="40px"
+                app:layout_constraintStart_toStartOf="@id/et_drug_intolerance"
+                app:layout_constraintTop_toBottomOf="@id/btn_surgery"/>
+
+            <LinearLayout
+                android:id="@+id/ll_event"
+                android:layout_width="1216px"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="@id/et_search_event"
+                app:layout_constraintTop_toBottomOf="@id/et_search_event">
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_emergency_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_emergency_contact_wording"
+                android:textColor="@color/black_050505"
+                android:textSize="24px"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ll_event"
+                app:layout_constraintTop_toTopOf="@+id/ib_add_contact"
+                app:layout_constraintBottom_toBottomOf="@+id/ib_add_contact"/>
+
+            <ImageButton
+                android:id="@+id/ib_add_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_add"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="40px"
+                app:layout_constraintEnd_toEndOf="@id/ll_event"
+                app:layout_constraintTop_toBottomOf="@id/ll_event"/>
+
+            <LinearLayout
+                android:id="@+id/ll_emergency_contact"
+                android:layout_width="1216px"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="@id/et_search_event"
+                app:layout_constraintEnd_toEndOf="@id/et_search_event"
+                app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact">
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_graphic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_graphic_hint"
+                android:textSize="24px"
+                android:textColorHint="@color/black_050505"
+                android:textStyle="bold"
+                android:layout_marginTop="40px"
+                app:layout_constraintStart_toStartOf="@id/ll_emergency_contact"
+                app:layout_constraintTop_toBottomOf="@id/ll_emergency_contact"/>
+            
+            <Button
+                android:id="@+id/btn_graphic_nerves"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_nerves_hint"
+                android:textSize="24px"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toStartOf="@id/ll_emergency_contact"
+                app:layout_constraintTop_toBottomOf="@id/tv_graphic"/>
+
+            <Button
+                android:id="@+id/btn_graphic_heart"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_heart_hint"
+                android:textSize="24px"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toStartOf="@id/btn_graphic_nerves"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_nerves"/>
+
+            <Button
+                android:id="@+id/btn_graphic_kidney"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_kidney_hint"
+                android:textSize="24px"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toStartOf="@id/btn_graphic_heart"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_heart"/>
+
+            <Button
+                android:id="@+id/btn_graphic_skin"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_skin_hint"
+                android:textSize="24px"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintEnd_toEndOf="@id/ll_emergency_contact"
+                app:layout_constraintTop_toBottomOf="@id/tv_graphic"/>
+
+            <Button
+                android:id="@+id/btn_graphic_lung"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_lung_hint"
+                android:textSize="24px"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintEnd_toEndOf="@id/btn_graphic_skin"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_skin"/>
+
+            <Button
+                android:id="@+id/btn_graphic_abdominal"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_abdominal_hint"
+                android:textSize="24px"
+                android:textColor="@color/main_white"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintEnd_toEndOf="@id/btn_graphic_lung"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_lung"/>
+
+            <Button
+                android:id="@+id/btn_graphic_muscular"
+                android:layout_width="wrap_content"
+                android:layout_height="60px"
+                android:text="@string/profile_label_graphic_muscular_hint"
+                android:textSize="24px"
+                android:textColor="@color/blue_0288d1"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_profile_btn_unselected"
+                android:layout_marginTop="27px"
+                android:paddingHorizontal="16px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintEnd_toEndOf="@id/btn_graphic_abdominal"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_abdominal"/>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

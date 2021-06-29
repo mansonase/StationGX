@@ -146,6 +146,39 @@
     <string name="profile_label_drug_intolerance_wording">Drug Intolerance</string>
     <string name="profile_drug_intolerance_hint_wording">pyrin, allopurinol</string>
     <string name="profile_label_mobility_wording">How is your mobility?</string>
-    
-
+    <string name="profile_label_lying_in_bed_wording">lying in bed</string>
+    <string name="profile_label_lying_independently_wording">lying independently</string>
+    <string name="profile_label_vision_wording">How is your vision?</string>
+    <string name="profile_label_vision_good_wording">Good</string>
+    <string name="profile_label_vision_cataract_wording">Cataract</string>
+    <string name="profile_label_vision_myopia_wording">Myopia</string>
+    <string name="profile_label_vision_presbyopia_wording">Presbyopia</string>
+    <string name="profile_label_hearing_wording">How is your hearing?</string>
+    <string name="profile_label_hearing_good_wording">Good</string>
+    <string name="profile_label_hearing_moderate_wording">Moderate</string>
+    <string name="profile_label_hearing_need_hearing_aid_wording">Need hearing aid</string>
+    <string name="profile_label_medical_event_experience_wording">Medical event experience? (select)</string>
+    <string name="profile_label_heart_attack_wording">Heart Attack</string>
+    <string name="profile_label_stroke_wording">Stroke</string>
+    <string name="profile_label_bleeding_wording">Bleedings</string>
+    <string name="profile_label_cancer_wording">Cancer</string>
+    <string name="profile_label_faint_or_fall_wording">Faint of Fall</string>
+    <string name="profile_label_dialysis_wording">Dialysis</string>
+    <string name="profile_label_surgery_wording">Surgery</string>
+    <string name="profile_label_others_wording">Others</string>
+    <string name="profile_search_event_hint_wording">Search Event, e.g. heart disease.</string>
+    <string name="profile_label_emergency_contact_wording">Emergency Contact</string>
+    <string name="profile_label_emergency_contact_name_wording">Name</string>
+    <string name="profile_label_emergency_contact_last_name_wording">Last Name</string>
+    <string name="profile_label_emergency_contact_relation_wording">Relation</string>
+    <string name="profile_label_emergency_contact_phone_wording">Phone</string>
+    <string name="profile_label_emergency_contact_email_wording">Email</string>
+    <string name="profile_label_graphic_hint">Please check, which of the following organ systems need attention and is or was under medical treatment?</string>
+    <string name="profile_label_graphic_nerves_hint">Nerves, Brain and Mental</string>
+    <string name="profile_label_graphic_heart_hint">Heart and Circulation</string>
+    <string name="profile_label_graphic_kidney_hint">Kidney and Urogenital</string>
+    <string name="profile_label_graphic_skin_hint">Skin, Hair, Feet and Hands</string>
+    <string name="profile_label_graphic_lung_hint">Lung and Respiration</string>
+    <string name="profile_label_graphic_abdominal_hint">Abdominal/Liver/Digestive</string>
+    <string name="profile_label_graphic_muscular_hint">Muscular and Skeletal</string>
 </resources>
