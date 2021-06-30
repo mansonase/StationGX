@@ -10,12 +10,10 @@ class MyProfileActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("de", "MyProfileActivity.onCreate")
         setContentView(R.layout.activity_profile)
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-
     }
 }

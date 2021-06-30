@@ -117,7 +117,7 @@
 
     <!--My Profile-->
     <string name="profile_title_wording">My Profile</string>
-    <string name="profile_label_name_wording">Name <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_label_name_wording"><font fgcolor='#070707'>Name</font> <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_name_hint_wording">Name</string>
     <string name="profile_label_last_name_wording">Last Name <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_last_name_hint_wording">Last Name</string>
@@ -168,11 +168,11 @@
     <string name="profile_label_others_wording">Others</string>
     <string name="profile_search_event_hint_wording">Search Event, e.g. heart disease.</string>
     <string name="profile_label_emergency_contact_wording">Emergency Contact</string>
-    <string name="profile_label_emergency_contact_name_wording">Name</string>
-    <string name="profile_label_emergency_contact_last_name_wording">Last Name</string>
+    <string name="profile_label_emergency_contact_name_wording"><font fgcolor='#070707'>Name</font> <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_label_emergency_contact_last_name_wording"><font fgcolor='#070707'>Last Name</font> <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_label_emergency_contact_relation_wording">Relation</string>
-    <string name="profile_label_emergency_contact_phone_wording">Phone</string>
-    <string name="profile_label_emergency_contact_email_wording">Email</string>
+    <string name="profile_label_emergency_contact_phone_wording"><font fgcolor='#070707'>Phone</font> <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_label_emergency_contact_email_wording"><font fgcolor='#070707'>Email</font> <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_label_graphic_hint">Please check, which of the following organ systems need attention and is or was under medical treatment?</string>
     <string name="profile_label_graphic_nerves_hint">Nerves, Brain and Mental</string>
     <string name="profile_label_graphic_heart_hint">Heart and Circulation</string>

@@ -1,4 +1,11 @@
 package com.corbit.stationgx.pages.myprofile
 
-interface MyProfileActivityContract {
+class MyProfileActivityContract {
+    interface IMyProfileView {
+
+    }
+
+    interface IMyProfilePresenter {
+
+    }
 }

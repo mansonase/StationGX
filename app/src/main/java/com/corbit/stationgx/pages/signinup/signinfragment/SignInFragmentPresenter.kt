@@ -22,9 +22,6 @@ class SignInFragmentPresenter(private val view: SignInFragmentContract.ISignInFr
     }
 
     fun startLoginWithEmail(email: EditText, pwd: EditText) {
-        Log.d("de", "startLoginWithEmail")
-        Log.d("de", "email: "+email.text.toString())
-        Log.d("de", "pwd: "+pwd.text.toString())
         var emailStr = email.text.toString()
         var pwdStr = pwd.text.toString()
 

@@ -1,4 +1,11 @@
 package com.corbit.stationgx.pages.myprofile
 
-class MyProfileActivityPresenter {
+import android.content.Context
+
+class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMyProfileView, private val context: Context)
+    : MyProfileActivityContract.IMyProfilePresenter {
+
+        open fun uploadProfileData() {
+            
+        }
 }

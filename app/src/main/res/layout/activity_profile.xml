@@ -641,6 +641,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_selected"
                 android:text="@string/profile_label_heart_attack_wording"
+                android:textSize="24px"
                 android:textColor="@color/main_white"
                 android:textAllCaps="false"
                 android:layout_marginTop="28px"
@@ -654,6 +655,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_stroke_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
@@ -667,6 +669,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_stroke_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
@@ -680,6 +683,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_selected"
                 android:text="@string/profile_label_cancer_wording"
+                android:textSize="24px"
                 android:textColor="@color/main_white"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
@@ -693,6 +697,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_selected"
                 android:text="@string/profile_label_faint_or_fall_wording"
+                android:textSize="24px"
                 android:textColor="@color/main_white"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
@@ -706,6 +711,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_selected"
                 android:text="@string/profile_label_dialysis_wording"
+                android:textSize="24px"
                 android:textColor="@color/main_white"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
@@ -719,6 +725,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_selected"
                 android:text="@string/profile_label_surgery_wording"
+                android:textSize="24px"
                 android:textColor="@color/main_white"
                 android:textAllCaps="false"
                 android:layout_marginTop="25px"
@@ -732,6 +739,7 @@
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_stroke_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
@@ -745,8 +753,8 @@
                 android:layout_height="64px"
                 android:background="@color/blue_e5f6ff"
                 android:hint="@string/profile_search_event_hint_wording"
+                android:textSize="24px"
                 android:textColorHint="@color/blue_0288d1"
-                android:drawableStart="@android:drawable/ic_search_category_default"
                 android:drawablePadding="8px"
                 android:layout_marginTop="40px"
                 app:layout_constraintStart_toStartOf="@id/et_drug_intolerance"
@@ -793,7 +801,9 @@
                 app:layout_constraintEnd_toEndOf="@id/et_search_event"
                 app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact">
 
-
+                <com.corbit.stationgx.pages.myprofile.EmergencyContact
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <TextView
@@ -807,7 +817,7 @@
                 android:layout_marginTop="40px"
                 app:layout_constraintStart_toStartOf="@id/ll_emergency_contact"
                 app:layout_constraintTop_toBottomOf="@id/ll_emergency_contact"/>
-            
+
             <Button
                 android:id="@+id/btn_graphic_nerves"
                 android:layout_width="wrap_content"
@@ -913,11 +923,30 @@
                 app:layout_constraintEnd_toEndOf="@id/btn_graphic_abdominal"
                 app:layout_constraintTop_toBottomOf="@id/btn_graphic_abdominal"/>
 
+            <View
+                android:id="@+id/view_graphic"
+                android:layout_width="212px"
+                android:layout_height="586px"
+                android:background="@color/blue_0288d1"
+                android:layout_marginTop="28px"
+                app:layout_constraintStart_toStartOf="@id/ll_event"
+                app:layout_constraintEnd_toEndOf="@id/ll_event"
+                app:layout_constraintTop_toBottomOf="@id/tv_graphic"/>
 
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="192px"
+                android:layout_height="64px"
+                android:text="@string/save"
+                android:textSize="24px"
+                android:textColor="@color/main_white"
+                android:background="@drawable/bg_profile_btn_selected"
+                android:layout_marginTop="35px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toStartOf="@id/ll_event"
+                app:layout_constraintEnd_toEndOf="@id/ll_event"
+                app:layout_constraintTop_toBottomOf="@id/view_graphic"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_emergency_contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_label_emergency_contact_name_wording"
+        android:textSize="18px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="588px"
+        android:layout_height="64px"
+        android:layout_marginTop="8px"
+        android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+        app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_label_emergency_contact_last_name_wording"
+        android:textSize="18px"
+        android:layout_marginBottom="8px"
+        app:layout_constraintStart_toStartOf="@id/et_last_name"
+        app:layout_constraintBottom_toTopOf="@id/et_last_name"/>
+
+    <EditText
+        android:id="@+id/et_last_name"
+        android:layout_width="588px"
+        android:layout_height="64px"
+        android:layout_marginStart="38px"
+        android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+        app:layout_constraintStart_toEndOf="@id/et_name"
+        app:layout_constraintTop_toTopOf="@id/et_name"
+        app:layout_constraintBottom_toBottomOf="@id/et_name"/>
+
+    <TextView
+        android:id="@+id/tv_emergency_contact_relation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_label_emergency_contact_relation_wording"
+        android:textSize="18px"
+        android:layout_marginTop="42px"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_name"/>
+
+    <EditText
+        android:id="@+id/et_relation"
+        android:layout_width="588px"
+        android:layout_height="64px"
+        android:layout_marginTop="8px"
+        android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+        app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_relation"
+        app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_relation"/>
+
+    <TextView
+        android:id="@+id/tv_emergency_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8px"
+        android:text="@string/profile_label_emergency_contact_phone_wording"
+        android:textSize="18px"
+        app:layout_constraintStart_toStartOf="@id/et_phone"
+        app:layout_constraintBottom_toTopOf="@id/et_phone"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="588px"
+        android:layout_height="64px"
+        android:layout_marginStart="38px"
+        android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+        app:layout_constraintStart_toEndOf="@id/et_relation"
+        app:layout_constraintTop_toTopOf="@id/et_relation"/>
+
+    <TextView
+        android:id="@+id/tv_emergency_contact_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_label_emergency_contact_email_wording"
+        android:textSize="18px"
+        android:layout_marginTop="42px"
+        app:layout_constraintStart_toStartOf="@id/et_relation"
+        app:layout_constraintTop_toBottomOf="@id/et_relation"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="1216px"
+        android:layout_height="64px"
+        android:layout_marginTop="8px"
+        android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+        app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_email"
+        app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_email"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
