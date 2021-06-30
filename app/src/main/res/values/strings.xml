@@ -117,7 +117,7 @@
 
     <!--My Profile-->
     <string name="profile_title_wording">My Profile</string>
-    <string name="profile_label_name_wording"><font fgcolor='#070707'>Name</font> <font fgcolor='#0288d1'>*</font></string>
+    <string name="profile_label_name_wording"><font fgcolor='#070707'>First Name</font> <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_name_hint_wording">Name</string>
     <string name="profile_label_last_name_wording">Last Name <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_last_name_hint_wording">Last Name</string>
@@ -146,6 +146,11 @@
     <string name="profile_label_drug_intolerance_wording">Drug Intolerance</string>
     <string name="profile_drug_intolerance_hint_wording">pyrin, allopurinol</string>
     <string name="profile_label_mobility_wording">How is your mobility?</string>
+    <string name="profile_label_mobility_mostly_in_bed_wording">Mostly in bed</string>
+    <string name="profile_label_mobility_wheelchairs_wording">Wheelchairs</string>
+    <string name="profile_label_mobility_walking_aid_wording">Walking aid</string>
+    <string name="profile_label_mobility_some_support_wording">Some support</string>
+    <string name="profile_label_mobility_independent_wording">Independent</string>
     <string name="profile_label_lying_in_bed_wording">lying in bed</string>
     <string name="profile_label_lying_independently_wording">lying independently</string>
     <string name="profile_label_vision_wording">How is your vision?</string>
@@ -173,7 +178,7 @@
     <string name="profile_label_emergency_contact_relation_wording">Relation</string>
     <string name="profile_label_emergency_contact_phone_wording"><font fgcolor='#070707'>Phone</font> <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_label_emergency_contact_email_wording"><font fgcolor='#070707'>Email</font> <font fgcolor='#0288d1'>*</font></string>
-    <string name="profile_label_graphic_hint">Please check, which of the following organ systems need attention and is or was under medical treatment?</string>
+    <string name="profile_label_graphic_hint">Please check, which of the following organ systems need attention or was under medical treatment?</string>
     <string name="profile_label_graphic_nerves_hint">Nerves, Brain and Mental</string>
     <string name="profile_label_graphic_heart_hint">Heart and Circulation</string>
     <string name="profile_label_graphic_kidney_hint">Kidney and Urogenital</string>
@@ -181,4 +186,23 @@
     <string name="profile_label_graphic_lung_hint">Lung and Respiration</string>
     <string name="profile_label_graphic_abdominal_hint">Abdominal/Liver/Digestive</string>
     <string name="profile_label_graphic_muscular_hint">Muscular and Skeletal</string>
+
+    <string-array name="gender_selection">
+        <item>Selection:</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Divers</item>
+    </string-array>
+
+    <string-array name="blood_type_array">
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+    </string-array>
+    
+    <string-array name="rhesus_array">
+        <item>Rh+</item>
+        <item>Rh-</item>
+    </string-array>
 </resources>

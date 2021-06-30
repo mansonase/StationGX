@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40px"
@@ -68,8 +68,9 @@
                 android:hint="@string/profile_name_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
-                app:layout_constraintStart_toStartOf="@id/tv_name"
-                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="@id/tv_first_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_first_name" />
 
             <TextView
                 android:id="@+id/tv_last_name"
@@ -79,7 +80,7 @@
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
                 app:layout_constraintStart_toStartOf="@id/et_last_name"
-                app:layout_constraintTop_toTopOf="@id/tv_name" />
+                app:layout_constraintTop_toTopOf="@id/tv_first_name" />
 
             <EditText
                 android:id="@+id/et_last_name"
@@ -90,6 +91,7 @@
                 android:hint="@string/profile_last_name_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
+                android:maxLines="1"
                 app:layout_constraintBottom_toBottomOf="@id/et_name"
                 app:layout_constraintStart_toEndOf="@id/et_name"
                 app:layout_constraintTop_toTopOf="@id/et_name" />
@@ -114,6 +116,7 @@
                 android:hint="@string/profile_email_account_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
+                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="@id/tv_email"
                 app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
@@ -137,6 +140,8 @@
                 android:hint="@string/profile_phone_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
+                android:inputType="phone"
+                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="@id/tv_phone"
                 app:layout_constraintTop_toBottomOf="@id/tv_phone" />
 
@@ -191,7 +196,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42px"
-                android:text="@string/profile_label_country_wording"
+                android:text="@string/profile_label_gender_wording"
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
                 app:layout_constraintStart_toStartOf="@id/et_phone"
@@ -205,8 +210,19 @@
                 android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
+                android:entries="@array/gender_selection"
                 app:layout_constraintStart_toStartOf="@id/tv_gender"
                 app:layout_constraintTop_toBottomOf="@id/tv_gender" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:background="@android:color/transparent"
+                android:layout_marginEnd="18px"
+                app:layout_constraintTop_toTopOf="@id/sp_gender"
+                app:layout_constraintBottom_toBottomOf="@id/sp_gender"
+                app:layout_constraintEnd_toEndOf="@id/sp_gender"/>
 
             <TextView
                 android:id="@+id/tv_birthday"
@@ -273,9 +289,9 @@
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
                 android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:hint="@string/profile_phone_hint_wording"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
+                android:inputType="number"
                 app:layout_constraintStart_toStartOf="@id/tv_height"
                 app:layout_constraintTop_toBottomOf="@id/tv_height" />
 
@@ -311,6 +327,7 @@
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 android:layout_marginStart="36px"
+                android:inputType="number"
                 app:layout_constraintStart_toEndOf="@id/tv_cm"
                 app:layout_constraintTop_toTopOf="@id/et_height"
                 app:layout_constraintBottom_toBottomOf="@id/et_height"/>
@@ -438,8 +455,10 @@
                 android:layout_width="0dp"
                 android:layout_height="64px"
                 android:background="@drawable/bg_blue_c0e3f4_round_start_15"
-                android:text="1"
+                android:text="@string/profile_label_mobility_mostly_in_bed_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_229ad7"
+                android:textAllCaps="false"
                 android:layout_marginTop="8px"
                 app:layout_constraintStart_toStartOf="@id/et_drug_intolerance"
                 app:layout_constraintEnd_toStartOf="@id/btn_mobility_2"
@@ -450,8 +469,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_transparent_stroke_c0e3f4"
-                android:text="2"
+                android:text="@string/profile_label_mobility_wheelchairs_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_229ad7"
+                android:textAllCaps="false"
                 app:layout_constraintStart_toEndOf="@id/btn_mobility_1"
                 app:layout_constraintEnd_toStartOf="@id/btn_mobility_3"
                 app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
@@ -462,8 +483,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_transparent_stroke_c0e3f4"
-                android:text="3"
+                android:text="@string/profile_label_mobility_walking_aid_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_229ad7"
+                android:textAllCaps="false"
                 app:layout_constraintStart_toEndOf="@id/btn_mobility_2"
                 app:layout_constraintEnd_toStartOf="@id/btn_mobility_4"
                 app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
@@ -474,8 +497,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_transparent_stroke_c0e3f4"
-                android:text="4"
+                android:text="@string/profile_label_mobility_some_support_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_229ad7"
+                android:textAllCaps="false"
                 app:layout_constraintStart_toEndOf="@id/btn_mobility_3"
                 app:layout_constraintEnd_toStartOf="@id/btn_mobility_5"
                 app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
@@ -486,142 +511,129 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_transparent_stroke_c0e3f4_round_end_15"
-                android:text="5"
+                android:text="@string/profile_label_mobility_independent_wording"
+                android:textSize="24px"
                 android:textColor="@color/blue_229ad7"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="@id/et_drug_intolerance"
                 app:layout_constraintStart_toEndOf="@id/btn_mobility_4"
                 app:layout_constraintTop_toTopOf="@id/btn_mobility_1"
                 app:layout_constraintBottom_toBottomOf="@id/btn_mobility_1"/>
 
-            <TextView
-                android:id="@+id/tv_lying_in_bed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11px"
-                android:text="@string/profile_label_lying_in_bed_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_727478"
-                app:layout_constraintStart_toStartOf="@id/btn_mobility_1"
-                app:layout_constraintTop_toBottomOf="@id/btn_mobility_1"/>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_vision"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/profile_label_vision_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/black_050505"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginTop="44px"-->
+<!--                app:layout_constraintStart_toStartOf="@id/btn_mobility_1"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/btn_mobility_1"/>-->
 
-            <TextView
-                android:id="@+id/tv_lying_independently"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11px"
-                android:text="@string/profile_label_lying_independently_wording"
-                android:textColor="@color/grey_727478"
-                android:textSize="24px"
-                app:layout_constraintEnd_toEndOf="@id/btn_mobility_5"
-                app:layout_constraintTop_toBottomOf="@id/btn_mobility_5"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_vision_good"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:text="@string/profile_label_vision_good_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:layout_marginTop="9px"-->
+<!--                app:layout_constraintStart_toStartOf="@id/tv_vision"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tv_vision"/>-->
 
-            <TextView
-                android:id="@+id/tv_vision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_label_vision_wording"
-                android:textSize="24px"
-                android:textColor="@color/black_050505"
-                android:textStyle="bold"
-                android:layout_marginTop="44px"
-                app:layout_constraintStart_toStartOf="@id/tv_lying_in_bed"
-                app:layout_constraintTop_toBottomOf="@id/tv_lying_in_bed"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_vision_cataract"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:text="@string/profile_label_vision_cataract_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:layout_marginStart="40px"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/btn_vision_good"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>-->
 
-            <Button
-                android:id="@+id/btn_vision_good"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:text="@string/profile_label_vision_good_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:layout_marginTop="9px"
-                app:layout_constraintStart_toStartOf="@id/tv_vision"
-                app:layout_constraintTop_toBottomOf="@id/tv_vision"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_vision_myopia"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:text="@string/profile_label_vision_myopia_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:layout_marginStart="40px"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/btn_vision_cataract"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>-->
 
-            <Button
-                android:id="@+id/btn_vision_cataract"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:text="@string/profile_label_vision_cataract_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:layout_marginStart="40px"
-                app:layout_constraintStart_toEndOf="@+id/btn_vision_good"
-                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_vision_presbyopia"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:text="@string/profile_label_vision_presbyopia_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:layout_marginStart="40px"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/btn_vision_myopia"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>-->
 
-            <Button
-                android:id="@+id/btn_vision_myopia"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:text="@string/profile_label_vision_myopia_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:layout_marginStart="40px"
-                app:layout_constraintStart_toEndOf="@+id/btn_vision_cataract"
-                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_hearing"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/profile_label_hearing_wording"-->
+<!--                android:textColor="@color/black_050505"-->
+<!--                android:textSize="24px"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginTop="43px"-->
+<!--                app:layout_constraintStart_toStartOf="@id/btn_vision_good"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/btn_vision_good"/>-->
 
-            <Button
-                android:id="@+id/btn_vision_presbyopia"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:text="@string/profile_label_vision_presbyopia_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:layout_marginStart="40px"
-                app:layout_constraintStart_toEndOf="@+id/btn_vision_myopia"
-                app:layout_constraintTop_toTopOf="@+id/btn_vision_good"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_hearing_good"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:text="@string/profile_label_hearing_good_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:layout_marginTop="9px"-->
+<!--                app:layout_constraintStart_toStartOf="@id/tv_hearing"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tv_hearing"/>-->
 
-            <TextView
-                android:id="@+id/tv_hearing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_label_hearing_wording"
-                android:textColor="@color/black_050505"
-                android:textSize="24px"
-                android:textStyle="bold"
-                android:layout_marginTop="43px"
-                app:layout_constraintStart_toStartOf="@id/btn_vision_good"
-                app:layout_constraintTop_toBottomOf="@id/btn_vision_good"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_hearing_moderate"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:text="@string/profile_label_hearing_moderate_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:layout_marginStart="40px"-->
+<!--                app:layout_constraintStart_toEndOf="@id/btn_hearing_good"-->
+<!--                app:layout_constraintTop_toTopOf="@id/btn_hearing_good"/>-->
 
-            <Button
-                android:id="@+id/btn_hearing_good"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:text="@string/profile_label_hearing_good_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:layout_marginTop="9px"
-                app:layout_constraintStart_toStartOf="@id/tv_hearing"
-                app:layout_constraintTop_toBottomOf="@id/tv_hearing"/>
-
-            <Button
-                android:id="@+id/btn_hearing_moderate"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:text="@string/profile_label_hearing_moderate_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:layout_marginStart="40px"
-                app:layout_constraintStart_toEndOf="@id/btn_hearing_good"
-                app:layout_constraintTop_toTopOf="@id/btn_hearing_good"/>
-
-            <Button
-                android:id="@+id/btn_hearing_need_aid"
-                android:layout_width="274px"
-                android:layout_height="64px"
-                android:text="@string/profile_label_hearing_need_hearing_aid_wording"
-                android:textSize="24px"
-                android:textColor="@color/grey_aaabad"
-                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
-                android:layout_marginStart="40px"
-                app:layout_constraintStart_toEndOf="@id/btn_hearing_moderate"
-                app:layout_constraintTop_toTopOf="@id/btn_hearing_moderate"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_hearing_need_aid"-->
+<!--                android:layout_width="274px"-->
+<!--                android:layout_height="64px"-->
+<!--                android:text="@string/profile_label_hearing_need_hearing_aid_wording"-->
+<!--                android:textSize="24px"-->
+<!--                android:textColor="@color/grey_aaabad"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"-->
+<!--                android:layout_marginStart="40px"-->
+<!--                app:layout_constraintStart_toEndOf="@id/btn_hearing_moderate"-->
+<!--                app:layout_constraintTop_toTopOf="@id/btn_hearing_moderate"/>-->
 
             <TextView
                 android:id="@+id/tv_medical_event_experience"
@@ -632,17 +644,17 @@
                 android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginTop="43px"
-                app:layout_constraintStart_toStartOf="@id/btn_hearing_good"
-                app:layout_constraintTop_toBottomOf="@id/btn_hearing_good"/>
+                app:layout_constraintStart_toStartOf="@id/btn_mobility_1"
+                app:layout_constraintTop_toBottomOf="@id/btn_mobility_1"/>
 
             <Button
                 android:id="@+id/btn_heart_attack"
                 android:layout_width="184px"
                 android:layout_height="60px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_heart_attack_wording"
                 android:textSize="24px"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginTop="28px"
                 style="?android:attr/borderlessButtonStyle"
@@ -668,7 +680,7 @@
                 android:layout_width="184px"
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_unselected"
-                android:text="@string/profile_label_stroke_wording"
+                android:text="@string/profile_label_bleeding_wording"
                 android:textSize="24px"
                 android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
@@ -681,10 +693,10 @@
                 android:id="@+id/btn_cancer"
                 android:layout_width="184px"
                 android:layout_height="60px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_cancer_wording"
                 android:textSize="24px"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
                 style="?android:attr/borderlessButtonStyle"
@@ -695,10 +707,10 @@
                 android:id="@+id/btn_faint_or_fall"
                 android:layout_width="184px"
                 android:layout_height="60px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_faint_or_fall_wording"
                 android:textSize="24px"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
                 style="?android:attr/borderlessButtonStyle"
@@ -709,10 +721,10 @@
                 android:id="@+id/btn_dialysis"
                 android:layout_width="184px"
                 android:layout_height="60px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_dialysis_wording"
                 android:textSize="24px"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginStart="21px"
                 style="?android:attr/borderlessButtonStyle"
@@ -723,10 +735,10 @@
                 android:id="@+id/btn_surgery"
                 android:layout_width="184px"
                 android:layout_height="60px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:text="@string/profile_label_surgery_wording"
                 android:textSize="24px"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
                 android:layout_marginTop="25px"
                 style="?android:attr/borderlessButtonStyle"
@@ -738,7 +750,7 @@
                 android:layout_width="184px"
                 android:layout_height="60px"
                 android:background="@drawable/bg_profile_btn_unselected"
-                android:text="@string/profile_label_stroke_wording"
+                android:text="@string/profile_label_others_wording"
                 android:textSize="24px"
                 android:textColor="@color/blue_0288d1"
                 android:textAllCaps="false"
@@ -801,9 +813,9 @@
                 app:layout_constraintEnd_toEndOf="@id/et_search_event"
                 app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact">
 
-                <com.corbit.stationgx.pages.myprofile.EmergencyContact
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+<!--                <com.corbit.stationgx.pages.myprofile.EmergencyContact-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"/>-->
             </LinearLayout>
 
             <TextView

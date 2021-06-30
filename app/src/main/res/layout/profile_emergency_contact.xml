@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/profile_label_emergency_contact_name_wording"
         android:textSize="18px"
+        android:layout_marginTop="49px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -21,6 +22,16 @@
         android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
         app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_name"
         app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_name"/>
+
+    <ImageButton
+        android:id="@+id/ib_delete_emergency_contact"
+        android:layout_width="48px"
+        android:layout_height="48px"
+        android:src="@android:drawable/ic_delete"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="14px"
+        app:layout_constraintEnd_toEndOf="@id/et_last_name"
+        app:layout_constraintBottom_toTopOf="@id/et_last_name"/>
 
     <TextView
         android:layout_width="wrap_content"

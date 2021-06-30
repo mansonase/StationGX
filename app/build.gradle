@@ -72,6 +72,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.10")
 
+    implementation 'ai.picovoice:porcupine-android:1.9.4'
+    implementation 'ai.picovoice:rhino-android:1.6.5'
+
 }
 repositories {
     mavenCentral()
