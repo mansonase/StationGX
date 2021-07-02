@@ -5,6 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/tv_emergency_contact_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_label_emergency_contact_wording"
+        android:textSize="24px"
+        android:textColor="@color/black_050505"
+        app:layout_constraintTop_toTopOf="@id/ib_delete_emergency_contact"
+        app:layout_constraintBottom_toBottomOf="@id/ib_delete_emergency_contact"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
         android:id="@+id/tv_emergency_contact_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,7 +23,7 @@
         android:textSize="18px"
         android:layout_marginTop="49px"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_title"/>
 
     <EditText
         android:id="@+id/et_name"
@@ -29,11 +40,12 @@
         android:id="@+id/ib_delete_emergency_contact"
         android:layout_width="48px"
         android:layout_height="48px"
+        android:scaleType="center"
         android:src="@android:drawable/ic_delete"
         android:background="@android:color/transparent"
-        android:layout_marginBottom="14px"
+        android:layout_marginBottom="69px"
         app:layout_constraintEnd_toEndOf="@id/et_last_name"
-        app:layout_constraintBottom_toTopOf="@id/et_last_name"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:layout_width="wrap_content"

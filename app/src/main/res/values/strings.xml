@@ -140,6 +140,7 @@
     <string name="profile_label_kg_wording">kg</string>
     <string name="profile_label_bmi_wording">BMI</string>
     <string name="profile_label_blood_type_wording">Blood Type</string>
+    <string name="profile_label_rhesus_wording">Rhesus</string>
     <string name="profile_label_allergies_wording">Allergies</string>
     <string name="profile_label_food_allergies_wording">Food Allergies</string>
     <string name="profile_food_allergies_hint_wording">Taro, peanuts</string>

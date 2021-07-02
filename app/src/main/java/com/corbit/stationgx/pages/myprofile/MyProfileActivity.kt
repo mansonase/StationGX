@@ -7,8 +7,11 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
+import androidx.core.view.size
 import com.corbit.stationgx.R
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.profile_emergency_contact.view.*
 
 class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfileView {
 
@@ -126,6 +129,12 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         else {
             button.setTextColor(ContextCompat.getColor(this, R.color.blue_0288d1))
             button.setBackgroundResource(R.drawable.bg_profile_btn_unselected)
+        }
+    }
+
+    override fun refreshEmergencyContacts() {
+        for (i in 0..ll_emergency_contact.size) {
+            ll_emergency_contact.get(i).tv_emergency_contact_title.text = "Emergency Contact $i"
         }
     }
 

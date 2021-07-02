@@ -11,6 +11,8 @@ class MyProfileActivityContract {
         fun updateMedicalEventBtn(button: Button, selected: Boolean)
 
         fun updateMedicalTreatmentBtn(button: Button, selected: Boolean)
+
+        fun refreshEmergencyContacts()
     }
 
     interface IMyProfilePresenter {

@@ -577,7 +577,7 @@
 
             <Spinner
                 android:id="@+id/sp_blood_type"
-                android:layout_width="584px"
+                android:layout_width="276px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
                 android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
@@ -585,6 +585,43 @@
                 android:textSize="24px"
                 app:layout_constraintStart_toStartOf="@id/tv_blood_type"
                 app:layout_constraintTop_toBottomOf="@id/tv_blood_type" />
+
+            <Spinner
+                android:id="@+id/sp_rhesus"
+                android:layout_width="276px"
+                android:layout_height="64px"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:paddingHorizontal="16px"
+                android:textSize="24px"
+                android:layout_marginStart="40px"
+                app:layout_constraintStart_toEndOf="@id/sp_blood_type"
+                app:layout_constraintTop_toTopOf="@id/sp_blood_type" />
+
+            <Button
+                android:id="@+id/btn_allergies_yes"
+                android:layout_width="276px"
+                android:layout_height="64px"
+                android:text="@string/common_yes"
+                android:textColor="@color/black_050505"
+                android:textSize="24px"
+                android:background="@drawable/bg_blue_e5f6ff_stroke_c0e3f4_round_four_15"
+                android:layout_marginStart="40px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/sp_rhesus"
+                app:layout_constraintTop_toTopOf="@id/sp_rhesus"/>
+
+            <Button
+                android:id="@+id/btn_allergies_no"
+                android:layout_width="276px"
+                android:layout_height="64px"
+                android:text="@string/common_no"
+                android:textColor="@color/grey_aaabad"
+                android:textSize="24px"
+                android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
+                android:layout_marginStart="40px"
+                style="?android:attr/borderlessButtonStyle"
+                app:layout_constraintStart_toEndOf="@id/btn_allergies_yes"
+                app:layout_constraintTop_toTopOf="@id/btn_allergies_yes"/>
 
             <!--            <TextView-->
             <!--                android:id="@+id/tv_vision"-->
@@ -897,6 +934,28 @@
                 android:textSize="18px"
                 app:layout_constraintStart_toStartOf="@id/et_height"
                 app:layout_constraintTop_toBottomOf="@id/et_height" />
+
+            <TextView
+                android:id="@+id/tv_rhesus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_rhesus_wording"
+                android:textColor="@color/grey_707070"
+                android:textSize="18px"
+                android:layout_marginBottom="9px"
+                app:layout_constraintStart_toStartOf="@id/sp_rhesus"
+                app:layout_constraintBottom_toTopOf="@id/sp_rhesus" />
+
+            <TextView
+                android:id="@+id/tv_allergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_allergies_wording"
+                android:textSize="18px"
+                android:textColor="@color/grey_707070"
+                android:layout_marginBottom="9px"
+                app:layout_constraintStart_toStartOf="@id/btn_allergies_yes"
+                app:layout_constraintBottom_toTopOf="@id/btn_allergies_yes"/>
 
             <TextView
                 android:id="@+id/tv_food_allergies"
