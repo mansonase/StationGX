@@ -22,11 +22,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.corbit.stationgx.R;
 import com.corbit.stationgx.pages.mainbaseactivity.MainBaseActivity;
+import com.corbit.stationgx.pages.myprofile.MyProfileActivity;
 
 import java.io.File;
+import java.util.Map;
 
 import ai.picovoice.porcupine.Porcupine;
 import ai.picovoice.porcupine.PorcupineException;
@@ -81,7 +84,8 @@ public class PorcupineService extends Service {
 
         try {
             porcupineManager = new PorcupineManager.Builder()
-                    .setKeyword(Porcupine.BuiltInKeyword.COMPUTER)
+//                    .setKeyword(Porcupine.BuiltInKeyword.COMPUTER)
+                    .setKeywordPath(getAbsolutePath("wake_words.ppn"))
                     .setSensitivity(0.7f).build(
                             getApplicationContext(),
                             (keywordIndex) -> {
@@ -117,7 +121,13 @@ public class PorcupineService extends Service {
                         @Override
                         public void invoke(final RhinoInference inference) {
                             if (inference.getIsUnderstood()) {
-                                Log.d("de", "isUnderstood");
+                                parseIntentData(inference);
+//                                if (inference.getSlots().size() > 0) {
+//                                    Map<String, String> map = inference.getSlots();
+//                                    for (String key : map.keySet()) {
+//                                        Log.d("de", key + ": " + map.get(key));
+//                                    }
+//                                }
                             } else {
                                 Log.d("de", "can't understand");
                             }
@@ -134,50 +144,50 @@ public class PorcupineService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private void initRhino() {
-        try {
-            rhinoManager = new RhinoManager.Builder()
-//                .setContextPath(getAbsolutePath("rhino_context.rhn"))
-                    .setContextPath(getAbsolutePath("speech_to_intent.rhn"))
-                    .setSensitivity(0.25f)
-                    .build(getApplicationContext(), new RhinoManagerCallback() {
-                        @Override
-                        public void invoke(final RhinoInference inference) {
-                            if (inference.getIsUnderstood()) {
-                                Log.d("de", "isUnderstood");
-                            } else {
-                                Log.d("de", "can't understand");
-                            }
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    recordButton.setEnabled(true);
-//                                    recordButton.setText("START");
-//                                    recordButton.toggle();
-//                                    intentTextView.setText("\n    {\n");
-//                                    intentTextView.append(String.format("        \"isUnderstood\" : \"%b\",\n", inference.getIsUnderstood()));
-//                                    if (inference.getIsUnderstood()) {
-//                                        intentTextView.append(String.format("        \"intent\" : \"%s\",\n", inference.getIntent()));
-//                                        final Map<String, String> slots = inference.getSlots();
-//                                        if (slots.size() > 0) {
-//                                            intentTextView.append("        \"slots\" : {\n");
-//                                            for (String key : slots.keySet()) {
-//                                                intentTextView.append(String.format("            \"%s\" : \"%s\",\n", key, slots.get(key)));
-//                                            }
-//                                            intentTextView.append("        }\n");
-//                                        }
-//                                    }
-//                                    intentTextView.append("    }\n");
-//                                }
-//                            });
-                        }
-                    });
-            rhinoManager.process();
+    private void parseIntentData(final RhinoInference inference) {
+        String intent = inference.getIntent();
+        switch (intent) {
+            case "GoToPage":
+                goToTargetPage(inference.getSlots());
+                break;
+            case "HealthData":
+                break;
+            default:
+                break;
         }
-        catch (Exception e) {
-            Log.d("de", "initRhino exception: "+e.toString());
+    }
 
+    private void goToTargetPage(final Map<String, String> slots) {
+        for (String key : slots.keySet()) {
+            String targetPage = slots.get(key);
+            switch (targetPage) {
+                case "home page":
+                    goHomePage();
+                    break;
+                case "health data":
+                    goHealthDataPage();
+                    break;
+                default:
+                    break;
+            }
         }
+    }
+
+    private void goHomePage() {
+        Intent intent = new Intent(getApplicationContext(), MainBaseActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void goHealthDataPage() {
+        Intent intent = new Intent(getApplicationContext(), MyProfileActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void goToInputDataPage(final Map<String, String> slots) {
+        Intent intent = new Intent(this, MyProfileActivity.class);
+        startActivity(intent);
     }
 
     @Nullable
@@ -191,6 +201,8 @@ public class PorcupineService extends Service {
         try {
             porcupineManager.stop();
             porcupineManager.delete();
+
+            rhinoManager.delete();
         } catch (PorcupineException e) {
             Log.d("de", "onDestroy exception: " + e.toString());
         }
