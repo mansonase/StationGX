@@ -83,64 +83,26 @@
         android:gravity="center"
         android:autoSizeTextType="uniform"/>
 
-    <ImageView
-        android:layout_width="24px"
-        android:layout_height="24px"
-        android:background="@drawable/ic_baseline_star_24"
-        android:layout_marginTop="219px"
-        android:layout_marginStart="24px"/>
 
     <TextView
-        android:layout_width="163px"
+        android:layout_width="72px"
         android:layout_height="32px"
         android:textColor="@color/word_black"
-        android:text="@string/target_systolic"
-        android:layout_marginTop="215px"
-        android:layout_marginStart="56px"
+        android:text="@string/note"
         android:fontFamily="@font/roboto_bold"
+        android:autoSizeTextType="uniform"
+        android:layout_marginStart="24px"
+        android:layout_marginTop="176px"
         android:gravity="center"
-        android:autoSizeTextType="uniform"/>
+        />
     <EditText
-        android:layout_width="104px"
-        android:layout_height="64px"
-        android:layout_marginTop="199px"
-        android:layout_marginStart="235px"
-        android:background="@drawable/main_white_four_15_frame_blue_2"
-        android:inputType="numberDecimal"
-        android:id="@+id/input_target_systolic"
-        android:imeOptions="flagNoExtractUi|actionNext"
-        android:nextFocusForward="@+id/input_target_diastolic"/>
+        android:layout_width="536px"
+        android:layout_height="120px"
+        android:id="@+id/input_blood_pressure_note"
+        android:layout_marginTop="176px"
+        android:layout_marginStart="106px"
+        android:background="@drawable/main_white_four_15_frame_blue_2"/>
 
-    <TextView
-        android:layout_width="110px"
-        android:layout_height="32px"
-        android:text="@string/diastolic"
-        android:layout_marginTop="215px"
-        android:layout_marginStart="355px"
-        android:textColor="@color/word_black"
-        android:fontFamily="@font/roboto_bold"
-        android:gravity="center"
-        android:autoSizeTextType="uniform"/>
-
-    <EditText
-        android:layout_width="104px"
-        android:layout_height="64px"
-        android:layout_marginTop="199px"
-        android:layout_marginStart="480px"
-        android:background="@drawable/main_white_four_15_frame_blue_2"
-        android:inputType="numberDecimal"
-        android:id="@+id/input_target_diastolic"
-        android:imeOptions="flagNoExtractUi|actionDone"/>
-    <TextView
-        android:layout_width="73px"
-        android:layout_height="32px"
-        android:textColor="@color/word_black"
-        android:text="@string/mmhg"
-        android:layout_marginTop="215px"
-        android:layout_marginStart="600px"
-        android:fontFamily="@font/roboto_bold"
-        android:gravity="center"
-        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:layout_width="120px"
@@ -156,7 +118,6 @@
     <RelativeLayout
         android:layout_width="536px"
         android:layout_height="64px"
-        android:id="@+id/input_blood_pressure_time"
         android:background="@drawable/main_white_four_15_frame_blue_2"
         android:layout_marginTop="303px"
         android:layout_marginStart="160px">
@@ -171,7 +132,7 @@
             android:layout_marginStart="24px"
             android:text="August 04, 2020"
             android:autoSizeTextType="uniform"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="100px"

@@ -1,6 +1,8 @@
 package com.corbit.stationgx.pages.manuelinput.bloodpressure.view
 
+import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.corbit.stationgx.R
 import com.corbit.stationgx.base.BaseActivity
-import com.corbit.stationgx.data.db.manualinput.bloodpressure.BloodPressureBean
 import com.corbit.stationgx.pages.manuelinput.ManualInputActivity
 import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.BloodPressurePresenter
 import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.Contract
@@ -20,7 +21,6 @@ import com.corbit.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
 import com.corbit.stationgx.ui.mpchart.BloodPressureBarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarEntry
-import io.realm.Realm
 import kotlinx.android.synthetic.main.dialog_blood_pressure_input.*
 import kotlinx.android.synthetic.main.first_start_input.*
 import kotlinx.android.synthetic.main.main_blood_pressure.*
@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<BloodPressureBean,BarEntry> {
+class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<Entity,BarEntry> {
 
     private var isFirst=true
 
@@ -43,7 +43,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<B
     private var barChart: BloodPressureBackgroundBarChart? =null
     private var barData: BarData?=null
     private lateinit var list:ArrayList<Entity>
-
+    private var startTime=0
 
     private lateinit var mPresenter:Contract.IPresenter
 
@@ -64,21 +64,29 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<B
         mPresenter=BloodPressurePresenter(this)
     }
 
-    override fun updateChart(array: BarEntry) {
-        TODO("Not yet implemented")
+    override fun updateChart(arrayList: ArrayList<BarEntry>) {
+        presentChart(duration,arrayList)
     }
 
-    override fun updateTable(list: ArrayList<BloodPressureBean>) {
-        TODO("Not yet implemented")
+    override fun updateTable(list: ArrayList<Entity>) {
+        presentTable(list)
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.calendar_left_arrow->{
                 //todo 向左翻頁
+                startTime=getStartTime(true,"today",startTime)
+                mPresenter.getDayData(startTime)
             }
             R.id.calendar_right_arrow->{
                 //todo 向右翻頁
+                startTime=getStartTime(false,"today",startTime)
+                mPresenter.getDayData(startTime)
+            }
+
+            R.id.input_blood_pressure->{
+                createInputDialog()
             }
 /*
             R.id.blood_pressure_start_input->{
@@ -155,10 +163,38 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<B
 
         dialog.dialog_date.text=formatDate.format(calendar.time)
         dialog.dialog_time.text=formatTime.format(calendar.time)
-        dialog.input_blood_pressure_time.setOnClickListener {
-            // TODO: 2021/5/19 select date
+        dialog.dialog_date.setOnClickListener {
+
+           DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+
+
+               calendar.set(year,month,dayOfMonth)
+               dialog.dialog_date.text=formatDate.format(calendar.time)
+
+
+           },calendar.get(Calendar.YEAR)
+           ,calendar.get(Calendar.MONTH)
+           ,calendar.get(Calendar.DAY_OF_MONTH )).show()
         }
-        dialog.blood_pressure_dialog_clear.setOnClickListener { dialog.dismiss() }
+        dialog.dialog_time.setOnClickListener {
+
+            TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+
+                calendar.set(Calendar.HOUR_OF_DAY,hourOfDay)
+                calendar.set(Calendar.MINUTE,minute)
+                dialog.dialog_time.text=formatTime.format(calendar.time)
+
+            },calendar.get(Calendar.HOUR_OF_DAY)
+            ,calendar.get(Calendar.MINUTE)
+            ,true).show()
+
+        }
+
+        dialog.blood_pressure_dialog_clear.setOnClickListener {
+            dialog.dismiss()
+            startTime=getThisTodayStartTime()
+            mPresenter.getDayData(startTime)
+        }
         dialog.input_blood_pressure_save.setOnClickListener {
             isFirst=false
 
@@ -180,7 +216,10 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<B
 
             Log.d("createinputdialog","${dialog.input_systolic.text}, date is ${dialog.dialog_date.text}")
             duration="today"
-            //doFakeData(duration)
+
+            startTime=getThisTodayStartTime()
+            mPresenter.getDayData(startTime)
+
         }
         dialog.show()
     }
@@ -300,14 +339,34 @@ Log.d("yeahyeahyeah",timeText)
 
 
 
-    private fun presentData(duration: String){
+    private fun presentChart(duration: String, arrayList: ArrayList<BarEntry>){
         bpBarChart=null
         bpBarChart= BloodPressureBarChart(findViewById(R.id.blood_pressure_barchart),duration)
         barChart?.clear()
+        bpBarChart?.setBarEntry(arrayList)
+
+        when(duration){
+            "today"->bpBarChart?.setStartTime(startTime)
+            "week"->bpBarChart?.setStartTime(startTime)
+            "month"->bpBarChart?.setStartTime(startTime)
+        }
+
+        barChart=bpBarChart!!.getChart()
+        barData=bpBarChart!!.getData()
+
+        barChart?.addTargetZone(BloodPressureBackgroundBarChart.TargetZone(Color.parseColor("#F9EBEC"),100f,140f))
+        barChart?.addTargetZone(BloodPressureBackgroundBarChart.TargetZone(Color.parseColor("#E5F6FF"),60f,100f))
+
+        barChart?.data=barData
 
     }
-
-
+    private fun presentTable(arrayList: ArrayList<Entity>){
+        val layoutManager=LinearLayoutManager(this)
+        layoutManager.orientation=LinearLayoutManager.VERTICAL
+        val dataList=findViewById<RecyclerView>(R.id.recyclerview_blood_pressure)
+        dataList.layoutManager=layoutManager
+        dataList.adapter=DataAdapter(arrayList)
+    }
 
     private fun doFakeData(duration: String){
         bpBarChart=null
@@ -351,6 +410,91 @@ Log.d("yeahyeahyeah",timeText)
         dataList.layoutManager=layoutManager
         dataList.adapter= DataAdapter(list)
     }
+
+
+    private fun getThisTodayStartTime():Int{
+
+        val calendar=Calendar.getInstance()
+        calendar.clear(Calendar.MILLISECOND)
+        calendar.set(Calendar.HOUR_OF_DAY,0)
+        calendar.set(Calendar.MINUTE,0)
+        calendar.set(Calendar.SECOND,0)
+
+
+        return (calendar.timeInMillis/1000).toInt()
+
+    }
+
+
+    /***
+     * DAY_OF_WEEK: Sunday=1
+     *              Monday=2
+     *              Tuesday=3
+     *              Wednesday=4
+     *              Thursday=5
+     *              Friday=6
+     *              Saturday=7
+     *
+     */
+    private fun getThisWeekStartTime():Int{
+
+        val calendar=Calendar.getInstance()
+        calendar.clear(Calendar.MILLISECOND)
+
+        calendar.firstDayOfWeek=Calendar.MONDAY
+        calendar.set(Calendar.DAY_OF_WEEK,calendar.firstDayOfWeek)
+        calendar.set(Calendar.HOUR_OF_DAY,0)
+        calendar.set(Calendar.MINUTE,0)
+        calendar.set(Calendar.SECOND,0)
+
+        return (calendar.timeInMillis/1000).toInt()
+    }
+
+    private fun getThisMonthStartTime():Int{
+
+        val calendar=Calendar.getInstance()
+        calendar.clear(Calendar.MILLISECOND)
+
+        calendar.set(Calendar.DAY_OF_MONTH,1)
+        calendar.set(Calendar.HOUR_OF_DAY,0)
+        calendar.set(Calendar.MINUTE,0)
+        calendar.set(Calendar.SECOND,0)
+
+        return (calendar.timeInMillis/1000).toInt()
+    }
+
+    private fun getStartTime(last:Boolean,duration:String,start:Int):Int{
+
+        val calendar=Calendar.getInstance()
+        calendar.timeInMillis=start.toLong()*1000
+
+
+       val diff = if (last){
+            -1
+        }else{
+            1
+        }
+
+        when(duration){
+
+            "today"->{
+                calendar.add(Calendar.DAY_OF_MONTH,diff)
+            }
+
+            "week"->{
+                calendar.add(Calendar.DAY_OF_MONTH,diff*7)
+            }
+
+            "month"->{
+                calendar.add(Calendar.MONTH,diff)
+            }
+        }
+
+        return (calendar.timeInMillis/1000).toInt()
+    }
+
+
+
 
 
 }

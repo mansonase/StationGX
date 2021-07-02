@@ -76,6 +76,34 @@ class CalendarMonth(context: Context) :MonthView(context) {
         val schemes= calendar.schemes
         Log.d("calendarmonth"," ${calendar.day}, size is ${schemes.size}, ${schemes.get(0).scheme}")
 
+
+        when(schemes[0].scheme){
+            "day"->{
+                canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),(mItemHeight/2).toFloat(),paintRangeDates)
+            }
+            "week"->{
+
+                val dayOfWeek=CalendarUtil.getWeekFromCalendar(calendar)
+                if (dayOfWeek==1){// if this day is monday, draw circle and half rect
+                    canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),(mItemHeight/2).toFloat(), paintRangeDates)
+                    canvas?.drawRect((centerX+mItemHeight/4).toFloat(),y.toFloat(),(x+mItemWidth).toFloat(),(y+mItemHeight).toFloat(),paintRangeDates)
+                }else if (dayOfWeek==0){// if this day is sunday, draw circle and half rect
+                    canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),(mItemHeight/2).toFloat(),paintRangeDates)
+                    canvas?.drawRect(x.toFloat(),y.toFloat(),(centerX+mItemWidth/4).toFloat(),(y+mItemHeight).toFloat(),paintRangeDates)
+                }else{// this day is tuesday to saturday, draw rect
+                    canvas?.drawRect(x.toFloat(),y.toFloat(),(x+mItemWidth).toFloat(),(y+mItemHeight).toFloat(),paintRangeDates)
+                }
+            }
+            "month"->{
+                canvas?.drawRect(x.toFloat(),y.toFloat(),(x+mItemWidth).toFloat(),(y+mItemHeight).toFloat(),paintRangeDates)
+            }
+        }
+        if (schemes[1].scheme=="event"){
+            canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),22f,paintEventDates)
+        }
+
+
+        /*
         if (schemes[0].scheme=="record"){
             Log.d("calendarmonth","scheme[0].scheme==record")
             canvas?.drawCircle((centerX+mItemHeight/4).toFloat(), centerY.toFloat(), (22).toFloat(), paintEventDates)
@@ -103,6 +131,8 @@ class CalendarMonth(context: Context) :MonthView(context) {
                 }
             }
         }
+
+         */
 
         Log.d("howabout","current month, $calendar")
         /*
@@ -134,7 +164,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
         //                          94,         56
         val baselineY=mTextBaseLine+y
         val centerX=(x+mItemWidth/2).toFloat()
-        val centerY=(y+mItemHeight/2).toFloat()
+        val centerY=(y+mItemHeight/1.8).toFloat()
 
 
         val day=calendar?.day
@@ -151,7 +181,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
 
             if(calendar.isCurrentDay){ // 是今天?
 
-                canvas?.drawCircle(centerX + (mItemHeight / 4), centerY, (22).toFloat(), paintTodayCircle)
+                canvas?.drawCircle(centerX + (mItemHeight / 4.7).toFloat(), centerY, (22).toFloat(), paintTodayCircle)
                 canvas?.drawText(
                         day.toString(),
                         centerX+wordX,
@@ -180,7 +210,13 @@ class CalendarMonth(context: Context) :MonthView(context) {
             }
         }else{// 是指定顯示該月的 上個月 or 下個月的範圍
 
+            canvas?.drawText(
+                    calendar.day.toString(),
+                    centerX+wordX,
+                    baselineY,
+                    nextMonthDates)
 
+            /*
             if (calendar.day<15){// 下個月的範圍
                 canvas?.drawText(
                         calendar.day.toString(),
@@ -189,6 +225,8 @@ class CalendarMonth(context: Context) :MonthView(context) {
                         nextMonthDates)
 
             }
+
+             */
             //Log.d("hohoho","fuck ${calendar_bp.schemes.size}")
         }
     }

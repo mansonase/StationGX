@@ -9,14 +9,18 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import com.corbit.stationgx.R
+import com.corbit.stationgx.data.db.manualinput.bloodpressure.BloodPressureBean
+import com.corbit.stationgx.ui.custom.calendar.CalendarUtil
 import com.corbit.stationgx.ui.custom.calendar.bp.FragmentMonth
 import com.corbit.stationgx.ui.custom.calendar.bp.FragmentSwitcher
 import com.corbit.stationgx.ui.custom.calendar.bp.FragmentToday
 import com.corbit.stationgx.ui.custom.calendar.bp.FragmentWeek
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
+import io.realm.RealmResults
+import kotlinx.android.synthetic.main.calendar_select.*
 
-class BPCalendarFragment : DialogFragment(){
+class BPCalendarFragment : DialogFragment(),View.OnClickListener{
 
     private var today: FragmentToday?=null
     private var week: FragmentWeek?=null
@@ -48,7 +52,7 @@ class BPCalendarFragment : DialogFragment(){
             Log.d("bpcalendarNew","duration is $duration")
         }
 
-        val view=inflater.inflate(R.layout.calendar_bp,container,false)
+        val view=inflater.inflate(R.layout.calendar_select,container,false)
         calendarView=view.findViewById(R.id.custom_calendar)
         dialog?.window?.decorView?.systemUiVisibility=activity?.window?.decorView?.systemUiVisibility!!
         dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
@@ -58,6 +62,13 @@ class BPCalendarFragment : DialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("bpcalendarNew","onviewcreated")
+
+
+        calendar_back.setOnClickListener(this)
+
+
+
+        /*
         switcher= FragmentSwitcher()
         today= FragmentToday()
         week= FragmentWeek()
@@ -78,9 +89,19 @@ class BPCalendarFragment : DialogFragment(){
         calendar.day=23
         setBackgroundScheme(calendar,duration)
 
+         */
+
     }
 
-    private fun showFragment(fragment:String,duration: String){
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.calendar_back->{
+                dismiss()
+            }
+        }
+    }
+
+    private fun showFragment(fragment:String, duration: String){
         when(fragment){
             "today"->{
 
@@ -213,7 +234,7 @@ class BPCalendarFragment : DialogFragment(){
 
     fun controlCalendar(change:String,duration: String){
         Log.d("bpcalendar","test function")
-        showFragment(change,duration)
+        //showFragment(change,duration)
     }
 
     fun controlSwitcher(duration: String){
@@ -396,6 +417,55 @@ class BPCalendarFragment : DialogFragment(){
         }
         Log.d("setEventsScheme",cal.toString())
         map[date]=cal
+
+        return map
+    }
+
+
+    private fun setSchemesFromActivity(range:String,startDate: java.util.Calendar,results: RealmResults<BloodPressureBean>):HashMap<String,Calendar>{
+
+        val map=HashMap<String,Calendar>()
+
+        val calendar=Calendar()
+        val days=CalendarUtil.getDays(startDate,range)
+
+
+        for (i in 0 until days){
+            calendar.year=startDate.get(java.util.Calendar.YEAR)
+            calendar.month=startDate.get(java.util.Calendar.MONTH)+1
+            calendar.day=startDate.get(java.util.Calendar.DAY_OF_MONTH)
+
+            calendar.addScheme(0x000000,range)
+
+            map[calendar.toString()]=calendar
+
+            startDate.add(java.util.Calendar.DAY_OF_MONTH,1)
+        }
+
+        startDate.add(java.util.Calendar.DAY_OF_MONTH,-days)
+
+        var day0=0
+        var day1:Int?
+
+        var bean: BloodPressureBean?
+        var cal:Calendar?
+        var calReal=java.util.Calendar.getInstance()
+
+        val it=results.iterator()
+        while (it.hasNext()){
+            bean=it.next()
+            calReal.timeInMillis=(bean.time.toLong())*1000
+
+
+
+
+            cal= map[calendar.toString()]
+
+
+        }
+
+
+
 
         return map
     }

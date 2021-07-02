@@ -57,7 +57,8 @@
             android:background="@drawable/label_blood_pressure_blue_round"
             android:outlineAmbientShadowColor="@color/shadow_grey"
             android:elevation="3px"
-            android:src="@drawable/ic_baseline_keyboard_arrow_left_24"/>
+            android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+            android:onClick="onClick"/>
 
         <ImageView
             android:layout_width="32px"
@@ -68,7 +69,8 @@
             android:background="@drawable/label_blood_pressure_blue_round"
             android:outlineAmbientShadowColor="@color/shadow_grey"
             android:elevation="3px"
-            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:onClick="onClick"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -251,7 +253,8 @@
         android:id="@+id/share_blood_pressure"
         android:layout_marginTop="672px"
         android:layout_marginStart="0px"
-        android:background="@drawable/word_blue_right_two_60">
+        android:background="@drawable/word_blue_right_two_60"
+        android:onClick="onClick">
         <ImageView
             android:layout_width="40px"
             android:layout_height="40px"/>
@@ -263,7 +266,8 @@
         android:id="@+id/input_blood_pressure"
         android:layout_marginTop="672px"
         android:layout_marginStart="1200px"
-        android:background="@drawable/word_blue_left_two_60">
+        android:background="@drawable/word_blue_left_two_60"
+        android:onClick="onClick">
         <ImageView
             android:layout_width="40px"
             android:layout_height="40px"/>

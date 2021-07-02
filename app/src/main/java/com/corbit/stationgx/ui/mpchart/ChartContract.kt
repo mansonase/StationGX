@@ -4,4 +4,5 @@ interface ChartContract<C,D> {
 
     fun getChart():C
     fun getData() :D
+
 }

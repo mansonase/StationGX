@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:background="@drawable/frame_blood_pressure_recyclerview">
     <TextView
-        android:layout_width="280px"
+        android:layout_width="270px"
         android:layout_height="match_parent"
         android:id="@+id/list_blood_pressure_date"
         android:gravity="center"
@@ -70,7 +70,7 @@
         android:layout_toEndOf="@id/mmhg_blood_pressure"/>
 
     <TextView
-        android:layout_width="300px"
+        android:layout_width="280px"
         android:layout_height="match_parent"
         android:id="@+id/list_blood_pressure_note"
         android:gravity="center"

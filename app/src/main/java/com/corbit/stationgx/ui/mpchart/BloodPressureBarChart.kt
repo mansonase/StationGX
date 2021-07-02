@@ -1,12 +1,16 @@
 package com.corbit.stationgx.ui.mpchart
 
 import android.graphics.Color
+import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import com.corbit.stationgx.R
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.*
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import java.util.*
+import kotlin.collections.ArrayList
 
 class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChart, private val duration:String):ChartContract<BloodPressureBackgroundBarChart,BarData> {
 
@@ -14,6 +18,9 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
     private val weekInterval= arrayOf("Mon","Tue","Wed","Thu","Fri","Sat","Sun","")
     private val monthInterval= arrayOf("","7th","14th","21th","28th","")
 
+    private var barDataSet:BarDataSet?=null
+
+    private var startTime=0
 
     override fun getChart(): BloodPressureBackgroundBarChart {
         //TODO("Not yet implemented")
@@ -49,15 +56,18 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
         barChart.xAxis.setDrawAxisLine(false)
         barChart.xAxis.setDrawLabels(true)
         barChart.xAxis.position=XAxis.XAxisPosition.BOTTOM
-        //barChart.xAxis.granularity=0.85f
 
-        //barChart.xAxis.setLabelCount(8,true)
-        barChart.xAxis.axisMinimum=0f
-        //barChart.xAxis.axisMaximum=168f
+
+
+        barChart.xAxis.axisMinimum=startTime.toFloat()
+
+
         barChart.xAxis.textSize=24f
         barChart.xAxis.textColor=R.color.label_black
         barChart.extraBottomOffset=10f
+        barChart.extraRightOffset=20f
         barChart.xAxis.setAvoidFirstLastClipping(true)
+
 
 
         var interval:Array<String>?=null
@@ -65,19 +75,45 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
             "today"-> {
                 interval=todayInterval
                 barChart.xAxis.setLabelCount(5,true)
-                barChart.xAxis.axisMaximum=24f
+
+
+                val calendar=Calendar.getInstance()
+                calendar.timeInMillis=startTime.toLong()*1000
+                calendar.add(Calendar.HOUR_OF_DAY,24)
+                //calendar.add(Calendar.SECOND,-1)
+
+                barChart.xAxis.axisMaximum=(calendar.timeInMillis/1000).toInt().toFloat()
+
+
+
+                Log.d("findingtime",calendar.get(Calendar.HOUR_OF_DAY).toString())
+
+
+                barChart.xAxis.valueFormatter= XAxisFormatter()
+
             }
             "week"-> {
                 interval = weekInterval
                 barChart.xAxis.setLabelCount(8,true)
-                barChart.xAxis.axisMaximum=168f
+
+                val calendar=Calendar.getInstance()
+                calendar.timeInMillis=startTime.toLong()*1000
+                calendar.add(Calendar.DAY_OF_MONTH,7)
+
+                barChart.xAxis.axisMaximum=(calendar.timeInMillis/1000).toInt().toFloat()
             }
             "month"-> {
                 interval=monthInterval
                 barChart.xAxis.setLabelCount(6,true)
-                barChart.xAxis.axisMaximum=35f
+
+                val calendar=Calendar.getInstance()
+                calendar.timeInMillis=startTime.toLong()*1000
+                calendar.add(Calendar.MONTH,1)
+
+                barChart.xAxis.axisMaximum=(calendar.timeInMillis/1000).toInt().toFloat()
             }
         }
+
 
         //barChart.xAxis.valueFormatter=BloodPressureXFormatter(interval!!)
         //todo 設X軸會在切換today/week/month時crash (不好處理, 可能先不要放顯示X軸的功能)
@@ -103,23 +139,33 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
         return getList(duration)
     }
 
+    fun setBarEntry(arrayList: ArrayList<BarEntry>){
+
+        barDataSet=BarDataSet(arrayList,"")
+    }
+
+    fun setStartTime(time:Int){
+        startTime=time
+    }
+
     private fun getList(duration: String):BarData{
 
-        val context=barChart.context
+        //val context=barChart.context
 
-        val bpList=BloodPressureSource(duration)
-        val barDataSet=BarDataSet(bpList.getBarEntry(),"")
-        val range= barDataSet.getEntryForIndex(0).yVals
+        //val bpList=BloodPressureSource(duration)
+        //val barDataSet=BarDataSet(bpList.getBarEntry(),"")
+
+        //val range= barDataSet.getEntryForIndex(0).yVals
 
 
-        barDataSet.color=Color.TRANSPARENT
-        barDataSet.setDrawValues(false)
+        barDataSet?.color=Color.TRANSPARENT
+        barDataSet?.setDrawValues(false)
 
 
         return BarData(barDataSet)
     }
 
-    fun setLimitLine(barChart: BarChart):BarChart{
+    private fun setLimitLine(barChart: BarChart):BarChart{
 
         val limitline180=LimitLine(180f,"")
         val limitline140=LimitLine(140f,"")
@@ -149,5 +195,6 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
 
         return barChart
     }
+
 
 }
