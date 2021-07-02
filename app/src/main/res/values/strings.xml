@@ -178,14 +178,15 @@
     <string name="profile_label_emergency_contact_relation_wording">Relation</string>
     <string name="profile_label_emergency_contact_phone_wording"><font fgcolor='#070707'>Phone</font> <font fgcolor='#0288d1'>*</font></string>
     <string name="profile_label_emergency_contact_email_wording"><font fgcolor='#070707'>Email</font> <font fgcolor='#0288d1'>*</font></string>
-    <string name="profile_label_graphic_hint">Please check, which of the following organ systems need attention or was under medical treatment?</string>
-    <string name="profile_label_graphic_nerves_hint">Nerves, Brain and Mental</string>
-    <string name="profile_label_graphic_heart_hint">Heart and Circulation</string>
-    <string name="profile_label_graphic_kidney_hint">Kidney and Urogenital</string>
-    <string name="profile_label_graphic_skin_hint">Skin, Hair, Feet and Hands</string>
-    <string name="profile_label_graphic_lung_hint">Lung and Respiration</string>
-    <string name="profile_label_graphic_abdominal_hint">Abdominal/Liver/Digestive</string>
-    <string name="profile_label_graphic_muscular_hint">Muscular and Skeletal</string>
+    <string name="profile_label_graphic_wording">Please check, which of the following organ systems need attention or was under medical treatment?</string>
+    <string name="profile_label_graphic_nerves_wording">Nerves, Brain and Mental</string>
+    <string name="profile_label_graphic_heart_wording">Heart and Circulation</string>
+    <string name="profile_label_graphic_kidney_wording">Kidney and Urogenital</string>
+    <string name="profile_label_graphic_endocrine_wording">Endocrine/Blood</string>
+    <string name="profile_label_graphic_skin_wording">Skin, Hair, Feet and Hands</string>
+    <string name="profile_label_graphic_lung_wording">Lung and Respiration</string>
+    <string name="profile_label_graphic_abdominal_wording">Abdominal/Liver/Digestive</string>
+    <string name="profile_label_graphic_muscular_wording">Muscular and Skeletal</string>
 
     <string-array name="gender_selection">
         <item>Selection:</item>

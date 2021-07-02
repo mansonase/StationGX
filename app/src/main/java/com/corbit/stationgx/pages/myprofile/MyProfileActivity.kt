@@ -1,10 +1,12 @@
 package com.corbit.stationgx.pages.myprofile
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.corbit.stationgx.R
 import kotlinx.android.synthetic.main.activity_profile.*
 
@@ -26,24 +28,67 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         }
 
         btn_mobility_1.setOnClickListener{
-            resetMobilityBtnBg()
+            presenter.resetMobilityBtnBg()
+            btn_mobility_1.setBackgroundResource(R.drawable.bg_blue_c0e3f4_round_start_15)
         }
 
         btn_mobility_2.setOnClickListener {
-            resetMobilityBtnBg()
+            presenter.resetMobilityBtnBg()
+            btn_mobility_2.setBackgroundResource(R.drawable.bg_blue_c0e3f4_stroke_e5f6ff)
         }
 
         btn_mobility_3.setOnClickListener {
-            resetMobilityBtnBg()
+            presenter.resetMobilityBtnBg()
+            btn_mobility_3.setBackgroundResource(R.drawable.bg_blue_c0e3f4_stroke_e5f6ff)
         }
 
         btn_mobility_4.setOnClickListener {
-            resetMobilityBtnBg()
+            presenter.resetMobilityBtnBg()
+            btn_mobility_4.setBackgroundResource(R.drawable.bg_blue_c0e3f4_stroke_e5f6ff)
         }
 
         btn_mobility_5.setOnClickListener {
-            resetMobilityBtnBg()
+            presenter.resetMobilityBtnBg()
+            btn_mobility_5.setBackgroundResource(R.drawable.bg_blue_c0e3f4_round_end_15)
         }
+
+        btn_heart_attack.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_heart_attack)
+        }
+
+        btn_stroke.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_stroke)
+        }
+
+        btn_bleeding.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_bleeding)
+        }
+
+        btn_cancer.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_cancer)
+        }
+
+        btn_faint_or_fall.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_faint_or_fall)
+        }
+
+        btn_dialysis.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_dialysis)
+        }
+
+        btn_surgery.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_surgery)
+        }
+
+        btn_others.setOnClickListener {
+            presenter.onMedicalEventExpBtnClick(btn_others)
+        }
+
+        btn_graphic_nerves.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_nerves)
+        }
+
+
 
         btn_save.setOnClickListener{
 
@@ -51,16 +96,36 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
     }
 
     private fun initMobilityArr() {
-        mobilityArr[0] = btn_mobility_1
-        mobilityArr[1] = btn_mobility_2
-        mobilityArr[2] = btn_mobility_3
-        mobilityArr[3] = btn_mobility_4
-        mobilityArr[4] = btn_mobility_5
+        mobilityArr = arrayOf(btn_mobility_1, btn_mobility_2, btn_mobility_3, btn_mobility_4, btn_mobility_5)
     }
 
-    private fun resetMobilityBtnBg() {
-        for (view in mobilityArr) {
-            view.setBackgroundResource(R.drawable.bg_profile_btn_unselected)
+    override fun resetMobilityBtnBg() {
+        mobilityArr[0].setBackgroundResource(R.drawable.bg_transparent_stroke_c0e3f4_round_start_15)
+        mobilityArr[1].setBackgroundResource(R.drawable.bg_transparent_stroke_c0e3f4)
+        mobilityArr[2].setBackgroundResource(R.drawable.bg_transparent_stroke_c0e3f4)
+        mobilityArr[3].setBackgroundResource(R.drawable.bg_transparent_stroke_c0e3f4)
+        mobilityArr[4].setBackgroundResource(R.drawable.bg_transparent_stroke_c0e3f4_round_end_15)
+    }
+
+    override fun updateMedicalEventBtn(button: Button, selected: Boolean) {
+        if (selected) {
+            button.setTextColor(Color.WHITE)
+            button.setBackgroundResource(R.drawable.bg_profile_btn_selected)
+        }
+        else {
+            button.setTextColor(ContextCompat.getColor(this, R.color.blue_0288d1))
+            button.setBackgroundResource(R.drawable.bg_profile_btn_unselected)
+        }
+    }
+
+    override fun updateMedicalTreatmentBtn(button: Button, selected: Boolean) {
+        if (selected) {
+            button.setTextColor(Color.WHITE)
+            button.setBackgroundResource(R.drawable.bg_profile_btn_selected)
+        }
+        else {
+            button.setTextColor(ContextCompat.getColor(this, R.color.blue_0288d1))
+            button.setBackgroundResource(R.drawable.bg_profile_btn_unselected)
         }
     }
 

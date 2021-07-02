@@ -19,6 +19,8 @@
         android:layout_width="588px"
         android:layout_height="64px"
         android:layout_marginTop="8px"
+        android:textSize="24px"
+        android:paddingHorizontal="16px"
         android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
         app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_name"
         app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_name"/>
@@ -47,6 +49,8 @@
         android:layout_width="588px"
         android:layout_height="64px"
         android:layout_marginStart="38px"
+        android:textSize="24px"
+        android:paddingHorizontal="16px"
         android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
         app:layout_constraintStart_toEndOf="@id/et_name"
         app:layout_constraintTop_toTopOf="@id/et_name"
@@ -67,6 +71,8 @@
         android:layout_width="588px"
         android:layout_height="64px"
         android:layout_marginTop="8px"
+        android:textSize="24px"
+        android:paddingHorizontal="16px"
         android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
         app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_relation"
         app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_relation"/>
@@ -86,6 +92,8 @@
         android:layout_width="588px"
         android:layout_height="64px"
         android:layout_marginStart="38px"
+        android:textSize="24px"
+        android:paddingHorizontal="16px"
         android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
         app:layout_constraintStart_toEndOf="@id/et_relation"
         app:layout_constraintTop_toTopOf="@id/et_relation"/>
@@ -105,6 +113,8 @@
         android:layout_width="1216px"
         android:layout_height="64px"
         android:layout_marginTop="8px"
+        android:textSize="24px"
+        android:paddingHorizontal="16px"
         android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
         app:layout_constraintStart_toStartOf="@id/tv_emergency_contact_email"
         app:layout_constraintTop_toBottomOf="@id/tv_emergency_contact_email"/>
