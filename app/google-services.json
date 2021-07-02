@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "373625464912",
+    "project_id": "stationgx-ahoku",
+    "storage_bucket": "stationgx-ahoku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373625464912:android:85a8356ee4f056b623c955",
+        "android_client_info": {
+          "package_name": "com.example.stationgx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373625464912-m0l4aoolpg7epokp40nh5d2mi5ptna4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQDYq6dlyBko1dK_a1n1tatSQD39tclvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373625464912-m0l4aoolpg7epokp40nh5d2mi5ptna4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
