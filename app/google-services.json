@@ -1,34 +1,218 @@
 {
   "project_info": {
-    "project_number": "373625464912",
-    "project_id": "stationgx-ahoku",
-    "storage_bucket": "stationgx-ahoku.appspot.com"
+    "project_number": "61855831285",
+    "firebase_url": "https://corbitloop.firebaseio.com",
+    "project_id": "corbitloop",
+    "storage_bucket": "corbitloop.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:373625464912:android:85a8356ee4f056b623c955",
+        "mobilesdk_app_id": "1:61855831285:android:06aa6072c5d0fbe50461bc",
         "android_client_info": {
-          "package_name": "com.example.stationgx"
+          "package_name": "com.corbit.caregiver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "373625464912-m0l4aoolpg7epokp40nh5d2mi5ptna4i.apps.googleusercontent.com",
+          "client_id": "61855831285-9hbocqefdg31rl59gtooaq1ggmsuno7m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.corbit.caregiver",
+            "certificate_hash": "8169c042a0281b00e10f9202d8a72add5476da1e"
+          }
+        },
+        {
+          "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAQDYq6dlyBko1dK_a1n1tatSQD39tclvY"
+          "current_key": "AIzaSyA3zptdvpbsB8fCW5LUTKWDefqAghE77go"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "373625464912-m0l4aoolpg7epokp40nh5d2mi5ptna4i.apps.googleusercontent.com",
+              "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "61855831285-21fpj3gs46acs78jjiqf2levufi83dqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.corbit.caregiver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61855831285:android:a63dc520cc9a4b48",
+        "android_client_info": {
+          "package_name": "com.corbit.loop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61855831285-1jqbir3o6c8nj9vme9c6br2i9leq5mpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.corbit.loop",
+            "certificate_hash": "045e3085f5f583c0fae743833a2b5eae37ff09aa"
+          }
+        },
+        {
+          "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3zptdvpbsB8fCW5LUTKWDefqAghE77go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "61855831285-21fpj3gs46acs78jjiqf2levufi83dqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.corbit.caregiver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61855831285:android:d4d5c07e0aaa60c1",
+        "android_client_info": {
+          "package_name": "com.corbit.stationgx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61855831285-qfdslov7dllp72uo2oebmt4332016gee.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.corbit.stationgx",
+            "certificate_hash": "045e3085f5f583c0fae743833a2b5eae37ff09aa"
+          }
+        },
+        {
+          "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3zptdvpbsB8fCW5LUTKWDefqAghE77go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "61855831285-21fpj3gs46acs78jjiqf2levufi83dqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.corbit.caregiver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61855831285:android:2d86d85794f7c1e60461bc",
+        "android_client_info": {
+          "package_name": "com.example.stationgx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3zptdvpbsB8fCW5LUTKWDefqAghE77go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "61855831285-21fpj3gs46acs78jjiqf2levufi83dqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.corbit.caregiver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61855831285:android:a12d6a846cfda418",
+        "android_client_info": {
+          "package_name": "com.example.test_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61855831285-hls89e3nhj3ll9njqgegj69dpdp3hedf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.test_notification",
+            "certificate_hash": "bd066a4e9c9772cb8d59c930cd0705bc54735235"
+          }
+        },
+        {
+          "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3zptdvpbsB8fCW5LUTKWDefqAghE77go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61855831285-t5p810l3jtfpp4k4nvcu0sdkh9g18s4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "61855831285-21fpj3gs46acs78jjiqf2levufi83dqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.corbit.caregiver"
+              }
             }
           ]
         }

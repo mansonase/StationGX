@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">StationGX</string>
-    
+
+    <!--Common-->
+    <string name="common_ok">OK</string>
+    <string name="common_no">NO</string>
+    <string name="common_confirm">CONFIRM</string>
+    <string name="common_cancel">CANCEL</string>
+    <string name="common_warning">WARNING</string>
+    <string name="common_error">ERROR</string>
+    <string name="common_tip">TIP</string>
+
     <string name="health_data">Health Data</string>
     <string name="phone">Phone</string>
     <string name="date">Date</string>
@@ -24,8 +33,6 @@
 
     <string name="save">Save</string>
     <string name="common_alert">ALERT</string>
-    <string name="common_ok">OK</string>
-    <string name="common_cancel">Cancel</string>
 
     <string name="welcome_text">Hi Mary,\nHere is your health flower!</string>
 
@@ -80,6 +87,40 @@
     <string name="target">Target</string>
     <string name="bmi">BMI</string>
 
+    <!--SignIn-->
+    <string name="signin_hello_wording">Hello, Friend</string>
+    <string name="signin_welcome_wording">Please enter your personal info and start a jounery with us.</string>
+    <string name="signin_btn_signin_wording">SIGN IN</string>
+    <string name="signin_btn_signup_wording">SIGN UP</string>
+    <string name="signin_title_wording">Sign Into Corbit</string>
+    <string name="signin_using_email_wording">Or use your e-mail account</string>
+    <string name="signin_email_hint_wording">Your e-mail</string>
+    <string name="signin_pwd_hint_wording">Password</string>
+    <string name="signin_forgot_pwd_wording">Forgot your password?</string>
+    <string name="signin_wrong_email_or_pwd_wording">Wrong Password or e-mail. Try again or click Forgot password to reset it.</string>
+    <string name="signin_empty_email_hint_wording">Empty e-mail</string>
+    <string name="signin_wrong_email_format_wording">Wrong e-mail format</string>
+    <string name="signin_resend_pwd_title">Resend password</string>
+    <string name="signin_resend_pwd_message_1">We send a letter to:</string>
+    <string name="signin_resend_pwd_message_2">Please check your e-mail, and reset your password.</string>
+    <string name="signin_resend_pwd_message">We send a letter to:\n <font color='#0288D1'>xxx</font>%1s\nPlease check your e-mail, and reset your password.</string>
 
+    <!--SignUp-->
+    <string name="signup_hello_wording">Welcome Back</string>
+    <string name="signup_welcome_wording">To keep connected with us please login your personal info</string>
+    <string name="signup_btn_signin_wording">SIGN IN</string>
+    <string name="signup_btn_signup_wording">SIGN UP</string>
+    <string name="signup_create_account_wording">Create an account</string>
+    <string name="signup_using_email_wording">Or use your e-mail to registration</string>
+    <string name="signup_first_name_hint_wording">First name</string>
+    <string name="signup_last_name_hint_wording">Last name</string>
+    <string name="signup_email_hint_wording">Your e-mail</string>
+    <string name="signup_pwd_hint_wording">Password</string>
+    <string name="signup_check_email_wording">Check email</string>
+    <string name="signup_empty_email_hint_wording">Empty e-mail</string>
+    <string name="signup_empty_pwd_hint_wording">Empty password</string>
+    <string name="signup_wrong_email_format_wording">Wrong e-mail format</string>
+    <string name="signup_wrong_pwd_format_wording">The password must be at least 6 characters long and may include numbers, letters but not spaces. </string>
+    <string name="signup_pwd_verify_wording">Verify the password here</string>
 
 </resources>

@@ -15,6 +15,10 @@
     <color name="word_blue">#0288D1</color>
     <color name="word_pink">#E15F64</color>
     <color name="label_black">#707070</color>
+    <color name="grey_727478">#727478</color>
+    <color name="grey_e9eaea">#E9EAEA</color>
+    <color name="grey_aaabad">#AAABAD</color>
+    <color name="blue_0288d1">#0288D1</color>
 
     <color name="icon_grey">#AAABAD</color>
     <color name="frame_grey">#D4D5D6</color>

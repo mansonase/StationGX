@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="632px"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_white_stroke_0288d1_round_15">
+
+    <TextView
+        android:id="@+id/tv_custom_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="60px"
+        android:text="@string/signin_resend_pwd_title"
+        android:textColor="@color/word_blue"
+        android:textSize="24px"
+        android:layout_marginStart="23px"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="60px"
+        android:layout_height="60px"
+        android:text="X"
+        android:textColor="@color/word_blue"
+        android:textSize="24px"
+        android:padding="10px"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="24px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_custom_dialog_title"/>
+
+    <View
+        android:id="@+id/view_separate_line"
+        android:layout_width="0dp"
+        android:layout_height="2px"
+        android:background="@color/word_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_custom_dialog_title"/>
+
+    <TextView
+        android:id="@+id/tv_custom_dialog_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="24px"
+        android:layout_marginHorizontal="24px"
+        android:layout_marginTop="22px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_separate_line"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="40px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_custom_dialog_message"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/btn_negative"
+            android:layout_width="192px"
+            android:layout_height="64px"
+            android:text="@string/common_cancel"
+            android:textColor="@color/word_blue"
+            android:textSize="24px"
+            android:layout_marginEnd="28px"
+            android:background="@drawable/bg_white_stroke_0288d1_round_60"/>
+
+        <Button
+            android:id="@+id/btn_positive"
+            android:layout_width="192px"
+            android:layout_height="64px"
+            android:text="@string/common_confirm"
+            android:textColor="@color/main_white"
+            android:textSize="24px"
+            android:layout_marginStart="28px"
+            android:background="@drawable/bg_blue_0288d1_round_60"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
