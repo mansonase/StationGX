@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -49,6 +50,9 @@ public class PorcupineService extends Service {
 
     private int numUtterances;
 
+    private String[] ttsResponseArr;
+    private TextToSpeech tts;
+
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(
@@ -63,6 +67,8 @@ public class PorcupineService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        this.ttsResponseArr = getApplicationContext().getResources().getStringArray(R.array.wake_words_responses);
+        this.initTTSEngine();
         createNotificationChannel();
 
         PendingIntent pendingIntent = PendingIntent.getActivity(
@@ -90,6 +96,8 @@ public class PorcupineService extends Service {
                             getApplicationContext(),
                             (keywordIndex) -> {
                                 numUtterances++;
+
+                                tts.speak(ttsResponseArr[(int)(Math.random()*2)], TextToSpeech.QUEUE_FLUSH, null, "");
 
                                 PendingIntent contentIntent = PendingIntent.getActivity(
                                         this,
@@ -142,6 +150,17 @@ public class PorcupineService extends Service {
         }
 
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    private void initTTSEngine() {
+        if (tts == null) {
+            this.tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int i) {
+
+                }
+            });
+        }
     }
 
     private void parseIntentData(final RhinoInference inference) {
@@ -198,6 +217,10 @@ public class PorcupineService extends Service {
 
     @Override
     public void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
         try {
             porcupineManager.stop();
             porcupineManager.delete();
