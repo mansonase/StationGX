@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_signup.btn_signin
 import kotlinx.android.synthetic.main.fragment_signup.btn_signup
 import kotlinx.android.synthetic.main.fragment_signup.et_email
 import kotlinx.android.synthetic.main.fragment_signup.et_pwd
-import org.w3c.dom.Text
 
 class SignUpFragment: Fragment(), SignUpFragmentContract.ISignUpFragmentView{
 

@@ -1,17 +1,17 @@
 package com.corbit.stationgx.pages.myprofile
 
 class MyProfile {
-    lateinit var firstName: String
+    var firstName: String = ""
 
-    lateinit var lastName: String
+    var lastName: String = ""
 
-    lateinit var email: String
+    var email: String = ""
 
-    lateinit var phone: String
+    var phone: String = ""
 
-    lateinit var city: String
+    var city: String = ""
 
-    lateinit var country: String
+    var country: String = ""
 
     var gender: Int = 0
 
@@ -25,15 +25,33 @@ class MyProfile {
 
     var allergies: Boolean = false
 
-    lateinit var foodAllergies: String
+    var foodAllergies: String = ""
 
-    lateinit var drugIntolerance: String
+    var drugIntolerance: String = ""
 
     var mobility: Int = 0
 
-    lateinit var emergencyContacts: Array<EmergencyContact>
+    var emergencyContacts: Array<EmergencyContact> = arrayOf()
 
-    open fun toMap() {
+    open fun toMap(): String{
+        var map: MutableMap<String, Any> = mutableMapOf()
+        map["firstName"] = firstName
+        map["lastName"] = lastName
+        map["email"] = email
+        map["phone"] = phone
+        map["city"] = city
+        map["country"] = country
+        map["gender"] = gender
+        map["birthday"] = birthday
+        map["height"] = height
+        map["weight"] = weight
+        map["bloodType"] = bloodType
+        map["allergies"] = allergies
+        map["foodAllergies"] = foodAllergies
+        map["drugIntolerance"] = drugIntolerance
+        map["mobility"] = mobility
+        map["emergencyContacts"] = emergencyContacts
 
+        return map.toString()
     }
 }

@@ -2,16 +2,14 @@ package com.corbit.stationgx.pages.myprofile
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.core.view.size
 import com.corbit.stationgx.R
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.fragment_signup.*
 import kotlinx.android.synthetic.main.profile_emergency_contact.view.*
 
 class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfileView {
@@ -27,6 +25,7 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         initMobilityArr()
 
         presenter = MyProfileActivityPresenter(this, this)
+        presenter.fetchProfileData()
         presenter.addNewEmergencyContact(ll_emergency_contact)
         ib_add_contact.setOnClickListener {
             presenter.addNewEmergencyContact(ll_emergency_contact)
@@ -98,8 +97,14 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         }
     }
 
-    private fun fetchProfileData() {
-        val ref = FirebaseDatabase.getInstance().getReference("emergencyUsers")
+    override fun initProfile(profile: MyProfile) {
+        this.profile = profile
+        this.setupProfile()
+    }
+
+    private fun setupProfile() {
+        et_profile_first_name.setText(this.profile.firstName)
+        et_profile_last_name.setText(this.profile.lastName)
     }
 
     private fun initMobilityArr() {

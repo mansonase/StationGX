@@ -13,6 +13,8 @@ class MyProfileActivityContract {
         fun updateMedicalTreatmentBtn(button: Button, selected: Boolean)
 
         fun refreshEmergencyContacts()
+
+        fun initProfile(profile: MyProfile)
     }
 
     interface IMyProfilePresenter {

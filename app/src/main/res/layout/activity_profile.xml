@@ -370,7 +370,7 @@
                 app:layout_constraintTop_toBottomOf="@id/view_graphic" />
 
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_profile_first_name"
                 android:layout_width="512px"
                 android:layout_height="64px"
                 android:layout_marginTop="8px"
@@ -383,7 +383,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_first_name" />
 
             <EditText
-                android:id="@+id/et_last_name"
+                android:id="@+id/et_profile_last_name"
                 android:layout_width="512px"
                 android:layout_height="64px"
                 android:layout_marginStart="40px"
@@ -392,9 +392,9 @@
                 android:maxLines="1"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
-                app:layout_constraintBottom_toBottomOf="@id/et_name"
-                app:layout_constraintStart_toEndOf="@id/et_name"
-                app:layout_constraintTop_toTopOf="@id/et_name" />
+                app:layout_constraintBottom_toBottomOf="@id/et_profile_first_name"
+                app:layout_constraintStart_toEndOf="@id/et_profile_first_name"
+                app:layout_constraintTop_toTopOf="@id/et_profile_first_name" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -757,7 +757,7 @@
                 android:text="@string/profile_label_last_name_wording"
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
-                app:layout_constraintStart_toStartOf="@id/et_last_name"
+                app:layout_constraintStart_toStartOf="@id/et_profile_last_name"
                 app:layout_constraintTop_toTopOf="@id/tv_first_name" />
 
             <TextView

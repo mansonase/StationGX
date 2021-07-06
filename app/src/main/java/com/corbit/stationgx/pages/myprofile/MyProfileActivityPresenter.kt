@@ -71,12 +71,19 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
     }
 
     open fun fetchProfileData() {
-        val uid = FirebaseAuth.getInstance().currentUser.uid
+        Log.d("de", "fetchProfileData")
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
         val ref = FirebaseDatabase.getInstance().getReference("emergencyusers")
         ref.child(uid).child("profile").get().addOnSuccessListener {
-            
+            val profile = it.getValue(MyProfile::class.java)
+            Log.d("de","111, $profile")
+            Log.d("de", "${profile?.firstName}")
+            view.initProfile(profile ?: MyProfile())
         }.addOnCanceledListener {
-
+            Log.d("de", "fetchProfileData, cancel")
+            view.initProfile(MyProfile())
+        }.addOnFailureListener {
+            view.initProfile(MyProfile())
         }
     }
 }
