@@ -92,7 +92,7 @@ public class PorcupineService extends Service {
             porcupineManager = new PorcupineManager.Builder()
 //                    .setKeyword(Porcupine.BuiltInKeyword.COMPUTER)
                     .setKeywordPath(getAbsolutePath("wake_words.ppn"))
-                    .setSensitivity(0.7f).build(
+                    .setSensitivity(0.9f).build(
                             getApplicationContext(),
                             (keywordIndex) -> {
                                 numUtterances++;

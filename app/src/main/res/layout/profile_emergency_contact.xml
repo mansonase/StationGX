@@ -44,6 +44,7 @@
         android:src="@android:drawable/ic_delete"
         android:background="@android:color/transparent"
         android:layout_marginBottom="69px"
+        android:layout_marginTop="49px"
         app:layout_constraintEnd_toEndOf="@id/et_last_name"
         app:layout_constraintTop_toTopOf="parent"/>
 

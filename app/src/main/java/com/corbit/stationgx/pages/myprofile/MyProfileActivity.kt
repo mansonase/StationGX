@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.core.view.size
 import com.corbit.stationgx.R
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.profile_emergency_contact.view.*
 
@@ -17,11 +18,12 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
 
     lateinit var presenter: MyProfileActivityPresenter
     lateinit var mobilityArr: Array<Button>
+    lateinit var profile: MyProfile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
+        profile = MyProfile()
         initMobilityArr()
 
         presenter = MyProfileActivityPresenter(this, this)
@@ -91,11 +93,13 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
             presenter.onMedicalTreatmentBtnClick(btn_graphic_nerves)
         }
 
-
-
         btn_save.setOnClickListener{
 
         }
+    }
+
+    private fun fetchProfileData() {
+        val ref = FirebaseDatabase.getInstance().getReference("emergencyUsers")
     }
 
     private fun initMobilityArr() {
@@ -133,8 +137,8 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
     }
 
     override fun refreshEmergencyContacts() {
-        for (i in 0..ll_emergency_contact.size) {
-            ll_emergency_contact.get(i).tv_emergency_contact_title.text = "Emergency Contact $i"
+        for (i in 0 until ll_emergency_contact.size) {
+            ll_emergency_contact[i].tv_emergency_contact_title.text = "Emergency Contact ${i+1}"
         }
     }
 

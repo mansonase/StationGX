@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.core.view.size
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.profile_emergency_contact.view.*
 
 class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMyProfileView, private val context: Context)
@@ -18,12 +20,15 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
     open fun addNewEmergencyContact(contactLL: LinearLayout) {
         val newEmergencyContact = EmergencyContact(context)
         newEmergencyContact.presenter = this
-        if (contactLL.size == 0)
+        if (contactLL.size == 0) {
             newEmergencyContact.view.ib_delete_emergency_contact.visibility = View.GONE
+            newEmergencyContact.view.tv_emergency_contact_title.visibility = View.GONE
+        }
         else
             newEmergencyContact.view.ib_delete_emergency_contact.visibility = View.VISIBLE
 
         contactLL.addView(newEmergencyContact)
+        view.refreshEmergencyContacts()
     }
 
     open fun removeEmergencyContact(emergencyContact: EmergencyContact) {
@@ -58,6 +63,20 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
         else {
             button.tag = false
             view.updateMedicalEventBtn(button, false)
+        }
+    }
+
+    open fun onSaveBtnClick(profile: MyProfile) {
+
+    }
+
+    open fun fetchProfileData() {
+        val uid = FirebaseAuth.getInstance().currentUser.uid
+        val ref = FirebaseDatabase.getInstance().getReference("emergencyusers")
+        ref.child(uid).child("profile").get().addOnSuccessListener {
+            
+        }.addOnCanceledListener {
+
         }
     }
 }
