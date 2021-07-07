@@ -2,7 +2,13 @@ package com.corbit.stationgx.pages.myprofile
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.util.TypedValue
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
@@ -11,6 +17,7 @@ import com.corbit.stationgx.R
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.fragment_signup.*
 import kotlinx.android.synthetic.main.profile_emergency_contact.view.*
+import kotlin.math.pow
 
 class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfileView {
 
@@ -23,6 +30,9 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         setContentView(R.layout.activity_profile)
         profile = MyProfile()
         initMobilityArr()
+        setupGenderSpinner()
+        setupBloodTypeSpinner()
+        setupRhesusSpinner()
 
         presenter = MyProfileActivityPresenter(this, this)
         presenter.fetchProfileData()
@@ -102,9 +112,51 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         this.setupProfile()
     }
 
+    private fun setupGenderSpinner() {
+        val genderAdapter: ArrayAdapter<String> = object : ArrayAdapter<String> (
+                this,
+                R.layout.profile_spinner_textview,
+                resources.getStringArray(R.array.gender_selection)
+        ) {}
+        sp_gender.adapter = genderAdapter
+    }
+
+    private fun setupBloodTypeSpinner() {
+        val bloodTypeAdapter: ArrayAdapter<String> = object : ArrayAdapter<String> (
+                this,
+                R.layout.profile_spinner_textview,
+                resources.getStringArray(R.array.blood_type_array)
+                ) {}
+        sp_blood_type.adapter = bloodTypeAdapter
+    }
+
+    private fun setupRhesusSpinner() {
+        val rhesusAdapter: ArrayAdapter<String> = object : ArrayAdapter<String> (
+                this,
+                R.layout.profile_spinner_textview,
+                resources.getStringArray(R.array.rhesus_array)
+        ) {}
+        sp_rhesus.adapter = rhesusAdapter
+    }
+
     private fun setupProfile() {
         et_profile_first_name.setText(this.profile.firstName)
         et_profile_last_name.setText(this.profile.lastName)
+        et_profile_email.setText(this.profile.email)
+        et_profile_phone.setText(this.profile.phone)
+        et_height.setText(this.profile.height.toString())
+        et_weight.setText(this.profile.weight.toString())
+        if (this.profile.height > 0 && this.profile.weight > 0) {
+            tv_bmi_value.text = String.format("%.1f", (this.profile.weight / (this.profile.height / 100.0).pow(2.0)))
+            tv_bmi_value.visibility = View.VISIBLE
+        }
+        else {
+            tv_bmi_value.visibility = View.INVISIBLE
+        }
+        et_food_allergies.setText(this.profile.foodAllergies)
+        et_drug_intolerance.setText(this.profile.drugIntolerance)
+        sp_blood_type.setSelection(this.profile.bloodType)
+
     }
 
     private fun initMobilityArr() {

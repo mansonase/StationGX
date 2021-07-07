@@ -397,7 +397,7 @@
                 app:layout_constraintTop_toTopOf="@id/et_profile_first_name" />
 
             <EditText
-                android:id="@+id/et_email"
+                android:id="@+id/et_profile_email"
                 android:layout_width="1216px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
@@ -410,7 +410,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
             <EditText
-                android:id="@+id/et_phone"
+                android:id="@+id/et_profile_phone"
                 android:layout_width="378px"
                 android:layout_height="64px"
                 android:layout_marginTop="9px"
@@ -506,7 +506,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ll_event" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="16px"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18px"
                 android:background="@android:color/transparent"
@@ -547,9 +547,9 @@
                 android:background="@drawable/bg_transparent_stroke_c0e3f4_four_15"
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
-                app:layout_constraintBottom_toBottomOf="@id/et_phone"
-                app:layout_constraintStart_toEndOf="@id/et_phone"
-                app:layout_constraintTop_toTopOf="@id/et_phone" />
+                app:layout_constraintBottom_toBottomOf="@id/et_profile_phone"
+                app:layout_constraintStart_toEndOf="@id/et_profile_phone"
+                app:layout_constraintTop_toTopOf="@id/et_profile_phone" />
 
             <Spinner
                 android:id="@+id/sp_country"
@@ -586,6 +586,16 @@
                 app:layout_constraintStart_toStartOf="@id/tv_blood_type"
                 app:layout_constraintTop_toBottomOf="@id/tv_blood_type" />
 
+            <ImageView
+                android:layout_width="16px"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18px"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/arrow_down_float"
+                app:layout_constraintBottom_toBottomOf="@id/sp_blood_type"
+                app:layout_constraintEnd_toEndOf="@id/sp_blood_type"
+                app:layout_constraintTop_toTopOf="@id/sp_blood_type" />
+
             <Spinner
                 android:id="@+id/sp_rhesus"
                 android:layout_width="276px"
@@ -594,8 +604,19 @@
                 android:paddingHorizontal="16px"
                 android:textSize="24px"
                 android:layout_marginStart="40px"
+                android:entries="@array/rhesus_array"
                 app:layout_constraintStart_toEndOf="@id/sp_blood_type"
                 app:layout_constraintTop_toTopOf="@id/sp_blood_type" />
+
+            <ImageView
+                android:layout_width="16px"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18px"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/arrow_down_float"
+                app:layout_constraintBottom_toBottomOf="@id/sp_rhesus"
+                app:layout_constraintEnd_toEndOf="@id/sp_rhesus"
+                app:layout_constraintTop_toTopOf="@id/sp_rhesus" />
 
             <Button
                 android:id="@+id/btn_allergies_yes"
@@ -779,8 +800,8 @@
                 android:text="@string/profile_label_phone_wording"
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
-                app:layout_constraintStart_toStartOf="@id/et_email"
-                app:layout_constraintTop_toBottomOf="@id/et_email" />
+                app:layout_constraintStart_toStartOf="@id/et_profile_email"
+                app:layout_constraintTop_toBottomOf="@id/et_profile_email" />
 
             <TextView
                 android:id="@+id/tv_city"
@@ -812,8 +833,8 @@
                 android:text="@string/profile_label_gender_wording"
                 android:textColor="@color/grey_707070"
                 android:textSize="18px"
-                app:layout_constraintStart_toStartOf="@id/et_phone"
-                app:layout_constraintTop_toBottomOf="@id/et_phone" />
+                app:layout_constraintStart_toStartOf="@id/et_profile_phone"
+                app:layout_constraintTop_toBottomOf="@id/et_profile_phone" />
 
             <TextView
                 android:id="@+id/tv_birthday"
@@ -916,8 +937,9 @@
                 android:id="@+id/tv_bmi_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27px"
-                android:text="46"
+                android:layout_marginStart="16px"
+                android:visibility="invisible"
+                android:text="0"
                 android:textColor="@color/blue_229ad7"
                 android:textSize="24px"
                 app:layout_constraintBottom_toBottomOf="@id/tv_bmi"

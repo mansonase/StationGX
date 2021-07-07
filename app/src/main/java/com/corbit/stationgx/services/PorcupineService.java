@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class PorcupineService extends Service {
 
     private String[] ttsResponseArr;
     private TextToSpeech tts;
+    private boolean startDetect = true;
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -97,27 +99,43 @@ public class PorcupineService extends Service {
                             (keywordIndex) -> {
                                 numUtterances++;
 
+                                tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                                    @Override
+                                    public void onStart(String utteranceId) {
+                                    }
+
+                                    @Override
+                                    public void onDone(String utteranceId) {
+                                        if (startDetect)
+                                            rhinoManager.process();
+                                    }
+
+                                    @Override
+                                    public void onError(String utteranceId) {
+                                    }
+                                });
                                 tts.speak(ttsResponseArr[(int)(Math.random()*2)], TextToSpeech.QUEUE_FLUSH, null, "");
+                                startDetect = true;
+//                                PendingIntent contentIntent = PendingIntent.getActivity(
+//                                        this,
+//                                        0,
+//                                        new Intent(this, MainBaseActivity.class),
+//                                        0);
+//
+//                                final String contentText = numUtterances == 1 ? " time!" : " times!";
+//                                Notification n = new NotificationCompat.Builder(this, CHANNEL_ID)
+//                                        .setContentTitle("Wake word")
+//                                        .setContentText("Detected " + numUtterances + contentText)
+//                                        .setSmallIcon(R.drawable.ic_launcher_background)
+//                                        .setContentIntent(contentIntent)
+//                                        .build();
+//
+//                                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//                                assert notificationManager != null;
+//                                notificationManager.notify(1234, n);
 
-                                PendingIntent contentIntent = PendingIntent.getActivity(
-                                        this,
-                                        0,
-                                        new Intent(this, MainBaseActivity.class),
-                                        0);
-
-                                final String contentText = numUtterances == 1 ? " time!" : " times!";
-                                Notification n = new NotificationCompat.Builder(this, CHANNEL_ID)
-                                        .setContentTitle("Wake word")
-                                        .setContentText("Detected " + numUtterances + contentText)
-                                        .setSmallIcon(R.drawable.ic_launcher_background)
-                                        .setContentIntent(contentIntent)
-                                        .build();
-
-                                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                                assert notificationManager != null;
-                                notificationManager.notify(1234, n);
 //                                initRhino();
-                                rhinoManager.process();
+
                             });
             porcupineManager.start();
 
@@ -129,6 +147,7 @@ public class PorcupineService extends Service {
                         @Override
                         public void invoke(final RhinoInference inference) {
                             if (inference.getIsUnderstood()) {
+                                tts.speak("OK", TextToSpeech.QUEUE_FLUSH, null, "");
                                 parseIntentData(inference);
 //                                if (inference.getSlots().size() > 0) {
 //                                    Map<String, String> map = inference.getSlots();
@@ -138,7 +157,9 @@ public class PorcupineService extends Service {
 //                                }
                             } else {
                                 Log.d("de", "can't understand");
+                                tts.speak("I don't understand what you mean.", TextToSpeech.QUEUE_FLUSH, null, "");
                             }
+                            startDetect = false;
                         }
                     });
 //            rhinoManager.process();
