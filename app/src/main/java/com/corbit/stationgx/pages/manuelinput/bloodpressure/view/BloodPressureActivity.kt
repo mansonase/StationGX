@@ -17,6 +17,7 @@ import com.corbit.stationgx.base.BaseActivity
 import com.corbit.stationgx.pages.manuelinput.ManualInputActivity
 import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.BloodPressurePresenter
 import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.Contract
+import com.corbit.stationgx.ui.custom.calendar.CalendarUtil
 import com.corbit.stationgx.ui.mpchart.BloodPressureBackgroundBarChart
 import com.corbit.stationgx.ui.mpchart.BloodPressureBarChart
 import com.github.mikephil.charting.data.BarData
@@ -43,6 +44,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
     private var barChart: BloodPressureBackgroundBarChart? =null
     private var barData: BarData?=null
     private lateinit var list:ArrayList<Entity>
+    private var barEntryList=ArrayList<BarEntry>()
     private var startTime=0
 
     private lateinit var mPresenter:Contract.IPresenter
@@ -66,6 +68,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
 
     override fun updateChart(arrayList: ArrayList<BarEntry>) {
         presentChart(duration,arrayList)
+        barEntryList=arrayList
     }
 
     override fun updateTable(list: ArrayList<Entity>) {
@@ -76,12 +79,12 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
         when(v?.id){
             R.id.calendar_left_arrow->{
                 //todo 向左翻頁
-                startTime=getStartTime(true,"today",startTime)
+                startTime=getStartTime(true,"day",startTime)
                 mPresenter.getDayData(startTime)
             }
             R.id.calendar_right_arrow->{
                 //todo 向右翻頁
-                startTime=getStartTime(false,"today",startTime)
+                startTime=getStartTime(false,"day",startTime)
                 mPresenter.getDayData(startTime)
             }
 
@@ -117,7 +120,17 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
                 }
                 transaction= supportFragmentManager.beginTransaction()
                 val bundle = Bundle()
-                bundle.putString("range",duration)
+                //bundle.putString("range",duration)
+                bundle.putString("range","week")
+                CalendarUtil.duration="week"
+                val arrayListCalendar=ArrayList<Calendar>()
+                val calendar=Calendar.getInstance()
+                calendar.timeInMillis=startTime.toLong()*1000
+                arrayListCalendar.add(calendar)
+
+                bundle.putSerializable("calendar",arrayListCalendar)
+                bundle.putSerializable("barentry",barEntryList)
+
                 fragmentCalendar!!.arguments=bundle
                 //fragment.show(supportFragmentManager, "test")
 
@@ -143,7 +156,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
             dialog.dismiss()
             createInputDialog()
 
-            duration="today"
+            duration=CalendarUtil.day
             //doFakeData(duration)
         }
         dialog.show()
@@ -165,7 +178,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
         dialog.dialog_time.text=formatTime.format(calendar.time)
         dialog.dialog_date.setOnClickListener {
 
-           DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+           DatePickerDialog(this,R.style.PickerTheme, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
 
 
                calendar.set(year,month,dayOfMonth)
@@ -178,7 +191,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
         }
         dialog.dialog_time.setOnClickListener {
 
-            TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+            TimePickerDialog(this,R.style.PickerTheme, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
 
                 calendar.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 calendar.set(Calendar.MINUTE,minute)
@@ -192,7 +205,8 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
 
         dialog.blood_pressure_dialog_clear.setOnClickListener {
             dialog.dismiss()
-            startTime=getThisTodayStartTime()
+            //startTime=getThisTodayStartTime()
+            startTime=getThisWeekStartTime()
             mPresenter.getDayData(startTime)
         }
         dialog.input_blood_pressure_save.setOnClickListener {
@@ -215,7 +229,7 @@ class BloodPressureActivity:BaseActivity(),View.OnClickListener,Contract.IView<E
 
 
             Log.d("createinputdialog","${dialog.input_systolic.text}, date is ${dialog.dialog_date.text}")
-            duration="today"
+            duration=CalendarUtil.day
 
             startTime=getThisTodayStartTime()
             mPresenter.getDayData(startTime)
@@ -346,9 +360,9 @@ Log.d("yeahyeahyeah",timeText)
         bpBarChart?.setBarEntry(arrayList)
 
         when(duration){
-            "today"->bpBarChart?.setStartTime(startTime)
-            "week"->bpBarChart?.setStartTime(startTime)
-            "month"->bpBarChart?.setStartTime(startTime)
+            CalendarUtil.day->bpBarChart?.setStartTime(startTime)
+            CalendarUtil.week->bpBarChart?.setStartTime(startTime)
+            CalendarUtil.month->bpBarChart?.setStartTime(startTime)
         }
 
         barChart=bpBarChart!!.getChart()
@@ -447,6 +461,7 @@ Log.d("yeahyeahyeah",timeText)
         calendar.set(Calendar.MINUTE,0)
         calendar.set(Calendar.SECOND,0)
 
+        Log.d("bpcalendarNew","in function ${calendar.timeInMillis}")
         return (calendar.timeInMillis/1000).toInt()
     }
 
@@ -477,15 +492,15 @@ Log.d("yeahyeahyeah",timeText)
 
         when(duration){
 
-            "today"->{
+            CalendarUtil.day->{
                 calendar.add(Calendar.DAY_OF_MONTH,diff)
             }
 
-            "week"->{
+            CalendarUtil.week->{
                 calendar.add(Calendar.DAY_OF_MONTH,diff*7)
             }
 
-            "month"->{
+            CalendarUtil.month->{
                 calendar.add(Calendar.MONTH,diff)
             }
         }

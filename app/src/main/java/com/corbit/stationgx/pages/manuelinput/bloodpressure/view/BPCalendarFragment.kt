@@ -6,34 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import com.corbit.stationgx.R
-import com.corbit.stationgx.data.db.manualinput.bloodpressure.BloodPressureBean
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.FragmentContract
 import com.corbit.stationgx.ui.custom.calendar.CalendarUtil
-import com.corbit.stationgx.ui.custom.calendar.bp.FragmentMonth
-import com.corbit.stationgx.ui.custom.calendar.bp.FragmentSwitcher
-import com.corbit.stationgx.ui.custom.calendar.bp.FragmentToday
-import com.corbit.stationgx.ui.custom.calendar.bp.FragmentWeek
+import com.github.mikephil.charting.data.BarEntry
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
-import io.realm.RealmResults
 import kotlinx.android.synthetic.main.calendar_select.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-class BPCalendarFragment : DialogFragment(),View.OnClickListener{
+class BPCalendarFragment : DialogFragment(),View.OnClickListener,CalendarView.OnMonthChangeListener,CalendarView.OnCalendarSelectListener,FragmentContract.IView{
 
-    private var today: FragmentToday?=null
-    private var week: FragmentWeek?=null
-    private var month: FragmentMonth?=null
-    private var switcher: FragmentSwitcher?=null
     private lateinit var duration:String
+    private lateinit var calendar: java.util.Calendar
+    private lateinit var arrayList: ArrayList<BarEntry>
     private lateinit var transaction: FragmentTransaction
     private lateinit var calendarView:CalendarView
+    private lateinit var document:TextView
 
-    private val TAG_CALENDAR_SWITCHER="switcher"
-    private val TAG_CALENDAR_TODAY="today"
-    private val TAG_CALENDAR_WEEK="week"
-    private val TAG_CALENDAR_MONTH="month"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +45,21 @@ class BPCalendarFragment : DialogFragment(),View.OnClickListener{
         Log.d("bpcalendarNew","oncreateview")
         if (bundle!=null){
             duration= bundle.getString("range").toString()
+            CalendarUtil.duration=duration
+            calendar= (bundle.getSerializable("calendar") as (ArrayList<*>)).get(0) as java.util.Calendar
+            arrayList=bundle.getSerializable("barentry") as ArrayList<BarEntry>
+
             Log.d("bpcalendarNew","duration is $duration")
+            Log.d("bpcalendarNew","calendar is ${calendar.timeInMillis}")
+
+            if (arrayList.isNotEmpty()) {
+                Log.d("bpcalendarNew", "arraylist is ${arrayList.get(0).yVals[1]}")
+            }
         }
 
         val view=inflater.inflate(R.layout.calendar_select,container,false)
         calendarView=view.findViewById(R.id.custom_calendar)
+        document=view.findViewById(R.id.calendar_documents_count)
         dialog?.window?.decorView?.systemUiVisibility=activity?.window?.decorView?.systemUiVisibility!!
         dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
         return view
@@ -67,30 +73,12 @@ class BPCalendarFragment : DialogFragment(),View.OnClickListener{
         calendar_back.setOnClickListener(this)
 
 
+        calendarView.setOnMonthChangeListener(this)
+        calendarView.setSchemeDate(setSchemesFromActivity(duration,calendar,arrayList))
+        calendarView.currentWeekCalendars
 
-        /*
-        switcher= FragmentSwitcher()
-        today= FragmentToday()
-        week= FragmentWeek()
-        month= FragmentMonth()
-        transaction=childFragmentManager.beginTransaction()
-        transaction.add(R.id.calendar_switcher,today!!,TAG_CALENDAR_TODAY)
-        transaction.add(R.id.calendar_switcher,week!!,TAG_CALENDAR_WEEK)
-        transaction.add(R.id.calendar_switcher,month!!,TAG_CALENDAR_MONTH)
-        transaction.hide(today!!)
-        transaction.hide(week!!)
-        transaction.hide(month!!)
-        transaction.add(R.id.calendar_switcher, switcher!!,TAG_CALENDAR_SWITCHER)
-        transaction.commit()
-
-        val calendar=Calendar()
-        calendar.year=2020
-        calendar.month=11
-        calendar.day=23
-        setBackgroundScheme(calendar,duration)
-
-         */
-
+        calendarView.setOnCalendarSelectListener(this)
+        Log.d("bp calendar", calendarView.currentWeekCalendars.toString())
     }
 
     override fun onClick(v: View?) {
@@ -101,336 +89,39 @@ class BPCalendarFragment : DialogFragment(),View.OnClickListener{
         }
     }
 
-    private fun showFragment(fragment:String, duration: String){
-        when(fragment){
-            "today"->{
 
-                (activity as BloodPressureActivity).selectDuration("today")
-                dismiss()
-
-                /*
-                transaction=childFragmentManager.beginTransaction()
-                if (week!=null){
-                    transaction.hide(week!!)
-                }
-                if (month!=null){
-                    transaction.hide(month!!)
-                }
-                if (switcher!=null){
-                    transaction.hide(switcher!!)
-                }
-                //today=childFragmentManager.findFragmentByTag(TAG_CALENDAR_TODAY) as FragmentToday
-                if (today==null){
-                    today= FragmentToday()
-                    transaction.add(R.id.calendar_switcher, today!!,TAG_CALENDAR_TODAY).commit()
-                }else{
-                    transaction.show(today!!)
-                }
-                transaction.commit()
-
-                 */
-            }
-            "week"->{
-                (activity as BloodPressureActivity).selectDuration("week")
-                dismiss()
-                /*
-                transaction=childFragmentManager.beginTransaction()
-                if (today!=null){
-                    transaction.hide(today!!)
-                }
-                if (month!=null){
-                    transaction.hide(month!!)
-                }
-                if (switcher!=null){
-                    transaction.hide(switcher!!)
-                }
-                //week=childFragmentManager.findFragmentByTag(TAG_CALENDAR_WEEK) as FragmentWeek
-                if (week==null){
-                    week= FragmentWeek()
-                    transaction.add(R.id.calendar_switcher,week!!,TAG_CALENDAR_WEEK).commit()
-                }else{
-                    transaction.show(week!!)
-                }
-                transaction.commit()
-
-                 */
-            }
-            "month"->{
-                (activity as BloodPressureActivity).selectDuration("month")
-                dismiss()
-                /*
-                transaction=childFragmentManager.beginTransaction()
-                if (today!=null){
-                    transaction.hide(today!!)
-                }
-                if (week!=null){
-                    transaction.hide(week!!)
-                }
-                if (switcher!=null){
-                    transaction.hide(switcher!!)
-                }
-                //month=childFragmentManager.findFragmentByTag(TAG_CALENDAR_MONTH) as FragmentMonth
-                if (month==null){
-                    month= FragmentMonth()
-                    transaction.add(R.id.calendar_switcher,month!!,TAG_CALENDAR_MONTH).commit()
-                }else{
-                    transaction.show(month!!)
-                }
-                transaction.commit()
-
-                 */
-            }
-            "switcher"->{
-                transaction=childFragmentManager.beginTransaction()
-
-                when(duration){
-                    "today"->{
-                        transaction.hide(switcher!!).hide(week!!).hide(month!!).show(today!!)
-                    }
-                    "week"->{
-                        transaction.hide(switcher!!).hide(today!!).hide(month!!).show(week!!)
-                    }
-                    "month"->{
-                        transaction.hide(switcher!!).hide(today!!).hide(week!!).show(month!!)
-                    }
-                }
-
-/*
-                if (today!=null){
-                    transaction.hide(today!!)
-                }
-                if (week!=null){
-                    transaction.hide(week!!)
-                }
-                if (month!=null){
-                    transaction.hide(month!!)
-                }
-                //switcher=childFragmentManager.findFragmentByTag(TAG_CALENDAR_SWITCHER) as FragmentSwitcher
-                if (switcher==null){
-                    switcher= FragmentSwitcher()
-                    val bundle=Bundle()
-                    bundle.putString("range",duration)
-                    switcher!!.arguments=bundle
-                    transaction.add(R.id.calendar_switcher,switcher!!,TAG_CALENDAR_SWITCHER)
-                    Log.d("bpcalendarfre","switcher is null")
-                }else{
-
-                    if (switcher!!.isAdded){
-                        transaction.show(switcher!!)
-                    }else{
-                        transaction.add(R.id.calendar_switcher,switcher!!,TAG_CALENDAR_SWITCHER)
-                    }
-                    switcher!!.fragmentSetDuration(duration)
-                    transaction.show(switcher!!)
-                    Log.d("bpcalendarfre","switcher is not null")
-                }
-
- */
-                transaction.commit()
-
-            }
-        }
+    override fun onMonthChange(year: Int, month: Int) {
+        // 左右換頁
+        Log.d("on month change","$year,$month .")
     }
 
-    fun controlCalendar(change:String,duration: String){
-        Log.d("bpcalendar","test function")
-        //showFragment(change,duration)
+
+    override fun onCalendarOutOfRange(calendar: Calendar?) {
+        Log.d("on select", calendar.toString())
     }
 
-    fun controlSwitcher(duration: String){
-        transaction=childFragmentManager.beginTransaction()
-        
-        switcher?.fragmentSetDuration(duration)
-        val bundle=Bundle()
-        bundle.putString("range",duration)
-        (childFragmentManager.findFragmentByTag(TAG_CALENDAR_SWITCHER))?.arguments=bundle
-
-        transaction.hide(week!!).hide(month!!).hide(today!!).show(switcher!!)
-        
-        transaction.commit()
+    override fun onCalendarSelect(calendar: Calendar?, isClick: Boolean) {
+        Log.d("on select","${calendar.toString()}, $isClick")
     }
 
-    private fun setBackgroundScheme(calendar: Calendar, duration:String){
+    override fun updateDocuments(string: String) {
+        document.text=string
+    }
 
-        var days=0
-        var daysOfMonth=0
-
-        when(duration){
-            "today"->{
-                days=1
-            }
-            "week"->{
-                days=7
-                when(calendar.month){
-                    1,3,5,7,8,10,12->{
-                        daysOfMonth=31
-                    }
-                    2->{
-                        daysOfMonth=if (calendar.isLeapYear){ 29 }
-                        else { 28 }
-                    }
-                    4,6,9,11->{
-                        daysOfMonth=30
-                    }
-                }
-
-            }
-            "month"->{
-                when(calendar.month){
-                    1,3,5,7,8,10,12->{
-                        days=31
-                    }
-                    2->{
-                        days = if (calendar.isLeapYear){ 29 }
-                        else { 28 }
-                    }
-                    4,6,9,11->{
-                        days=30
-                    }
-                }
-            }
-        }
-
-
-        var map= hashMapOf<String,Calendar>()
-
-        var year=calendar.year
-        var month=calendar.month
-        var day: Int
-
-        //如果days==1,表示就是系統日期的今天
-        when {
-            days==1 -> {  // today , do nothing
-
-            }
-            days==7 -> {  // week
-
-                day=calendar.day
-
-                for (i in 0 until days) {
-
-                    if (day+i>daysOfMonth){// 有over這個月
-
-                        var newDay:Int
-                        var newMonth: Int
-                        var newYear=0
-                        if (month+1>12){//有over今年
-
-                            newMonth=1
-                            newYear=year+1
-                            newDay=day+i-daysOfMonth
-                        }else{//沒有over今年
-
-                            newYear=year
-                            newMonth=month+1
-                            newDay=day+i-daysOfMonth
-                        }
-
-
-                        val cal = getSingleScheme(newYear, newMonth, newDay,  "range")
-                        map[cal.toString()]=cal
-                        Log.d("setbackgroundscheme","$year, $month, $day+$i, ${cal.toString()}")
-
-                    } else {// week沒有過這個月
-                        Log.d("setbackgroundscheme","$year, $month, $day+$i")
-                        val cal= getSingleScheme(year, month, (day + i),  "range")
-                        map[cal.toString()]=cal
-                    }
-                }
-            }
-            days>7 -> { // days超過7天, 表示是month了
-
-                day=calendar.day
-
-                for (i in 0 until days){
-
-                    day += i
-
-                    val cal=getSingleScheme(year,month,day,"range")
-                    map[cal.toString()]=cal
-                }
-            }
-        }
-        Log.d("bpcalendar","map size is ${map.size}, before, ${getSingleScheme(year,month,4,"record").toString()}")
-
-
-
-        // for example mark some date to show record
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,4,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,5,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,6,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,7,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,8,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,9,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,10,"record"))
-        map=setEventsScheme(map,getSingleScheme(calendar.year,calendar.month,11,"record"))
-
-
-        for (m in map){
-            Log.d("bpcalendarrr","it is ${m.key}")
-        }
-        Log.d("bpcalendar","map size is ${map.size},after")
-
-
+    override fun updateCalendar(map: HashMap<String, Calendar>) {
         calendarView.setSchemeDate(map)
-
     }
 
-    private fun getSingleScheme(year:Int,month:Int,day:Int,text:String):Calendar{
-        val calendar=Calendar()
-        calendar.year=year
-        calendar.month=month
-        calendar.day=day
-
-        calendar.schemeColor=0xFFFFFF
-
-        if (text=="none"||text=="range"){
-            calendar.addScheme(0xFFFFFF,text)
-        }else{
-            Log.d("bpcalendarff", "$text,$year year,  $month month, $day day")
-            calendar.addScheme(0x229AD7,text)
-
-        }
-        Log.d("setEventsScheme",calendar.toString())
-        return calendar
-    }
-
-
-    private fun setEventsScheme(map: HashMap<String,Calendar>,calendar: Calendar):HashMap<String,Calendar>{
-
-        val date=calendar.toString()
-
-        var cal=Calendar()
-
-        if (map.containsKey(date)){
-
-            cal.year=calendar.year
-            cal.month=calendar.month
-            cal.day=calendar.day
-            cal.schemeColor=0xFFFFFF
-            cal.addScheme(0x000000,"range")
-            cal.addScheme(0x000000,"record")
-
-        }else{
-            cal=getSingleScheme(calendar.year,calendar.month,calendar.day,"record")
-
-        }
-        Log.d("setEventsScheme",cal.toString())
-        map[date]=cal
-
-        return map
-    }
-
-
-    private fun setSchemesFromActivity(range:String,startDate: java.util.Calendar,results: RealmResults<BloodPressureBean>):HashMap<String,Calendar>{
+    private fun setSchemesFromActivity(range:String, startDate: java.util.Calendar, arrayList: ArrayList<BarEntry>):HashMap<String,Calendar>{
 
         val map=HashMap<String,Calendar>()
 
-        val calendar=Calendar()
+        var calendar=Calendar()
         val days=CalendarUtil.getDays(startDate,range)
 
 
         for (i in 0 until days){
+            calendar=Calendar()
             calendar.year=startDate.get(java.util.Calendar.YEAR)
             calendar.month=startDate.get(java.util.Calendar.MONTH)+1
             calendar.day=startDate.get(java.util.Calendar.DAY_OF_MONTH)
@@ -442,31 +133,45 @@ class BPCalendarFragment : DialogFragment(),View.OnClickListener{
             startDate.add(java.util.Calendar.DAY_OF_MONTH,1)
         }
 
-        startDate.add(java.util.Calendar.DAY_OF_MONTH,-days)
+        startDate.add(java.util.Calendar.DAY_OF_MONTH,-(days+1))
 
-        var day0=0
-        var day1:Int?
+        val format=SimpleDateFormat("yyyy MM dd", Locale.getDefault())
+        var strDate= format.format(startDate.time)
+        var date0=format.parse(strDate)!!
+        var date1=Date()
 
-        var bean: BloodPressureBean?
-        var cal:Calendar?
-        var calReal=java.util.Calendar.getInstance()
 
-        val it=results.iterator()
+        var barEntry: BarEntry?
+        var cal=java.util.Calendar.getInstance()
+        var calBean=java.util.Calendar.getInstance()
+
+
+        val it=arrayList.iterator()
         while (it.hasNext()){
-            bean=it.next()
-            calReal.timeInMillis=(bean.time.toLong())*1000
+            barEntry=it.next()
+            calBean.timeInMillis=(barEntry.x.toLong())*1000
+
+            strDate=format.format(calBean.time)
+            date1!=format.parse(strDate)
 
 
+            if (date0.before(date1)){
 
 
-            cal= map[calendar.toString()]
+                cal.time=date1
+                calendar.year=cal.get(java.util.Calendar.YEAR)
+                calendar.month=cal.get(java.util.Calendar.MONTH)+1
+                calendar.day=cal.get(java.util.Calendar.DAY_OF_MONTH)
 
+                val calTemp= map[calendar.toString()]!!
 
+                calTemp.addScheme(0x000000,"event")
+
+                map[calTemp.toString()]=calTemp
+
+                date0=date1
+            }
         }
-
-
-
-
         return map
     }
 }

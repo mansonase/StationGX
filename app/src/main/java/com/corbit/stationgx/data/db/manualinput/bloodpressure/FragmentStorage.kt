@@ -1,32 +1,11 @@
 package com.corbit.stationgx.data.db.manualinput.bloodpressure
 
-import android.util.Log
-import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.PersistenceCallbackListener
+import com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter.FragmentPersistenceCallbackListener
 import io.realm.Realm
 import java.sql.Timestamp
 import java.util.*
 
-class Storage(private val persistenceCallbackListener: PersistenceCallbackListener<BloodPressureBean>) :Persistence<BloodPressureBean>{
-
-    override fun sentToRealm(data: BloodPressureBean) {
-        val realm=Realm.getDefaultInstance()
-        realm.run {
-            beginTransaction()
-            copyToRealm(data)
-            commitTransaction()
-        }
-        realm.close()
-        Log.d("nonononono","${data.systolic}")
-    }
-
-    override fun queryRealm(query: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updatePerson(data: BloodPressureBean) {
-        TODO("Not yet implemented")
-    }
-
+class FragmentStorage(private val fragmentPersistenceCallbackListener: FragmentPersistenceCallbackListener<BloodPressureBean>):FragmentPersistence {
 
     override fun getDayData(startTime: Int) {
         val realm=Realm.getDefaultInstance()
@@ -34,16 +13,14 @@ class Storage(private val persistenceCallbackListener: PersistenceCallbackListen
         val calendar=Calendar.getInstance()
         calendar.timeInMillis=startTime.toLong()*1000
         calendar.add(Calendar.DAY_OF_MONTH,1)
-        val endTime= (calendar.timeInMillis/1000).toInt()
-
-
+        val endTime=(calendar.timeInMillis/1000).toInt()
 
         val results=realm.where(BloodPressureBean::class.java)
                 .greaterThanOrEqualTo("time",startTime)
                 .lessThan("time",endTime)
                 .findAll()
 
-        persistenceCallbackListener.onDayDataRetrieve(results)
+        fragmentPersistenceCallbackListener.onDayDataRetrieve(results)
 
         realm.close()
     }
@@ -61,7 +38,7 @@ class Storage(private val persistenceCallbackListener: PersistenceCallbackListen
                 .lessThan("time",endTime)
                 .findAll()
 
-        persistenceCallbackListener.onWeekDataRetrieve(results)
+        fragmentPersistenceCallbackListener.onWeekDataRetrieve(results)
 
         realm.close()
     }
@@ -79,8 +56,7 @@ class Storage(private val persistenceCallbackListener: PersistenceCallbackListen
                 .lessThan("time",endTime)
                 .findAll()
 
-        persistenceCallbackListener.onMonthDataRetrieve(results)
-
+        fragmentPersistenceCallbackListener.onMonthDataRetrieve(results)
         realm.close()
     }
 }

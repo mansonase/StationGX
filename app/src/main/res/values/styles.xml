@@ -12,5 +12,10 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:orientation">horizontal</item>
     </style>
+    
+    <style name="PickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/word_blue</item>
+
+    </style>
 
 </resources>

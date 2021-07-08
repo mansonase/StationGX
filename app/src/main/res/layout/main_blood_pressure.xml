@@ -81,7 +81,7 @@
             android:autoSizeTextType="uniform"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/today"
+            android:text="@string/day"
             android:textColor="@color/word_black"/>
 
     </RelativeLayout>

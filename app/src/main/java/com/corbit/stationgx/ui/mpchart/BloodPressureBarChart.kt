@@ -23,7 +23,7 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
     private var startTime=0
 
     override fun getChart(): BloodPressureBackgroundBarChart {
-        //TODO("Not yet implemented")
+
         barChart.clear()
         barChart.setBackgroundColor(Color.WHITE)
         barChart.setDrawGridBackground(false)
@@ -72,7 +72,7 @@ class BloodPressureBarChart(private val barChart: BloodPressureBackgroundBarChar
 
         var interval:Array<String>?=null
         when(duration){
-            "today"-> {
+            "day"-> {
                 interval=todayInterval
                 barChart.xAxis.setLabelCount(5,true)
 

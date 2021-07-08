@@ -60,6 +60,31 @@ class CalendarMonth(context: Context) :MonthView(context) {
     }
 
     override fun onDrawSelected(canvas: Canvas?, calendar: Calendar?, x: Int, y: Int, hasScheme: Boolean): Boolean {
+        val centerX=x+mItemWidth/2
+        val centerY=y+mItemHeight/2
+
+        Log.d("onSelect","in onDrawSelected part ${calendar.toString()}, $x, $y, $mItemWidth, $mItemHeight")
+
+        when(CalendarUtil.duration){
+            CalendarUtil.day->{
+                canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),(mItemHeight/2).toFloat(),paintRangeDates)
+            }
+            CalendarUtil.week->{
+                if (calendar==null)return true
+                val dayDiff=CalendarUtil.getWeekFromCalendar(calendar)-1
+
+                val xStart=x-dayDiff*mItemWidth
+                val xEnd=x+(7-dayDiff)*mItemWidth
+
+                val yTop=y
+                val yBottom=y+mItemHeight
+                canvas?.drawRect(xStart.toFloat(), yTop.toFloat(), xEnd.toFloat(), yBottom.toFloat(),paintRangeDates)
+
+            }
+            CalendarUtil.month->{
+
+            }
+        }
 
         return true
     }
@@ -74,14 +99,14 @@ class CalendarMonth(context: Context) :MonthView(context) {
 
 
         val schemes= calendar.schemes
-        Log.d("calendarmonth"," ${calendar.day}, size is ${schemes.size}, ${schemes.get(0).scheme}")
+        Log.d("calendarmonth"," ${calendar.day}, size is ${schemes.size}, 0=${schemes[0].scheme}")
 
 
         when(schemes[0].scheme){
-            "day"->{
+            CalendarUtil.day->{
                 canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),(mItemHeight/2).toFloat(),paintRangeDates)
             }
-            "week"->{
+            "000"->{
 
                 val dayOfWeek=CalendarUtil.getWeekFromCalendar(calendar)
                 if (dayOfWeek==1){// if this day is monday, draw circle and half rect
@@ -94,12 +119,15 @@ class CalendarMonth(context: Context) :MonthView(context) {
                     canvas?.drawRect(x.toFloat(),y.toFloat(),(x+mItemWidth).toFloat(),(y+mItemHeight).toFloat(),paintRangeDates)
                 }
             }
-            "month"->{
+            CalendarUtil.month->{
                 canvas?.drawRect(x.toFloat(),y.toFloat(),(x+mItemWidth).toFloat(),(y+mItemHeight).toFloat(),paintRangeDates)
             }
         }
-        if (schemes[1].scheme=="event"){
-            canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),22f,paintEventDates)
+        if (schemes.size>1) {
+            if (schemes[1].scheme=="event"){
+                Log.d("calendarmonth","${schemes[1].scheme}, $calendar")
+                canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),22f,paintEventDates)
+            }
         }
 
 
@@ -159,7 +187,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
 
 
 
-
+        Log.d("onSelect","in onDrawText part ${calendar.toString()}, $isSelected, $x, $y")
         //Log.d("ondrawtext","${mItemWidth}, $mItemHeight")
         //                          94,         56
         val baselineY=mTextBaseLine+y
@@ -228,6 +256,38 @@ class CalendarMonth(context: Context) :MonthView(context) {
 
              */
             //Log.d("hohoho","fuck ${calendar_bp.schemes.size}")
+        }
+
+        if (isSelected){ //redraw被onDrawSelected蓋掉的數字
+
+
+            when(CalendarUtil.duration){
+
+                CalendarUtil.week->{
+                    Log.d("testselect","week")
+                    var xCount=(x/mItemWidth)-1
+                    if (xCount<0){
+                        return
+                    }
+
+                }
+
+                CalendarUtil.month->{
+                    Log.d("testselect","month")
+                    var xCount=(x/mItemWidth)-1
+                    var yCount=y/mItemHeight
+
+                    if (xCount<0){
+                        xCount=6
+                        yCount=yCount-1
+                    }
+                }
+
+                else->{
+                    Log.d("testselect","else")
+                }
+            }
+
         }
     }
 }
