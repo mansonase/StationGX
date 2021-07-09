@@ -16,12 +16,13 @@ class CalendarUtil {
         fun getWeekFromCalendar(calendar: Calendar): Int {
             val date = java.util.Calendar.getInstance()
             date.set(calendar.year, calendar.month - 1, calendar.day)
-            //return的值: sunday==0, monday==1, tuesday==2, wednesday==3, thursday==4, friday==5, saturday==6
+
             var whatDay=date.get(java.util.Calendar.DAY_OF_WEEK) - 1
 
             if (whatDay==0){
                 whatDay=7
             }
+            //return的值: monday==1, tuesday==2, wednesday==3, thursday==4, friday==5, saturday==6, sunday==0
             return whatDay
         }
 

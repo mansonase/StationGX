@@ -1,13 +1,13 @@
 package com.corbit.stationgx.pages.manuelinput.bloodpressure.presenter
 
+import android.text.SpannableStringBuilder
 import com.haibin.calendarview.Calendar
-import io.realm.RealmResults
 
 
 interface FragmentContract {
     interface IView{
 
-        fun updateDocuments(string: String)
+        fun updateDocuments(string:SpannableStringBuilder)
         fun updateCalendar(map: HashMap<String,Calendar>)
     }
     interface IPresenter{

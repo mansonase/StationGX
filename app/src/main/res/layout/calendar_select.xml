@@ -95,11 +95,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="You have 3 document\non this week."
             android:gravity="center"
             android:fontFamily="@font/roboto"
             android:textSize="25px"
-            android:textColor="@color/word_black"/>
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <View

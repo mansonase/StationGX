@@ -106,7 +106,7 @@ class CalendarMonth(context: Context) :MonthView(context) {
             CalendarUtil.day->{
                 canvas?.drawCircle((centerX+mItemHeight/4).toFloat(),centerY.toFloat(),(mItemHeight/2).toFloat(),paintRangeDates)
             }
-            "000"->{
+            CalendarUtil.week->{
 
                 val dayOfWeek=CalendarUtil.getWeekFromCalendar(calendar)
                 if (dayOfWeek==1){// if this day is monday, draw circle and half rect
