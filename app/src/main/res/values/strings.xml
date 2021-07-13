@@ -211,6 +211,5 @@
     <string-array name="wake_words_responses">
         <item>May I help you?</item>
         <item>What is going on?</item>
-        <item>Hello, I am Da Vinci</item>
     </string-array>
 </resources>

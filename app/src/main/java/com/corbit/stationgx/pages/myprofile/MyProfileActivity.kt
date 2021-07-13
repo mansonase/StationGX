@@ -2,10 +2,13 @@ package com.corbit.stationgx.pages.myprofile
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.core.view.size
+import androidx.core.widget.addTextChangedListener
 import com.corbit.stationgx.R
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.fragment_signup.*
@@ -36,6 +40,9 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
 
         presenter = MyProfileActivityPresenter(this, this)
         presenter.fetchProfileData()
+
+        setupDataInputField()
+
         presenter.addNewEmergencyContact(ll_emergency_contact)
         ib_add_contact.setOnClickListener {
             presenter.addNewEmergencyContact(ll_emergency_contact)
@@ -103,7 +110,75 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         }
 
         btn_save.setOnClickListener{
+            Log.d("de", "on click save, profile: ${profile.toMap()}")
+            presenter.onSaveBtnClick(profile)
+        }
+    }
 
+    private fun setupDataInputField() {
+        et_profile_first_name?.addTextChangedListener{
+            Log.d("de", "et_first_name.addTextChange, ${it.toString()}")
+            profile.firstName = it.toString()
+        }
+
+        et_profile_last_name?.addTextChangedListener{
+            profile.lastName = it.toString()
+        }
+
+        et_profile_email?.addTextChangedListener {
+            profile.email = it.toString()
+        }
+
+        et_profile_phone?.addTextChangedListener{
+            profile.phone = it.toString()
+        }
+
+        et_height?.addTextChangedListener{
+            profile.height = if (it.toString().isEmpty()) -1 else it.toString().toInt()
+            calculateBMI()
+        }
+
+        et_weight?.addTextChangedListener {
+            profile.weight = if (it.toString().isEmpty()) -1 else it.toString().toInt()
+            calculateBMI()
+        }
+
+        sp_gender?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, selection: Int, id: Long) {
+                profile.gender = selection
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                profile.gender = 0
+            }
+        }
+
+        sp_blood_type?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, selection: Int, id: Long) {
+                profile.bloodType = selection
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                profile.bloodType = 0
+            }
+        }
+
+        sp_rhesus?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, selection: Int, id: Long) {
+                profile.rhesus = selection
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                profile.rhesus = 0
+            }
+        }
+
+        et_food_allergies?.addTextChangedListener{
+            profile.foodAllergies = it.toString()
+        }
+
+        et_drug_intolerance?.addTextChangedListener {
+            profile.drugIntolerance = it.toString()
         }
     }
 
@@ -144,8 +219,17 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         et_profile_last_name.setText(this.profile.lastName)
         et_profile_email.setText(this.profile.email)
         et_profile_phone.setText(this.profile.phone)
-        et_height.setText(this.profile.height.toString())
-        et_weight.setText(this.profile.weight.toString())
+        et_height.setText(if (this.profile.height > 0) this.profile.height.toString() else "")
+        et_weight.setText(if (this.profile.weight > 0) this.profile.weight.toString() else "")
+        this.calculateBMI()
+        et_food_allergies.setText(this.profile.foodAllergies)
+        et_drug_intolerance.setText(this.profile.drugIntolerance)
+        sp_gender.setSelection(this.profile.gender)
+        sp_blood_type.setSelection(this.profile.bloodType)
+        sp_rhesus.setSelection(this.profile.rhesus)
+    }
+
+    private fun calculateBMI() {
         if (this.profile.height > 0 && this.profile.weight > 0) {
             tv_bmi_value.text = String.format("%.1f", (this.profile.weight / (this.profile.height / 100.0).pow(2.0)))
             tv_bmi_value.visibility = View.VISIBLE
@@ -153,10 +237,6 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         else {
             tv_bmi_value.visibility = View.INVISIBLE
         }
-        et_food_allergies.setText(this.profile.foodAllergies)
-        et_drug_intolerance.setText(this.profile.drugIntolerance)
-        sp_blood_type.setSelection(this.profile.bloodType)
-
     }
 
     private fun initMobilityArr() {

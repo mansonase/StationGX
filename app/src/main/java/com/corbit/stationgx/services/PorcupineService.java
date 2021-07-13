@@ -33,7 +33,13 @@ import com.corbit.stationgx.pages.myprofile.MyProfileActivity;
 import java.io.File;
 import java.util.Map;
 
-import ai.picovoice.porcupine.Porcupine;
+//import ai.picovoice.porcupine.Porcupine;
+//import ai.picovoice.porcupine.PorcupineException;
+//import ai.picovoice.porcupine.PorcupineManager;
+//import ai.picovoice.rhino.RhinoInference;
+//import ai.picovoice.rhino.RhinoManager;
+import ai.picovoice.picovoice.PicovoiceException;
+import ai.picovoice.picovoice.PicovoiceManager;
 import ai.picovoice.porcupine.PorcupineException;
 import ai.picovoice.porcupine.PorcupineManager;
 import ai.picovoice.rhino.RhinoInference;
@@ -48,6 +54,8 @@ public class PorcupineService extends Service {
     private PorcupineManager porcupineManager;
 
     private RhinoManager rhinoManager;
+
+    private PicovoiceManager picovoiceManager;
 
     private int numUtterances;
 
@@ -90,10 +98,76 @@ public class PorcupineService extends Service {
 
         startForeground(1234, notification);
 
+//        try {
+//            picovoiceManager = new PicovoiceManager.Builder()
+//                    .setKeywordPath(getAbsolutePath("wake_words.ppn"))
+//                    .setPorcupineSensitivity(0.7f)
+//                    .setWakeWordCallback(
+//                            () -> {
+//                                PendingIntent contentIntent = PendingIntent.getActivity(
+//                                        this,
+//                                        0,
+//                                        new Intent(this, MainBaseActivity.class),
+//                                        0);
+//
+//                                Notification n = new NotificationCompat.Builder(this, CHANNEL_ID)
+//                                        .setContentTitle("Picovoice")
+//                                        .setContentText("Wake Word Detected ...")
+//                                        .setSmallIcon(R.drawable.ic_launcher_background)
+//                                        .setContentIntent(contentIntent)
+//                                        .build();
+//
+//                                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//                                assert notificationManager != null;
+//                                notificationManager.notify(1234, n);
+//
+//                            })
+//                    .setContextPath(getAbsolutePath("speech_to_intent.rhn"))
+//                    .setRhinoSensitivity(0.25f)
+//                    .setInferenceCallback(
+//                            (inference) -> {
+//                                PendingIntent contentIntent = PendingIntent.getActivity(
+//                                        this,
+//                                        0,
+//                                        new Intent(this, MainBaseActivity.class),
+//                                        0);
+//
+//
+//                                StringBuilder builder = new StringBuilder();
+//                                if (inference.getIsUnderstood()) {
+//                                    builder.append(inference.getIntent()).append(" - ");
+//                                    final Map<String, String> slots = inference.getSlots();
+//                                    if (slots.size() > 0) {
+//                                        for (String key : slots.keySet()) {
+//                                            builder.append(key).append(" : ").append(slots.get(key)).append(" ");
+//                                        }
+//                                    }
+//                                } else {
+//                                    builder.append("Didn't understand the command.");
+//                                }
+//
+//                                Notification n = new NotificationCompat.Builder(this, CHANNEL_ID)
+//                                        .setContentTitle("Picovoice")
+//                                        .setContentText(builder.toString())
+//                                        .setSmallIcon(R.drawable.ic_launcher_background)
+//                                        .setContentIntent(contentIntent)
+//                                        .build();
+//
+//                                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//                                assert notificationManager != null;
+//                                notificationManager.notify(1234, n);
+//
+//                            }).build(getApplicationContext());
+//            picovoiceManager.start();
+//        } catch (PicovoiceException e) {
+//            Log.d("de", e.toString());
+//        }
+
         try {
             porcupineManager = new PorcupineManager.Builder()
 //                    .setKeyword(Porcupine.BuiltInKeyword.COMPUTER)
                     .setKeywordPath(getAbsolutePath("wake_words.ppn"))
+
                     .setSensitivity(0.9f).build(
                             getApplicationContext(),
                             (keywordIndex) -> {
@@ -106,8 +180,9 @@ public class PorcupineService extends Service {
 
                                     @Override
                                     public void onDone(String utteranceId) {
-                                        if (startDetect)
+                                        if (startDetect) {
                                             rhinoManager.process();
+                                        }
                                     }
 
                                     @Override
@@ -116,12 +191,12 @@ public class PorcupineService extends Service {
                                 });
                                 tts.speak(ttsResponseArr[(int)(Math.random()*2)], TextToSpeech.QUEUE_FLUSH, null, "");
                                 startDetect = true;
-//                                PendingIntent contentIntent = PendingIntent.getActivity(
-//                                        this,
-//                                        0,
-//                                        new Intent(this, MainBaseActivity.class),
-//                                        0);
-//
+                                PendingIntent contentIntent = PendingIntent.getActivity(
+                                        this,
+                                        0,
+                                        new Intent(this, MainBaseActivity.class),
+                                        0);
+
 //                                final String contentText = numUtterances == 1 ? " time!" : " times!";
 //                                Notification n = new NotificationCompat.Builder(this, CHANNEL_ID)
 //                                        .setContentTitle("Wake word")
@@ -135,6 +210,14 @@ public class PorcupineService extends Service {
 //                                notificationManager.notify(1234, n);
 
 //                                initRhino();
+                                Toast.makeText(getApplicationContext(), "Detected "+numUtterances+"times", Toast.LENGTH_LONG).show();
+                                try {
+                                    porcupineManager.stop();
+                                }
+                                catch (PorcupineException e) {
+                                    Log.d("de", "porcupineManager.stop e: "+e.toString());
+                                }
+//                                rhinoManager.process();
 
                             });
             porcupineManager.start();
@@ -146,6 +229,7 @@ public class PorcupineService extends Service {
                     .build(getApplicationContext(), new RhinoManagerCallback() {
                         @Override
                         public void invoke(final RhinoInference inference) {
+                            Toast.makeText(PorcupineService.this, "Detect intent", Toast.LENGTH_LONG).show();
                             if (inference.getIsUnderstood()) {
                                 tts.speak("OK", TextToSpeech.QUEUE_FLUSH, null, "");
                                 parseIntentData(inference);
@@ -160,6 +244,7 @@ public class PorcupineService extends Service {
                                 tts.speak("I don't understand what you mean.", TextToSpeech.QUEUE_FLUSH, null, "");
                             }
                             startDetect = false;
+                            porcupineManager.start();
                         }
                     });
 //            rhinoManager.process();
@@ -200,6 +285,7 @@ public class PorcupineService extends Service {
     private void goToTargetPage(final Map<String, String> slots) {
         for (String key : slots.keySet()) {
             String targetPage = slots.get(key);
+            Log.d("de", "targetPage: "+targetPage);
             switch (targetPage) {
                 case "home page":
                     goHomePage();
@@ -242,6 +328,13 @@ public class PorcupineService extends Service {
             tts.stop();
             tts.shutdown();
         }
+
+//        try {
+//            picovoiceManager.stop();
+//        }
+//        catch (PicovoiceException e) {
+//            Log.d("de", "onDestroy exception: "+e.toString());
+//        }
         try {
             porcupineManager.stop();
             porcupineManager.delete();

@@ -43,8 +43,11 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
         view.resetMobilityBtnBg()
     }
 
+    open fun onAllergiesBtnClick(button: Button) {
+
+    }
+
     open fun onMedicalEventExpBtnClick(button: Button) {
-        Log.d("de", "${button.text}: "+button.tag)
         if (button.tag == null || button.tag == false) {
             button.tag = true
             view.updateMedicalEventBtn(button, true)
@@ -67,7 +70,15 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
     }
 
     open fun onSaveBtnClick(profile: MyProfile) {
-
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+        val ref = FirebaseDatabase.getInstance().getReference("emergencyusers")
+        ref.child(uid).child("profile").setValue(profile.toMap()).addOnSuccessListener {
+            Log.d("de", "onSave success")
+        }.addOnCanceledListener {
+            Log.d("de", "onSave canceled")
+        }.addOnFailureListener {
+            Log.d("de", "onSave failed")
+        }
     }
 
     open fun fetchProfileData() {

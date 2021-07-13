@@ -23,6 +23,8 @@ class MyProfile {
 
     var bloodType: Int = 0
 
+    var rhesus: Int = 0
+
     var allergies: Boolean = false
 
     var foodAllergies: String = ""
@@ -31,9 +33,9 @@ class MyProfile {
 
     var mobility: Int = 0
 
-    var emergencyContacts: Array<EmergencyContact> = arrayOf()
+    var emergencyContacts: List<EmergencyContact> = listOf()
 
-    open fun toMap(): String{
+    open fun toMap() : Map<String, Any> {
         var map: MutableMap<String, Any> = mutableMapOf()
         map["firstName"] = firstName
         map["lastName"] = lastName
@@ -46,12 +48,13 @@ class MyProfile {
         map["height"] = height
         map["weight"] = weight
         map["bloodType"] = bloodType
+        map["rhesus"] = rhesus
         map["allergies"] = allergies
         map["foodAllergies"] = foodAllergies
         map["drugIntolerance"] = drugIntolerance
         map["mobility"] = mobility
         map["emergencyContacts"] = emergencyContacts
 
-        return map.toString()
+        return map
     }
 }
