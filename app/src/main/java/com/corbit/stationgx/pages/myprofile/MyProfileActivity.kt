@@ -2,16 +2,13 @@ package com.corbit.stationgx.pages.myprofile
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
@@ -19,7 +16,6 @@ import androidx.core.view.size
 import androidx.core.widget.addTextChangedListener
 import com.corbit.stationgx.R
 import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.fragment_signup.*
 import kotlinx.android.synthetic.main.profile_emergency_contact.view.*
 import kotlin.math.pow
 
@@ -28,10 +24,18 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
     lateinit var presenter: MyProfileActivityPresenter
     lateinit var mobilityArr: Array<Button>
     lateinit var profile: MyProfile
+    private val skinMaleArr: Array<Int> = arrayOf(R.drawable.profile_skin_male, R.drawable.profile_skin_selected_male)
+    private val skinFemaleArr: Array<Int> = arrayOf(R.drawable.profile_skin_female, R.drawable.profile_skin_selected_female)
+    private var skinCurrentArr: Array<Int> = skinMaleArr
+    private val skeletalMaleArr: Array<Int> = arrayOf(R.drawable.profile_skeletal_male, R.drawable.profile_skeletal_selected_male)
+    private val skeletalFemaleArr: Array<Int> = arrayOf(R.drawable.profile_skeletal_female, R.drawable.profile_skeletal_selected_female)
+    private var skeletalCurrentArr: Array<Int> = skeletalMaleArr
+    lateinit var medicalTreatmentArr: Array<Button>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        initMedicalTreatmentArray()
         profile = MyProfile()
         initMobilityArr()
         setupGenderSpinner()
@@ -105,14 +109,107 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
             presenter.onMedicalEventExpBtnClick(btn_others)
         }
 
-        btn_graphic_nerves.setOnClickListener {
-            presenter.onMedicalTreatmentBtnClick(btn_graphic_nerves)
+        btn_graphic_brain.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_brain)
+            presenter.refreshBrainImg(btn_graphic_brain.tag as Boolean)
+            if (btn_graphic_brain.tag as Boolean) {
+                profile.medicalTreatment.add(0)
+            }
+            else {
+                profile.medicalTreatment.remove(0)
+            }
+        }
+
+        btn_graphic_heart.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_heart)
+            presenter.refreshHeartImg(btn_graphic_heart.tag as Boolean)
+            if (btn_graphic_heart.tag as Boolean) {
+                profile.medicalTreatment.add(1)
+            }
+            else {
+                profile.medicalTreatment.remove(1)
+            }
+        }
+
+        btn_graphic_kidney.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_kidney)
+            presenter.refreshKidneyImg(btn_graphic_kidney.tag as Boolean)
+            if (btn_graphic_kidney.tag as Boolean) {
+                profile.medicalTreatment.add(2)
+            }
+            else {
+                profile.medicalTreatment.remove(2)
+            }
+        }
+
+        btn_graphic_endocrine.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_endocrine)
+            presenter.refreshEndocrineImg(btn_graphic_endocrine.tag as Boolean)
+            if (btn_graphic_endocrine.tag as Boolean) {
+                profile.medicalTreatment.add(3)
+            }
+            else {
+                profile.medicalTreatment.remove(3)
+            }
+        }
+
+        btn_graphic_skin.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_skin)
+            presenter.refreshSkinImg(btn_graphic_skin.tag as Boolean)
+            if (btn_graphic_skin.tag as Boolean) {
+                profile.medicalTreatment.add(4)
+            }
+            else {
+                profile.medicalTreatment.remove(4)
+            }
+        }
+
+        btn_graphic_lung.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_lung)
+            presenter.refreshLungImg(btn_graphic_lung.tag as Boolean)
+            if (btn_graphic_lung.tag as Boolean) {
+                profile.medicalTreatment.add(5)
+            }
+            else {
+                profile.medicalTreatment.remove(5)
+            }
+        }
+
+        btn_graphic_liver.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_liver)
+            presenter.refreshLiverImg(btn_graphic_liver.tag as Boolean)
+            if (btn_graphic_liver.tag as Boolean) {
+                profile.medicalTreatment.add(6)
+            }
+            else {
+                profile.medicalTreatment.remove(6)
+            }
+        }
+
+        btn_graphic_skeletal.setOnClickListener {
+            presenter.onMedicalTreatmentBtnClick(btn_graphic_skeletal)
+            presenter.refreshSkeletalImg(btn_graphic_skeletal.tag as Boolean)
+            Log.d("de", "btn skeletal: "+btn_graphic_skeletal.tag as Boolean)
+            if (btn_graphic_skeletal.tag as Boolean) {
+                profile.medicalTreatment.add(7)
+            }
+            else {
+                profile.medicalTreatment.remove(7)
+            }
+
+            Log.d("de", "${this.profile.toMap()}")
         }
 
         btn_save.setOnClickListener{
             Log.d("de", "on click save, profile: ${profile.toMap()}")
             presenter.onSaveBtnClick(profile)
         }
+    }
+
+    private fun initMedicalTreatmentArray() {
+        medicalTreatmentArr = arrayOf(btn_graphic_brain, btn_graphic_heart,
+                btn_graphic_kidney, btn_graphic_endocrine, btn_graphic_skin, btn_graphic_lung,
+                btn_graphic_liver, btn_graphic_skeletal)
     }
 
     private fun setupDataInputField() {
@@ -146,10 +243,18 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         sp_gender?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, selection: Int, id: Long) {
                 profile.gender = selection
+                skinCurrentArr = if (selection == 1) skinFemaleArr else skinMaleArr
+                skeletalCurrentArr = if (selection == 1) skeletalFemaleArr else skeletalMaleArr
+                presenter.refreshSkinImg(if (btn_graphic_skin.tag == null) false else btn_graphic_skin.tag as Boolean)
+                presenter.refreshSkeletalImg(if (btn_graphic_skin.tag == null) false else btn_graphic_skin.tag as Boolean)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 profile.gender = 0
+                skinCurrentArr = skinMaleArr
+                skeletalCurrentArr = skeletalMaleArr
+                presenter.refreshSkinImg(if (btn_graphic_skin.tag == null) false else btn_graphic_skin.tag as Boolean)
+                presenter.refreshSkeletalImg(if (btn_graphic_skin.tag == null) false else btn_graphic_skin.tag as Boolean)
             }
         }
 
@@ -185,6 +290,38 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
     override fun initProfile(profile: MyProfile) {
         this.profile = profile
         this.setupProfile()
+    }
+
+    override fun refreshBrainImg(selected: Boolean) {
+        img_brain.visibility = if(selected) View.VISIBLE else View.GONE
+    }
+
+    override fun refreshHeartImg(selected: Boolean) {
+        img_heart.visibility = if(selected) View.VISIBLE else View.GONE
+    }
+
+    override fun refreshKidneyImg(selected: Boolean) {
+        img_kidney.visibility = if(selected) View.VISIBLE else View.GONE
+    }
+
+    override fun refreshEndocrineImg(selected: Boolean) {
+        img_endocrine.visibility = if(selected) View.VISIBLE else View.GONE
+    }
+
+    override fun refreshSkinImg(selected: Boolean) {
+        img_skin.setImageResource(if (selected) skinCurrentArr[1] else skinCurrentArr[0])
+    }
+
+    override fun refreshLungImg(selected: Boolean) {
+        img_lung.visibility = if(selected) View.VISIBLE else View.GONE
+    }
+
+    override fun refreshLiverImg(selected: Boolean) {
+        img_liver.visibility = if(selected) View.VISIBLE else View.GONE
+    }
+
+    override fun refreshSkeletalImg(selected: Boolean) {
+        img_skeletal.setImageResource(if (selected) skeletalCurrentArr[1] else skeletalCurrentArr[0])
     }
 
     private fun setupGenderSpinner() {
@@ -227,6 +364,19 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         sp_gender.setSelection(this.profile.gender)
         sp_blood_type.setSelection(this.profile.bloodType)
         sp_rhesus.setSelection(this.profile.rhesus)
+        if (this.profile.medicalTreatment.size > 0) {
+            for (i in 0 until this.profile.medicalTreatment.size) {
+                medicalTreatmentArr[this.profile.medicalTreatment[i]].tag = true
+            }
+        }
+        updateAllMedicalTreatmentBtn()
+    }
+
+    private fun updateAllMedicalTreatmentBtn() {
+        for (i in medicalTreatmentArr.indices) {
+            if (medicalTreatmentArr[i].tag != null)
+                updateMedicalTreatmentBtn(medicalTreatmentArr[i], medicalTreatmentArr[i].tag as Boolean)
+        }
     }
 
     private fun calculateBMI() {
@@ -279,11 +429,11 @@ class MyProfileActivity:AppCompatActivity(), MyProfileActivityContract.IMyProfil
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
-
     override fun removeTargetEmergencyContact(emergencyContact: EmergencyContact) {
         presenter.removeTargetEmergencyContact(emergencyContact, ll_emergency_contact)
+    }
+
+    override fun presentSavedResult(result: String) {
+        Toast.makeText(this, result, Toast.LENGTH_LONG).show()
     }
 }

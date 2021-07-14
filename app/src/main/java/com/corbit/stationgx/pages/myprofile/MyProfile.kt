@@ -33,7 +33,9 @@ class MyProfile {
 
     var mobility: Int = 0
 
-    var emergencyContacts: List<EmergencyContact> = listOf()
+    var emergencyContacts: MutableList<EmergencyContact> = mutableListOf()
+
+    var medicalTreatment: MutableList<Int> = mutableListOf()
 
     open fun toMap() : Map<String, Any> {
         var map: MutableMap<String, Any> = mutableMapOf()
@@ -54,6 +56,7 @@ class MyProfile {
         map["drugIntolerance"] = drugIntolerance
         map["mobility"] = mobility
         map["emergencyContacts"] = emergencyContacts
+        map["medicalTreatment"] = medicalTreatment
 
         return map
     }

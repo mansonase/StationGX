@@ -15,6 +15,24 @@ class MyProfileActivityContract {
         fun refreshEmergencyContacts()
 
         fun initProfile(profile: MyProfile)
+
+        fun refreshBrainImg(selected: Boolean)
+
+        fun refreshHeartImg(selected: Boolean)
+
+        fun refreshKidneyImg(selected: Boolean)
+
+        fun refreshEndocrineImg(selected: Boolean)
+
+        fun refreshSkinImg(selected: Boolean)
+
+        fun refreshLungImg(selected: Boolean)
+
+        fun refreshLiverImg(selected: Boolean)
+
+        fun refreshSkeletalImg(selected: Boolean)
+
+        fun presentSavedResult(result: String)
     }
 
     interface IMyProfilePresenter {

@@ -61,12 +61,44 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
     open fun onMedicalTreatmentBtnClick(button: Button) {
         if (button.tag == null || button.tag == false) {
             button.tag = true
-            view.updateMedicalEventBtn(button, true)
+            view.updateMedicalTreatmentBtn(button, true)
         }
         else {
             button.tag = false
-            view.updateMedicalEventBtn(button, false)
+            view.updateMedicalTreatmentBtn(button, false)
         }
+    }
+
+    open fun refreshBrainImg(selected: Boolean) {
+        view.refreshBrainImg(selected)
+    }
+
+    open fun refreshHeartImg(selected: Boolean) {
+        view.refreshHeartImg(selected)
+    }
+
+    open fun refreshKidneyImg(selected: Boolean) {
+        view.refreshKidneyImg(selected)
+    }
+
+    open fun refreshEndocrineImg(selected: Boolean) {
+        view.refreshEndocrineImg(selected)
+    }
+
+    open fun refreshSkinImg(selected: Boolean) {
+        view.refreshSkinImg(selected)
+    }
+
+    open fun refreshLungImg(selected: Boolean) {
+        view.refreshLungImg(selected)
+    }
+
+    open fun refreshLiverImg(selected: Boolean) {
+        view.refreshLiverImg(selected)
+    }
+
+    open fun refreshSkeletalImg(selected: Boolean) {
+        view.refreshSkeletalImg(selected)
     }
 
     open fun onSaveBtnClick(profile: MyProfile) {
@@ -74,10 +106,13 @@ class MyProfileActivityPresenter(private val view: MyProfileActivityContract.IMy
         val ref = FirebaseDatabase.getInstance().getReference("emergencyusers")
         ref.child(uid).child("profile").setValue(profile.toMap()).addOnSuccessListener {
             Log.d("de", "onSave success")
+            view.presentSavedResult("Saved successfully")
         }.addOnCanceledListener {
             Log.d("de", "onSave canceled")
+            view.presentSavedResult("Saved canceled")
         }.addOnFailureListener {
             Log.d("de", "onSave failed")
+            view.presentSavedResult("Saved failed")
         }
     }
 

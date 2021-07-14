@@ -168,7 +168,7 @@ public class PorcupineService extends Service {
 //                    .setKeyword(Porcupine.BuiltInKeyword.COMPUTER)
                     .setKeywordPath(getAbsolutePath("wake_words.ppn"))
 
-                    .setSensitivity(0.9f).build(
+                    .setSensitivity(0.3f).build(
                             getApplicationContext(),
                             (keywordIndex) -> {
                                 numUtterances++;

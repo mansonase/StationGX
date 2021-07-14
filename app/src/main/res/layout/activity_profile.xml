@@ -236,16 +236,16 @@
                 app:layout_constraintTop_toTopOf="@id/btn_surgery" />
 
             <Button
-                android:id="@+id/btn_graphic_nerves"
+                android:id="@+id/btn_graphic_brain"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60px"
                 android:layout_marginTop="27px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:paddingHorizontal="16px"
                 android:text="@string/profile_label_graphic_nerves_wording"
                 android:textAllCaps="false"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textSize="24px"
                 app:layout_constraintStart_toStartOf="@id/ll_emergency_contact"
                 app:layout_constraintTop_toBottomOf="@id/tv_graphic" />
@@ -256,14 +256,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60px"
                 android:layout_marginTop="27px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:paddingHorizontal="16px"
                 android:text="@string/profile_label_graphic_heart_wording"
                 android:textAllCaps="false"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textSize="24px"
-                app:layout_constraintStart_toStartOf="@id/btn_graphic_nerves"
-                app:layout_constraintTop_toBottomOf="@id/btn_graphic_nerves" />
+                app:layout_constraintStart_toStartOf="@id/btn_graphic_brain"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_brain" />
 
             <Button
                 android:id="@+id/btn_graphic_kidney"
@@ -326,22 +326,22 @@
                 app:layout_constraintTop_toBottomOf="@id/btn_graphic_skin" />
 
             <Button
-                android:id="@+id/btn_graphic_abdominal"
+                android:id="@+id/btn_graphic_liver"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60px"
                 android:layout_marginTop="27px"
-                android:background="@drawable/bg_profile_btn_selected"
+                android:background="@drawable/bg_profile_btn_unselected"
                 android:paddingHorizontal="16px"
                 android:text="@string/profile_label_graphic_abdominal_wording"
                 android:textAllCaps="false"
-                android:textColor="@color/main_white"
+                android:textColor="@color/blue_0288d1"
                 android:textSize="24px"
                 app:layout_constraintEnd_toEndOf="@id/btn_graphic_lung"
                 app:layout_constraintTop_toBottomOf="@id/btn_graphic_lung" />
 
             <Button
-                android:id="@+id/btn_graphic_muscular"
+                android:id="@+id/btn_graphic_skeletal"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="60px"
@@ -352,8 +352,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/blue_0288d1"
                 android:textSize="24px"
-                app:layout_constraintEnd_toEndOf="@id/btn_graphic_abdominal"
-                app:layout_constraintTop_toBottomOf="@id/btn_graphic_abdominal" />
+                app:layout_constraintEnd_toEndOf="@id/btn_graphic_liver"
+                app:layout_constraintTop_toBottomOf="@id/btn_graphic_liver" />
 
             <Button
                 android:id="@+id/btn_save"
@@ -1049,15 +1049,79 @@
                 app:layout_constraintStart_toStartOf="@id/ll_emergency_contact"
                 app:layout_constraintTop_toBottomOf="@id/ll_emergency_contact" />
 
-            <View
+            <RelativeLayout
                 android:id="@+id/view_graphic"
                 android:layout_width="212px"
                 android:layout_height="586px"
                 android:layout_marginTop="28px"
-                android:background="@color/blue_0288d1"
+                android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="@id/ll_event"
                 app:layout_constraintStart_toStartOf="@id/ll_event"
-                app:layout_constraintTop_toBottomOf="@id/tv_graphic" />
+                app:layout_constraintTop_toBottomOf="@id/tv_graphic" >
+
+                <ImageView
+                    android:id="@+id/img_skin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/profile_skin_male"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_skeletal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/profile_skeletal_male"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_brain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:src="@drawable/profile_brain"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_liver"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:src="@drawable/profile_liver"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_endocrine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:src="@drawable/profile_endocrine_male"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_kidney"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:src="@drawable/profile_kidney"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_lung"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:src="@drawable/profile_lung"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/img_heart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:src="@drawable/profile_heart"
+                    android:background="@android:color/transparent"/>
+
+            </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
